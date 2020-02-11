@@ -9,13 +9,14 @@ export const appRoutes: Routes = [
   {
     path: '', children: [
       { path: 'main1', component: MainDataComponent },
-      { path: 'main2', component: MainData2Component }
+      { path: 'main2', component: MainData2Component },
+      // { path: '**', component: ErrorPageComponent }
     ]
   },
 
   // ... other routes
 
-  { path: '*', component: ErrorPageComponent }
+  { path: '**', component: ErrorPageComponent}
 ];
 
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
