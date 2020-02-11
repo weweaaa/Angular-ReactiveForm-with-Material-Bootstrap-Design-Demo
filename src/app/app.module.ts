@@ -9,6 +9,11 @@ import { MainComponent } from './page/main/main.component';
 import { FooterComponent } from './page/footer/footer.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { appRouting } from './app.router.modules';
+import { FilterUIComponent } from './page/main/filter-ui/filter-ui.component';
+import { ShowDataComponent } from './page/main/show-data/show-data.component';
+import { PaginationComponent } from './page/main/pagination/pagination.component';
+import { MainDataComponent } from './page/main/main-data/main-data.component';
+import { MainData2Component } from './page/main/main-data2/main-data2.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { appRouting } from './app.router.modules';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FilterUIComponent,
+    ShowDataComponent,
+    PaginationComponent,
+    MainDataComponent,
+    MainData2Component
   ],
   imports: [
     appRouting,
