@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatDialogModule, MatInputModule, MatDialogRef, MatButtonModule, MAT_DIALOG_DATA } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +13,8 @@ import { ShowDataComponent } from './page/main/show-data/show-data.component';
 import { PaginationComponent } from './page/main/pagination/pagination.component';
 import { MainDataComponent } from './page/main/main-data/main-data.component';
 import { MainData2Component } from './page/main/main-data2/main-data2.component';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { MainData2Component } from './page/main/main-data2/main-data2.component'
 
     BrowserModule,
     AppRoutingModule,
-    MatDialogModule
+    FormsModule,
+
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
