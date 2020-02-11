@@ -1,4 +1,5 @@
 # LibrarySystem
+*庫存管理，提供店家出貨量狀態的即時控管系統*
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
 
