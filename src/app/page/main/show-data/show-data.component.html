@@ -1,1 +1,27 @@
-<p>資料表呈現區</p>
+<caption class="TitleNoWrap">
+  報表名稱：{{
+    reportName
+  }}
+</caption>
+<div class="overflow-auto table_div">
+  <table
+    mat-table
+    [dataSource]="dataToDisplay"
+    class="mat-elevation-z8 table_show"
+  >
+    <ng-container
+      [matColumnDef]="column"
+      *ngFor="let column of dataElementsColumns"
+    >
+      <th mat-header-cell class="text-center px-4" *matHeaderCellDef>
+        {{ column }}
+      </th>
+      <td mat-cell class="text-center px-4" *matCellDef="let element">
+        {{ element[column] }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+</div>

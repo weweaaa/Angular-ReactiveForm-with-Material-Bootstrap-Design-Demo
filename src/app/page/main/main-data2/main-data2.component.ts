@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/Core/data.service';
 
 @Component({
   selector: 'app-main-data2',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainData2Component implements OnInit {
 
-  constructor() { }
+  dataElements: any;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataElements = this.dataService.getData2();
   }
 
 }

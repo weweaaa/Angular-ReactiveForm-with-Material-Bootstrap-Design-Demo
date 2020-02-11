@@ -1,0 +1,11 @@
+.TitleNoWrap {
+  white-space: nowrap;
+}
+
+.table_div {
+  width: 90vw
+}
+
+.table_show {
+  height: 50vh;
+}
