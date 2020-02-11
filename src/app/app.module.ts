@@ -6,18 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './page/header/header.component';
 import { MainComponent } from './page/main/main.component';
-import { MenuComponent } from './page/menu/menu.component';
 import { FooterComponent } from './page/footer/footer.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { appRouting } from './app.router.modules';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    MenuComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorPageComponent
   ],
   imports: [
+    appRouting,
+
     BrowserModule,
     AppRoutingModule,
     MatDialogModule
