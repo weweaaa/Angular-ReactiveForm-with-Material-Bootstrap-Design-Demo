@@ -41,8 +41,13 @@ export class RequiredElement {
  * 目前支援的查詢條件類型
  */
 export enum FilterType {
-  InputTextBox,
+  /** 字串 查詢條件 */
+  StringInput,
+  /** 數字 查詢條件 */
+  NumberInput,
+  /** 日期 查詢條件 */
   DatePicker,
+  /** 時間 查詢條件 */
   TimePicker,
 }
 

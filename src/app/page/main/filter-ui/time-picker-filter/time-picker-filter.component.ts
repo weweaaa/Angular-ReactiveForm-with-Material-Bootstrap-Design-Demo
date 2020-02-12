@@ -31,6 +31,4 @@ export class TimePickerFilterComponent implements OnInit {
     this.filterElement.value = timeSet;
     this.ValueChange.emit(this.filterElement);
   }
-
-
 }

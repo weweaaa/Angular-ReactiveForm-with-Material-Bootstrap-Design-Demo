@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { Subject, Subscription, of } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, mergeMap, delay } from 'rxjs/operators';
-import { FilterElement } from 'src/app/Domain/FilterElement';
+import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
 
 @Component({
   selector: 'app-input-filter',
@@ -10,11 +10,15 @@ import { FilterElement } from 'src/app/Domain/FilterElement';
 })
 export class InputFilterComponent implements OnInit {
 
+  /** 輸入類型 */
+  inputType: string;
+
   /** 查詢條件物件 */
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
+      this.setInputType(filter.type);
     } else {
       console.error(`InputFilterComponent FilterElement undefined`);
     }
@@ -40,5 +44,19 @@ export class InputFilterComponent implements OnInit {
       this.filterElement.value = val;
       this.ValueChange.emit(this.filterElement);
     });
+  }
+
+  private setInputType(type: FilterType) {
+    switch (type) {
+      case FilterType.StringInput:
+        this.inputType = 'text';
+        break;
+      case FilterType.NumberInput:
+        this.inputType = 'number';
+        break;
+      default:
+        console.error(`${FilterType[type]} case not definde.`);
+        break;
+    }
   }
 }

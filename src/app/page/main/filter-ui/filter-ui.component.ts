@@ -24,8 +24,8 @@ export class FilterUIComponent implements OnInit {
 
     // ============== 假資料 ==============
     this.filterList = [
-      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.InputTextBox },
-      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.InputTextBox },
+      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput },
+      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput },
       { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker },
       { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker },
     ];

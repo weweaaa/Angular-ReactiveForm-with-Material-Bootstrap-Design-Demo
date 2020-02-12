@@ -16,7 +16,7 @@
           (ValueChange)="ValueChange($event)"
         ></app-time-picker-filter>
         <app-input-filter
-          *ngSwitchCase="FType[FType.InputTextBox]"
+          *ngSwitchCase="(FType[filter.type] === FType[FType.StringInput]) || FType[filter.type] === (FType[FType.NumberInput]) ? FType[filter.type] : ''"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         ></app-input-filter>
