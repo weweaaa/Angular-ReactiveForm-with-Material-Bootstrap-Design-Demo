@@ -22,21 +22,21 @@ export class FilterUIComponent implements OnInit {
   ngOnInit(): void {
     // TODO 初始化 依據報表類型決定要顯示的查詢條件清單，透過 Service 動態建立
 
-    // 假資料
+    // ============== 假資料 ==============
     this.filterList = [
       { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.InputTextBox },
       { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.InputTextBox },
-      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.InputTextBox },
+      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker },
       { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker },
     ];
   }
 
   /**
-   * 使用者設定 日期 查詢條件
+   * 使用者設定 查詢條件
    */
-  setDateFilter(setDate: FilterElement) {
+  ValueChange(setDate: FilterElement) {
     console.log(setDate);
 
-    // TODO 設定時間查詢條件
+    // TODO 查詢條件實作
   }
 }

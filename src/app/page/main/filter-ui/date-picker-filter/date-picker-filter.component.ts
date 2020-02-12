@@ -19,7 +19,7 @@ export class DatePickerFilterComponent implements OnInit {
       console.error(`DatePickerFilterComponent FilterElement undefined`);
     }
   }
-  @Output() timeValueChange = new EventEmitter<FilterElement>();
+  @Output() ValueChange = new EventEmitter<FilterElement>();
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class DatePickerFilterComponent implements OnInit {
   /** 使用者設定時間查詢條件 */
   setTimeValue(setDate: MatDatepickerInputEvent<Moment>) {
     this.filterElement.value = setDate.value.format('YYYY-MM-DD');
-    this.timeValueChange.emit(this.filterElement);
+    this.ValueChange.emit(this.filterElement);
   }
 
   /** 取得今天日期 */

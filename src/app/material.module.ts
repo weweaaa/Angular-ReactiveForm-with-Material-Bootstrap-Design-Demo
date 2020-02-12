@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
+
 import {
   MatDialogModule, MatTableModule, MatFormFieldModule,
   MatDatepickerModule, MatNativeDateModule, MatInputModule, MAT_DATE_FORMATS
 } from '@angular/material';
+
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,17 +25,21 @@ export const MY_FORMATS = {
 
 @NgModule({
   exports: [
+    /** Table */
     MatTableModule,
     MatDialogModule,
 
     MatInputModule,
     MatFormFieldModule,
 
+    /** DatePicker */
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
-
     BrowserAnimationsModule,
+
+    /** TimePicker */
+    NgxMaterialTimepickerModule
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },

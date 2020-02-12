@@ -8,11 +8,17 @@
         <app-date-picker-filter
           *ngSwitchCase="FType[FType.DatePicker]"
           [filterElement]="filter"
-          (timeValueChange)="setDateFilter($event)"
+          (ValueChange)="ValueChange($event)"
         ></app-date-picker-filter>
+        <app-time-picker-filter
+          *ngSwitchCase="FType[FType.TimePicker]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        ></app-time-picker-filter>
         <app-input-filter
           *ngSwitchCase="FType[FType.InputTextBox]"
           [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
         ></app-input-filter>
       </div>
     </ng-container>

@@ -43,5 +43,6 @@ export class RequiredElement {
 export enum FilterType {
   InputTextBox,
   DatePicker,
+  TimePicker,
 }
 

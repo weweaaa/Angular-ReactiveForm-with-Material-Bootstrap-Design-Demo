@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { Subject, Subscription, of } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, mergeMap, delay } from 'rxjs/operators';
 import { FilterElement } from 'src/app/Domain/FilterElement';
@@ -22,7 +21,7 @@ export class InputFilterComponent implements OnInit {
   }
 
   /** 使用者輸入查詢條件 */
-  @Output() setInputFilter = new EventEmitter();
+  @Output() ValueChange = new EventEmitter<FilterElement>();
 
   private subscription: Subscription;
   keydown = new Subject<KeyboardEvent>();
@@ -38,8 +37,8 @@ export class InputFilterComponent implements OnInit {
       //   delay(500),
       // )),
     ).subscribe((val) => {
-      console.log(val);
-      this.setInputFilter.emit(val);
+      this.filterElement.value = val;
+      this.ValueChange.emit(this.filterElement);
     });
   }
 }
