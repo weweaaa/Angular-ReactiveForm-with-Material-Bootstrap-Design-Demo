@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
 import { EventEmitter } from 'events';
 import { Subject, Subscription, of } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, mergeMap, delay } from 'rxjs/operators';
+import { FilterElement } from 'src/app/Domain/FilterElement';
 
 @Component({
   selector: 'app-input-filter',
@@ -10,26 +11,13 @@ import { map, debounceTime, distinctUntilChanged, mergeMap, delay } from 'rxjs/o
 })
 export class InputFilterComponent implements OnInit {
 
-  /** 查詢條件預設值 */
-  @Input() labeValue: string;
-
-  /** 查詢條件 Key */
-  labeKey: string;
-  @Input('labeKey') set setTitleName(vlaue: string) {
-    if (vlaue !== undefined) {
-      this.labeKey = vlaue;
+  /** 查詢條件物件 */
+  filterElement: FilterElement;
+  @Input('filterElement') set setLabeFilter(filter: FilterElement) {
+    if (filter !== undefined) {
+      this.filterElement = filter;
     } else {
-      console.error(`InputFilterComponent labeKey undefined`);
-    }
-  }
-
-  /** 查詢條件顯示名稱 */
-  labeShowName: string;
-  @Input('labeShowName') set setLabeShowName(vlaue: string) {
-    if (vlaue !== undefined) {
-      this.labeShowName = vlaue;
-    } else {
-      console.error(`InputFilterComponent labeShowName undefined`);
+      console.error(`InputFilterComponent FilterElement undefined`);
     }
   }
 
@@ -42,13 +30,6 @@ export class InputFilterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.labeShowName === undefined) {
-      console.error(`InputFilterComponent labeShowName undefined`);
-    }
-    if (this.labeKey === undefined) {
-      console.error(`InputFilterComponent labeKey undefined`);
-    }
-
     this.subscription = this.keydown.pipe(
       map(event => (event.target as HTMLInputElement).value),
       debounceTime(500),  // 如果輸入時間少於 300 ms 則 放棄 往後進行

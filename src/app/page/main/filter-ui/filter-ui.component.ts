@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
 @Component({
   selector: 'app-filter-ui',
   templateUrl: './filter-ui.component.html',
@@ -7,45 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterUIComponent implements OnInit {
 
-  /* ============ 查詢條件清單 Sart ============ */
+  /** 由外部傳入需要使用到的查詢條件清單 [呈現順序由外部傳入的清單順序決定] */
+  @Input() filterList: FilterElement[];
 
-  // 顯示名稱
-  /** Id 查詢條件 */
-  FilterPlaceholderID: string;
-  /** Position 查詢條件 */
-  FilterPlaceholderPosition: string;
-  /** Name 查詢條件 */
-  FilterPlaceholderName: string;
-  /** Weight 查詢條件 */
-  FilterPlaceholderWeight: string;
+  FType = FilterType;
 
-  // Key
-  /** Id 查詢條件 */
-  FilterID: string;
-  /** Position 查詢條件 */
-  FilterPosition: string;
-  /** Name 查詢條件 */
-  FilterName: string;
-  /** Weight 查詢條件 */
-  FilterWeight: string;
-
-
-  /* ============ 查詢條件清單 End ============ */
+  /** 判斷是否需要呈現 class="w-100" DIV Block  */
+  getDivW100(index: number) {
+    return (index !== 0) && (index % 2 === 0);
+  }
 
   constructor() { }
 
   ngOnInit(): void {
     // TODO 初始化 依據報表類型決定要顯示的查詢條件清單，透過 Service 動態建立
 
-    this.FilterID = 'ID';
-    this.FilterPosition = 'Position';
-    this.FilterName = 'Name';
-    this.FilterWeight = 'Weight';
-
-    this.FilterPlaceholderID = 'ID 查詢';
-    this.FilterPlaceholderPosition = 'Position 查詢';
-    this.FilterPlaceholderName = 'Name 查詢';
-    this.FilterPlaceholderWeight = 'Weight 查詢';
+    // 假資料
+    this.filterList = [
+      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.InputTextBox },
+      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.InputTextBox },
+      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.InputTextBox },
+      { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker },
+    ];
   }
 
   /**

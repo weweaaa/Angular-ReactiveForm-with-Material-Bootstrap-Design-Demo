@@ -2,28 +2,25 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm">
-      <app-date-picker-filter
-        (timeValueChange)="setDateFilter($event)"
-      ></app-date-picker-filter>
-    </div>
-    <div class="col-sm">
-      <app-input-filter [labeShowName]="FilterPlaceholderID" [labeKey]="FilterID"></app-input-filter>
-    </div>
-    <div class="w-100"></div>
-    <div class="col-sm">
-      <app-input-filter [labeShowName]="FilterPlaceholderPosition" [labeKey]="FilterPosition"></app-input-filter>
-    </div>
-    <div class="col-sm">
-      <app-input-filter [labeShowName]="FilterPlaceholderName" [labeKey]="FilterName"></app-input-filter>
-    </div>
-    <div class="w-100"></div>
-    <div class="col-sm">
-      <app-input-filter [labeShowName]="FilterPlaceholderWeight" [labeKey]="FilterWeight"></app-input-filter>
-    </div>
+    <ng-container *ngFor="let filter of filterList; let i = index;">
+      <div class="w-100" *ngIf="getDivW100(i)"></div>
+      <div class="col-sm" [ngSwitch]="FType[filter.type]">
+        <app-date-picker-filter
+          *ngSwitchCase="FType[FType.DatePicker]"
+          [filterElement]="filter"
+          (timeValueChange)="setDateFilter($event)"
+        ></app-date-picker-filter>
+        <app-input-filter
+          *ngSwitchCase="FType[FType.InputTextBox]"
+          [filterElement]="filter"
+        ></app-input-filter>
+      </div>
+    </ng-container>
   </div>
-
-  <br />
-  <hr />
-  <hr />
 </div>
+<!-- <pre
+  >{{ filterList | json }}
+</pre> -->
+<br />
+<hr />
+<hr />
