@@ -2,13 +2,28 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm"><app-date-picker-filter (timeValueChange)="setDateFilter($event)"></app-date-picker-filter></div>
-    <div class="col-sm">查詢條件元件</div>
+    <div class="col-sm">
+      <app-date-picker-filter
+        (timeValueChange)="setDateFilter($event)"
+      ></app-date-picker-filter>
+    </div>
+    <div class="col-sm">
+      <app-input-filter [labeShowName]="FilterPlaceholderID" [labeKey]="FilterID"></app-input-filter>
+    </div>
     <div class="w-100"></div>
-    <div class="col-sm">查詢條件元件</div>
-    <div class="col-sm">查詢條件元件</div>
-</div>
+    <div class="col-sm">
+      <app-input-filter [labeShowName]="FilterPlaceholderPosition" [labeKey]="FilterPosition"></app-input-filter>
+    </div>
+    <div class="col-sm">
+      <app-input-filter [labeShowName]="FilterPlaceholderName" [labeKey]="FilterName"></app-input-filter>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-sm">
+      <app-input-filter [labeShowName]="FilterPlaceholderWeight" [labeKey]="FilterWeight"></app-input-filter>
+    </div>
+  </div>
 
-<br />
-<hr />
-<hr />
+  <br />
+  <hr />
+  <hr />
+</div>

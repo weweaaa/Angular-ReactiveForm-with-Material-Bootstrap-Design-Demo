@@ -15,6 +15,7 @@ import { MainData2Component } from './page/main/main-data2/main-data2.component'
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { DatePickerFilterComponent } from './page/main/filter-ui/date-picker-filter/date-picker-filter.component';
+import { InputFilterComponent } from './page/main/filter-ui/input-filter/input-filter.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DatePickerFilterComponent } from './page/main/filter-ui/date-picker-fil
     PaginationComponent,
     MainDataComponent,
     MainData2Component,
-    DatePickerFilterComponent
+    DatePickerFilterComponent,
+    InputFilterComponent
   ],
   imports: [
     appRouting,
