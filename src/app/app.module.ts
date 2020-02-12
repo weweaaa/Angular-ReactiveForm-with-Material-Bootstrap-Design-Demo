@@ -14,6 +14,7 @@ import { MainDataComponent } from './page/main/main-data/main-data.component';
 import { MainData2Component } from './page/main/main-data2/main-data2.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { DatePickerFilterComponent } from './page/main/filter-ui/date-picker-filter/date-picker-filter.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,14 @@ import { MaterialModule } from './material.module';
     ShowDataComponent,
     PaginationComponent,
     MainDataComponent,
-    MainData2Component
+    MainData2Component,
+    DatePickerFilterComponent
   ],
   imports: [
     appRouting,
 
-    BrowserModule,
     FormsModule,
+    BrowserModule,
 
     MaterialModule
   ],

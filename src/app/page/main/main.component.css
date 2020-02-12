@@ -27,6 +27,10 @@ main {
   border: none;
   border-radius: 3px;
   background-color: var(--color-primary);
+
+  color: #007bff;
+  border-color: #007bff;
+
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.24);
   margin: 10px;
   cursor: pointer;
@@ -34,6 +38,10 @@ main {
 }
 .menu-item:hover {
   transform: translate(2px, 2px);
+
+  color: #444444;
+  background-color: #dddddd;
+  border-color: #dddddd;
 }
 
 /* mobile */

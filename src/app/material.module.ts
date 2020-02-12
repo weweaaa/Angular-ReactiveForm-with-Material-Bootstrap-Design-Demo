@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
-import { MatDialogModule, MatTableModule } from '@angular/material';
+import { MatDialogModule, MatTableModule, MatFormFieldModule,
+         MatDatepickerModule, MatNativeDateModule, MatInputModule
+       } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   exports: [
-    MatDialogModule,
     MatTableModule,
+    MatDialogModule,
+
+    MatInputModule,
+    MatFormFieldModule,
+
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
+
+    BrowserAnimationsModule,
   ],
   providers: [
   ]

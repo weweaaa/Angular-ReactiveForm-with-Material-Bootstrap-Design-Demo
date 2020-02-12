@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { TestDataElement1 } from 'src/app/Domain/TestDataElement1';
 
 @Component({
   selector: 'app-show-data',
@@ -20,7 +19,6 @@ export class ShowDataComponent implements OnInit {
    */
   @Input('dataElements') set setTableData(data: any) {
     this.dataElements = Object.assign([], data);
-    console.log(this.dataElements);
     this.dataToDisplay = new MatTableDataSource(this.dataElements);
     this.getColumns();
   }
@@ -34,6 +32,8 @@ export class ShowDataComponent implements OnInit {
     if (this.dataElements !== undefined) {
       this.dataElementsColumns = Object.keys(this.dataElements[0]);
       this.columnsToDisplay = this.dataElementsColumns.slice();
+    } else {
+      console.error('report data undefined.');
     }
   }
 
@@ -46,9 +46,9 @@ export class ShowDataComponent implements OnInit {
   /**
    * 新增一個欄位
    */
-  addColumn() {
-    const randomColumn = Math.floor(Math.random() * this.dataElementsColumns.length);
-    this.columnsToDisplay.push(this.dataElementsColumns[randomColumn]);
-  }
+  // addColumn() {
+  //   const randomColumn = Math.floor(Math.random() * this.dataElementsColumns.length);
+  //   this.columnsToDisplay.push(this.dataElementsColumns[randomColumn]);
+  // }
 
 }
