@@ -34,7 +34,7 @@ export class FilterUIComponent implements OnInit {
   /**
    * 使用者設定 日期 查詢條件
    */
-  setDateFilter(setDate: string) {
+  setDateFilter(setDate: FilterElement) {
     console.log(setDate);
 
     // TODO 設定時間查詢條件
