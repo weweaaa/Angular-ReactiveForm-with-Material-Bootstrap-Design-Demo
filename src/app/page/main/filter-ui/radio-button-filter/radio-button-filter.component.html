@@ -1,14 +1,10 @@
 <section class="section">
   <label style="margin: 0 10px;">{{ filterElement.name }} : </label>
-  <mat-radio-group
-    [(ngModel)]="defaultSelect"
-    (change)="changeChecked($event)"
-    *ngFor="let item of filterElement.filterInit; let i = index;"
-  >
+  <mat-radio-group [(ngModel)]="defaultSelect" (change)="changeChecked($event)">
     <mat-radio-button
+      *ngFor="let item of filterElement.filterInit;"
       style="margin: 0 10px;"
       [value]="getKey(item)"
-      [checked]="i === 0"
     >
       {{ getValue(item) }}
     </mat-radio-button>

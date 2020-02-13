@@ -1,10 +1,11 @@
 <p>查詢條件</p>
 
 <div class="container">
-  <div class="row">
+  <div class="row align-items-center">
     <ng-container *ngFor="let filter of filterList; let i = index;">
       <div class="w-100" *ngIf="getDivW100(i)"></div>
       <div class="col-sm" [ngSwitch]="FType[filter.type]">
+
         <!-- 日期 查詢條件 -->
         <app-date-picker-filter
           *ngSwitchCase="FType[FType.DatePicker]"
@@ -24,16 +25,14 @@
           *ngSwitchCase="FType[FType.DropDownList]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
-        >
-        </app-drop-down-list-filter>
+        ></app-drop-down-list-filter>
 
         <!-- 點選按鈕選單 查詢條件 -->
         <app-radio-button-filter
-          *ngSwitchCase="FType[FType.DropDownList]"
+          *ngSwitchCase="FType[FType.RadioButton]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
-        >
-        </app-radio-button-filter>
+        ></app-radio-button-filter>
 
         <!-- 啟用停用按鈕 查詢條件 -->
         <app-slide-toggle-filter
@@ -44,10 +43,17 @@
 
         <!-- 勾選按鈕 查詢條件 -->
         <app-check-box-filter
-          *ngSwitchCase="FType[FType.CheckBoxInput]"
+          *ngSwitchCase="FType[FType.CheckBox]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         ></app-check-box-filter>
+
+        <!-- 勾選樹狀圖 查詢條件 -->
+        <app-tree-filter
+          *ngSwitchCase="FType[FType.TreeCheckbox]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        ></app-tree-filter>
 
         <!-- 郵件 輸入查詢條件 -->
         <app-input-mail-filter
@@ -64,7 +70,7 @@
           (ValueChange)="ValueChange($event)"
         ></app-input-filter>
 
-        <!-- <div *ngSwitchDefault>{{FType[filter.type]}} Filter Not Defined</div> -->
+        <div *ngSwitchDefault>{{FType[filter.type]}} Filter Not Defined</div>
       </div>
     </ng-container>
   </div>

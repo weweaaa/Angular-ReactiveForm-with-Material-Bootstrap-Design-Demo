@@ -9,14 +9,15 @@ import { MatRadioChange } from '@angular/material';
 })
 export class RadioButtonFilterComponent implements OnInit {
 
-  defaultSelect: string;
+  defaultSelect;
 
   /** 查詢條件物件 */
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
-      this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0])[0] : this.filterElement.value;
+      this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0]) : this.filterElement.value;
+      // this.cdf.detectChanges();
     } else {
       console.error(`RadioButtonFilterComponent FilterElement undefined`);
     }
@@ -25,11 +26,24 @@ export class RadioButtonFilterComponent implements OnInit {
   /** 使用者輸入查詢條件 */
   @Output() ValueChange = new EventEmitter<FilterElement>();
 
+  // ChangeDetectorRef 是可以強制再次判斷畫面自動偵測是否需要重新渲染
+  // constructor(private cdf: ChangeDetectorRef) { }
   constructor() { }
 
+  // 使用 ngOnChanges 記得要在 class 上 implements OnChanges 介面
+  // 也可以使用 ngOnChanges 做法，只是為了保持與其他查詢條件一致的寫法，顯都統一在 Input set 流程實作
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes.filterElement !== undefined && (changes.filterElement as unknown as FilterElement).filterInit !== undefined) {
+  //     console.log(changes);
+  //     this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0])[0] : this.filterElement.value;
+  //   }
+  // }
+
   /** 抓取物件 properties Key 值 */
-  getKey(keyValue: any) {
-    return Object.keys(keyValue);
+  getKey(keyValue: any): string {
+    if (keyValue !== undefined) {
+      return Object.keys(keyValue)[0];  // *注意回傳結果，Object.keys 回傳的是陣列，所以這裡要取出第一位
+    }
   }
 
   /** 抓取物件 value 值 */
@@ -38,7 +52,7 @@ export class RadioButtonFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO 處理預設無法選取第一個的問題
+
   }
 
   changeChecked(event: MatRadioChange) {

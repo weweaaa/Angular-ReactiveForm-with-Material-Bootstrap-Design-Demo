@@ -47,8 +47,6 @@ export class RequiredElement {
 export enum FilterType {
   /** 字串 查詢條件 */
   StringInput,
-  /** 勾選 查詢條件 */
-  CheckBoxInput,
   /** 數字 查詢條件 */
   NumberInput,
   /** 郵件 查詢條件 */
@@ -64,5 +62,9 @@ export enum FilterType {
   /** 選單 查詢條件 */
   DropDownList,
   RadioButton,
+
+  /** 勾選 查詢條件 */
+  CheckBox,
+  TreeCheckbox
 }
 
