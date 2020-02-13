@@ -26,6 +26,7 @@ export class FilterUIComponent implements OnInit {
     this.filterList = [
       { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, filterInit: undefined },
       { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, filterInit: undefined },
+      { id: 'Checkbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBoxInput, filterInit: undefined },
       { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, filterInit: undefined },
       { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, filterInit: undefined },
       { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, filterInit: undefined },

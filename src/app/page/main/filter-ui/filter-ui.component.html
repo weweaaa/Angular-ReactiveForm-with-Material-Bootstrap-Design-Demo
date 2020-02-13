@@ -27,6 +27,12 @@
         >
         </app-drop-down-list-filter>
 
+        <app-check-box-filter
+          *ngSwitchCase="FType[FType.CheckBoxInput]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        ></app-check-box-filter>
+
         <!-- 郵件 輸入查詢條件 -->
         <app-input-mail-filter
           *ngSwitchCase="FType[FType.MailInput]"
