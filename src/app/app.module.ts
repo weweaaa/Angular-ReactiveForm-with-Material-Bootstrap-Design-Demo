@@ -25,6 +25,7 @@ import { TimePickerFilterComponent } from './page/main/filter-ui/time-picker-fil
 import { InputMailFilterComponent } from './page/main/filter-ui/input-filter/input-mail-filter/input-mail-filter.component';
 import { DropDownListFilterComponent } from './page/main/filter-ui/drop-down-list-filter/drop-down-list-filter.component';
 import { CheckBoxFilterComponent } from './page/main/filter-ui/check-box-filter/check-box-filter.component';
+import { RadioButtonFilterComponent } from './page/main/filter-ui/radio-button-filter/radio-button-filter.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CheckBoxFilterComponent } from './page/main/filter-ui/check-box-filter/
     TimePickerFilterComponent,
     InputMailFilterComponent,
     DropDownListFilterComponent,
-    CheckBoxFilterComponent
+    CheckBoxFilterComponent,
+    RadioButtonFilterComponent
   ],
   imports: [
     appRouting,

@@ -30,7 +30,8 @@ export class FilterUIComponent implements OnInit {
       { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, filterInit: undefined },
       { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, filterInit: undefined },
       { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, filterInit: undefined },
-      { id: 'Select', name: 'Select 查詢', value: '', type: FilterType.DDL, filterInit: [{ A: 'A!' }, { B: 'B!' }, { C: 'C!' }] },
+      { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, filterInit: [{ A: 'A!' }, { B: 'B!' }] },
+      { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, filterInit: [{ A: 'A!' }, { B: 'B!' }] },
     ];
   }
 

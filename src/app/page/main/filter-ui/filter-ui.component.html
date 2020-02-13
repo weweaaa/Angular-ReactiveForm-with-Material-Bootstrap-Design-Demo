@@ -21,11 +21,19 @@
 
         <!-- 下拉式選單 查詢條件 -->
         <app-drop-down-list-filter
-          *ngSwitchCase="FType[FType.DDL]"
+          *ngSwitchCase="FType[FType.DropDownList]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         >
         </app-drop-down-list-filter>
+
+        <!-- 點選按鈕選單 查詢條件 -->
+        <app-radio-button-filter
+          *ngSwitchCase="FType[FType.DropDownList]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        >
+        </app-radio-button-filter>
 
         <app-check-box-filter
           *ngSwitchCase="FType[FType.CheckBoxInput]"

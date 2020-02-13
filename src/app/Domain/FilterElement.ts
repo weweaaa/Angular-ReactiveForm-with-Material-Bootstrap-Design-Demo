@@ -59,7 +59,8 @@ export enum FilterType {
   /** 時間 查詢條件 */
   TimePicker,
 
-  /** 下拉式選單 查詢條件 */
-  DDL,
+  /** 選單 查詢條件 */
+  DropDownList,
+  RadioButton,
 }
 

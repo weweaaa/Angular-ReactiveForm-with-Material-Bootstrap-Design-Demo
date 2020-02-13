@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   MatDialogModule, MatTableModule, MatFormFieldModule,
   MatDatepickerModule, MatNativeDateModule, MatInputModule, MAT_DATE_FORMATS,
-  MatSelectModule, MatCheckboxModule
+  MatSelectModule, MatCheckboxModule, MatRadioModule
 } from '@angular/material';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
@@ -42,6 +42,9 @@ export const MY_FORMATS = {
 
     /** Checkbox */
     MatCheckboxModule,
+
+    /** Radio Button */
+    MatRadioModule,
 
     /** TimePicker */
     NgxMaterialTimepickerModule

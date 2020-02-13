@@ -15,7 +15,7 @@ export class CheckBoxFilterComponent implements OnInit {
     if (filter !== undefined) {
       this.filterElement = filter;
     } else {
-      console.error(`InputFilterComponent FilterElement undefined`);
+      console.error(`CheckBoxFilterComponent FilterElement undefined`);
     }
   }
 

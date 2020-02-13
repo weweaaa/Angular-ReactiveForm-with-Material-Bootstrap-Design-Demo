@@ -1,0 +1,15 @@
+.section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+::ng-deep .mat-radio-button .mat-radio-inner-circle {
+  background-color: #f5c6cb !important;
+}
+
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #f5c6cb;
+}

@@ -5,5 +5,5 @@
 
 /* 複寫 Checkbox 勾選後填滿的背景色 */
 ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
-  background-color: darkcyan !important;
+  background-color: #b8daff !important;
 }
