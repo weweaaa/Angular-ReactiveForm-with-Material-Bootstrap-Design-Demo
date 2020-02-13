@@ -10,14 +10,18 @@ export class FilterElement {
   value: string;
   /** 查詢條件 類型 */
   type: FilterType;
+  /** 查詢條件 初始化資料 [DDL: array, TreeView: obj] */
+  filterInit: any;
+
   /** 查詢條件 驗證條件 */
   // requiredList: RequiredElement[];
 
-  constructor(id: string, name: string, value: string, type: FilterType) { // , requiredList?: RequiredElement[]) {
+  constructor(id: string, name: string, value: string, type: FilterType, filterInit?: any) { // , requiredList?: RequiredElement[]) {
     this.id = id;
     this.name = name;
     this.value = value;
     this.type = type;
+    this.filterInit = filterInit;
     // this.requiredList = requiredList === undefined ? [] : requiredList;
   }
 }
@@ -45,9 +49,15 @@ export enum FilterType {
   StringInput,
   /** 數字 查詢條件 */
   NumberInput,
+  /** 郵件 查詢條件 */
+  MailInput,
+
   /** 日期 查詢條件 */
   DatePicker,
   /** 時間 查詢條件 */
   TimePicker,
+
+  /** 下拉式選單 查詢條件 */
+  DDL,
 }
 

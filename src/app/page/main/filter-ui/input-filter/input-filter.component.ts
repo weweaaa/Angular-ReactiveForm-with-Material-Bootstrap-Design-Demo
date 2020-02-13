@@ -55,7 +55,7 @@ export class InputFilterComponent implements OnInit {
         this.inputType = 'number';
         break;
       default:
-        console.error(`${FilterType[type]} case not definde.`);
+        console.error(`${FilterType[type]} case not defined.`);
         break;
     }
   }

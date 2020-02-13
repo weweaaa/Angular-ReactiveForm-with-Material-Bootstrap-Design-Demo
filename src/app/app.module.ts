@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,8 @@ import { FilterUIComponent } from './page/main/filter-ui/filter-ui.component';
 import { DatePickerFilterComponent } from './page/main/filter-ui/date-picker-filter/date-picker-filter.component';
 import { InputFilterComponent } from './page/main/filter-ui/input-filter/input-filter.component';
 import { TimePickerFilterComponent } from './page/main/filter-ui/time-picker-filter/time-picker-filter.component';
+import { InputMailFilterComponent } from './page/main/filter-ui/input-filter/input-mail-filter/input-mail-filter.component';
+import { DropDownListFilterComponent } from './page/main/filter-ui/drop-down-list-filter/drop-down-list-filter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { TimePickerFilterComponent } from './page/main/filter-ui/time-picker-fil
     FilterUIComponent,
     DatePickerFilterComponent,
     InputFilterComponent,
-    TimePickerFilterComponent
+    TimePickerFilterComponent,
+    InputMailFilterComponent,
+    DropDownListFilterComponent
   ],
   imports: [
     appRouting,
@@ -49,6 +53,7 @@ import { TimePickerFilterComponent } from './page/main/filter-ui/time-picker-fil
 
     FormsModule,
     BrowserModule,
+    ReactiveFormsModule,  // 要使用 FormsControll 需要引入的 Module
 
   ],
   providers: [],

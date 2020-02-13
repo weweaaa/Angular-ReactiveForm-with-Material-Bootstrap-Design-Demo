@@ -24,10 +24,12 @@ export class FilterUIComponent implements OnInit {
 
     // ============== 假資料 ==============
     this.filterList = [
-      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput },
-      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput },
-      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker },
-      { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker },
+      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, filterInit: undefined },
+      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, filterInit: undefined },
+      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, filterInit: undefined },
+      { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, filterInit: undefined },
+      { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, filterInit: undefined },
+      { id: 'Select', name: 'Select 查詢', value: '', type: FilterType.DDL, filterInit: [{ A: 'A!' }, { B: 'B!' }, { C: 'C!' }] },
     ];
   }
 

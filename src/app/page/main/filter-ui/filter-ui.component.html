@@ -5,21 +5,44 @@
     <ng-container *ngFor="let filter of filterList; let i = index;">
       <div class="w-100" *ngIf="getDivW100(i)"></div>
       <div class="col-sm" [ngSwitch]="FType[filter.type]">
+        <!-- 日期 查詢條件 -->
         <app-date-picker-filter
           *ngSwitchCase="FType[FType.DatePicker]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         ></app-date-picker-filter>
+
+        <!-- 時間 查詢條件 -->
         <app-time-picker-filter
           *ngSwitchCase="FType[FType.TimePicker]"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         ></app-time-picker-filter>
+
+        <!-- 下拉式選單 查詢條件 -->
+        <app-drop-down-list-filter
+          *ngSwitchCase="FType[FType.DDL]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        >
+        </app-drop-down-list-filter>
+
+        <!-- 郵件 輸入查詢條件 -->
+        <app-input-mail-filter
+          *ngSwitchCase="FType[FType.MailInput]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        ></app-input-mail-filter>
+
+        <!-- Input 輸入類型查詢條件 -->
         <app-input-filter
-          *ngSwitchCase="(FType[filter.type] === FType[FType.StringInput]) || FType[filter.type] === (FType[FType.NumberInput]) ? FType[filter.type] : ''"
+          *ngSwitchCase="(FType[filter.type] === FType[FType.StringInput]) ||
+                          FType[filter.type] === (FType[FType.NumberInput]) ? FType[filter.type] : ''"
           [filterElement]="filter"
           (ValueChange)="ValueChange($event)"
         ></app-input-filter>
+
+        <!-- <div *ngSwitchDefault>{{FType[filter.type]}} Filter Not Defined</div> -->
       </div>
     </ng-container>
   </div>
