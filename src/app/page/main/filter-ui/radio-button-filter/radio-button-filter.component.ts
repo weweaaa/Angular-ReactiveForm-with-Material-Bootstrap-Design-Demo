@@ -44,7 +44,6 @@ export class RadioButtonFilterComponent implements OnInit {
   changeChecked(event: MatRadioChange) {
     this.filterElement.value = String(event.value);
     this.ValueChange.emit(this.filterElement);
-
   }
 
 }

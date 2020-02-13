@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { FilterElement } from 'src/app/Domain/FilterElement';
-import { MatCheckboxChange } from '@angular/material';
 
 @Component({
-  selector: 'app-check-box-filter',
-  templateUrl: './check-box-filter.component.html',
-  styleUrls: ['./check-box-filter.component.css']
+  selector: 'app-slide-toggle-filter',
+  templateUrl: './slide-toggle-filter.component.html',
+  styleUrls: ['./slide-toggle-filter.component.css']
 })
-export class CheckBoxFilterComponent implements OnInit {
+export class SlideFilterComponent implements OnInit {
 
   /** 查詢條件物件 */
   filterElement: FilterElement;
@@ -22,13 +21,26 @@ export class CheckBoxFilterComponent implements OnInit {
   /** 使用者輸入查詢條件 */
   @Output() ValueChange = new EventEmitter<FilterElement>();
 
+  /** 取得預設選取狀態 */
+  getDefaltChecked() {
+    if (this.filterElement.value === '') {
+      return false;
+    } else if (this.filterElement.value === 'true' || this.filterElement.value === '1') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  changeChecked(event: MatCheckboxChange) {
+  /** 使用者切換選取 */
+  changeSelected(event: any) {
     this.filterElement.value = String(event.checked);
     this.ValueChange.emit(this.filterElement);
+
   }
 }

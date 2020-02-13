@@ -35,6 +35,14 @@
         >
         </app-radio-button-filter>
 
+        <!-- 啟用停用按鈕 查詢條件 -->
+        <app-slide-toggle-filter
+          *ngSwitchCase="FType[FType.SlideChecked]"
+          [filterElement]="filter"
+          (ValueChange)="ValueChange($event)"
+        ></app-slide-toggle-filter>
+
+        <!-- 勾選按鈕 查詢條件 -->
         <app-check-box-filter
           *ngSwitchCase="FType[FType.CheckBoxInput]"
           [filterElement]="filter"

@@ -26,6 +26,7 @@ import { InputMailFilterComponent } from './page/main/filter-ui/input-filter/inp
 import { DropDownListFilterComponent } from './page/main/filter-ui/drop-down-list-filter/drop-down-list-filter.component';
 import { CheckBoxFilterComponent } from './page/main/filter-ui/check-box-filter/check-box-filter.component';
 import { RadioButtonFilterComponent } from './page/main/filter-ui/radio-button-filter/radio-button-filter.component';
+import { SlideFilterComponent } from './page/main/filter-ui/slide-toggle-filter/slide-toggle-filter.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { RadioButtonFilterComponent } from './page/main/filter-ui/radio-button-f
     InputMailFilterComponent,
     DropDownListFilterComponent,
     CheckBoxFilterComponent,
-    RadioButtonFilterComponent
+    RadioButtonFilterComponent,
+    SlideFilterComponent
   ],
   imports: [
     appRouting,

@@ -53,6 +53,8 @@ export enum FilterType {
   NumberInput,
   /** 郵件 查詢條件 */
   MailInput,
+  /** true/false 查詢條件 */
+  SlideChecked,
 
   /** 日期 查詢條件 */
   DatePicker,
