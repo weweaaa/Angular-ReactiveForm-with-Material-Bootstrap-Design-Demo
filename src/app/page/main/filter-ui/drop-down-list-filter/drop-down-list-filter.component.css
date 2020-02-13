@@ -1,0 +1,3 @@
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #FF88C2;
+}
