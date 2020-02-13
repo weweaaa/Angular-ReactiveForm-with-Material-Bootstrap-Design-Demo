@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterElement } from 'src/app/Domain/FilterElement';
+import { MatRadioChange } from '@angular/material';
 
 @Component({
   selector: 'app-radio-button-filter',
@@ -15,7 +16,7 @@ export class RadioButtonFilterComponent implements OnInit {
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
-      this.defaultSelect = this.getKey(this.filterElement.filterInit[0])[0];
+      this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0])[0] : this.filterElement.value;
     } else {
       console.error(`RadioButtonFilterComponent FilterElement undefined`);
     }
@@ -37,6 +38,12 @@ export class RadioButtonFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // TODO 處理預設無法選取第一個的問題
+  }
+
+  changeChecked(event: MatRadioChange) {
+    this.filterElement.value = String(event.value);
+    this.ValueChange.emit(this.filterElement);
 
   }
 

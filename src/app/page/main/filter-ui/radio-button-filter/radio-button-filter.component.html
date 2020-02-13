@@ -2,6 +2,7 @@
   <label style="margin: 0 10px;">{{ filterElement.name }} : </label>
   <mat-radio-group
     [(ngModel)]="defaultSelect"
+    (change)="changeChecked($event)"
     *ngFor="let item of filterElement.filterInit; let i = index;"
   >
     <mat-radio-button

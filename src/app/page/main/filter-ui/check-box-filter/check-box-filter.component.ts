@@ -28,7 +28,6 @@ export class CheckBoxFilterComponent implements OnInit {
   }
 
   changeChecked(event: MatCheckboxChange) {
-    console.log(event.checked);
     this.filterElement.value = String(event.checked);
     this.ValueChange.emit(this.filterElement);
 
