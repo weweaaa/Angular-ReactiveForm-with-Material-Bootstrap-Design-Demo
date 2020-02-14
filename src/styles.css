@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* 引用 Angular Material 預建主題 */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/* 調整 TimePicker Dialog 的顯示層級順序，避免在已經開一個 Dialog 時要開 TimePicker 時被擋到 */
+.timepicker-backdrop-overlay {
+  z-index: 9999 !important;
+}
+.timepicker-overlay {
+  z-index: 10000 !important;
+}
+.timepicker {
+  z-index: 10000 !important;
+}
