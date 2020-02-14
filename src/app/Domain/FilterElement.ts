@@ -11,17 +11,17 @@ export class FilterElement {
   /** 查詢條件 類型 */
   type: FilterType;
   /** 查詢條件 初始化資料 [DDL: array, TreeView: obj] */
-  filterInit: any;
+  dataSource: any;
 
   /** 查詢條件 驗證條件 */
   // requiredList: RequiredElement[];
 
-  constructor(id: string, name: string, value: string, type: FilterType, filterInit?: any) { // , requiredList?: RequiredElement[]) {
+  constructor(id: string, name: string, value: string, type: FilterType, dataSource?: any) { // , requiredList?: RequiredElement[]) {
     this.id = id;
     this.name = name;
     this.value = value;
     this.type = type;
-    this.filterInit = filterInit;
+    this.dataSource = dataSource;
     // this.requiredList = requiredList === undefined ? [] : requiredList;
   }
 }

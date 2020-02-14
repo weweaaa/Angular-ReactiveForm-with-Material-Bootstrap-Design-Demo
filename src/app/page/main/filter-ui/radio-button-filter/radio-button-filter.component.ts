@@ -16,7 +16,7 @@ export class RadioButtonFilterComponent implements OnInit {
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
-      this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0]) : this.filterElement.value;
+      this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.dataSource[0]) : this.filterElement.value;
       // this.cdf.detectChanges();
     } else {
       console.error(`RadioButtonFilterComponent FilterElement undefined`);
@@ -33,9 +33,9 @@ export class RadioButtonFilterComponent implements OnInit {
   // 使用 ngOnChanges 記得要在 class 上 implements OnChanges 介面
   // 也可以使用 ngOnChanges 做法，只是為了保持與其他查詢條件一致的寫法，顯都統一在 Input set 流程實作
   // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.filterElement !== undefined && (changes.filterElement as unknown as FilterElement).filterInit !== undefined) {
+  //   if (changes.filterElement !== undefined && (changes.filterElement as unknown as FilterElement).dataSource !== undefined) {
   //     console.log(changes);
-  //     this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.filterInit[0])[0] : this.filterElement.value;
+  //     this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.dataSource[0])[0] : this.filterElement.value;
   //   }
   // }
 

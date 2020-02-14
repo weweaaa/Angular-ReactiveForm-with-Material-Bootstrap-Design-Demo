@@ -81,7 +81,7 @@ export class TreeFilterComponent implements OnInit {
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
-      TREE_DATA = this.filterElement.filterInit;
+      TREE_DATA = this.filterElement.dataSource;
       this.database.updateItem();
     } else {
       console.error(`TreeFilterComponent FilterElement undefined`);

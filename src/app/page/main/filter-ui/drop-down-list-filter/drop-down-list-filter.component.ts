@@ -17,7 +17,7 @@ export class DropDownListFilterComponent implements OnInit {
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
       this.filterElement = filter;
-      this.rTypeSelectList = this.filterElement.filterInit;
+      this.rTypeSelectList = this.filterElement.dataSource;
     } else {
       console.error(`InputMailFilterComponent FilterElement undefined`);
     }
