@@ -65,9 +65,7 @@ export class FilterUIComponent implements OnInit {
    * 使用者設定 查詢條件
    */
   ValueChange(setDate: FilterElement) {
-    console.log('ValueChange', setDate);
-
-    // TODO 查詢條件實作
+    console.log('Filter UI ValueChange', setDate);
 
     // 拋出使用者輸入的事件
     this.FormValueChange.emit(setDate);

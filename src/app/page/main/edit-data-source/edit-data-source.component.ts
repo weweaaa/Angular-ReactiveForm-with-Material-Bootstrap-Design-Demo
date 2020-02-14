@@ -23,32 +23,27 @@ export class EditDataSourceComponent implements OnInit {
     if (this.source !== undefined && this.source !== null && this.source.length > 0) {
       this.DataSource = [...this.source];
     } else {
-      console.error('EditDataSourceComponent FilterElement[] is null or undefined');
+      // 如果使用者傳入的內容是空則跳 Alert，或是在外部開啟前就先判斷並 return void，阻止視窗開啟
+      alert('EditDataSourceComponent FilterElement[] is null or undefined');
       this.dialogRef.close();
     }
   }
 
-  ngOnInit(): void {
-    // TODO 如果使用者傳入的內容是空則跳 Alert，或是在外部開啟前就先判斷並 return void，阻止視窗開啟
-
-  }
+  ngOnInit(): void { }
 
   /**
    * 使用者點擊存檔按鈕
    */
   onSaveClick(): void {
-    console.log('使用者關閉按鈕');
-    // this.data.name = this.dialogName;
-    // this.data.height = this.dialogHeight;
-    // this.data.weight = this.dialogWeight;
-
-    this.dialogRef.close(this.DataSource);
+    console.log('使用者儲存');
+    this.dialogRef.close(this.source);
   }
 
   /**
    * 使用者點擊關閉按鈕
    */
   onNoClick(): void {
+    console.log('使用者儲存');
     this.dialogRef.close();
   }
 
@@ -56,23 +51,23 @@ export class EditDataSourceComponent implements OnInit {
    * 重置資料
    */
   onResetClick(): void {
+    console.log('使用者重置');
     this.DataSource = [...this.source];
   }
 
   /** 使用者更新輸入事件 */
   changeFormValue(event: FilterElement) {
-    console.log('changeFormValue', event);
-    console.log('Now dataSource', this.DataSource);
+    console.log('Dialog get changeFormValue', event);
 
-    // TODO 還不確定為什麼 this.DataSource 內容當使用者在 Dialog 內觸發輸入事件後 會同步更新
+    // 更新儲存使用者輸入的物件內容
+    this.DataSource = this.DataSource.map((val) => {
+      if (val.id === event.id) {
+        return event;
+      } else {
+        return val;
+      }
+    });
 
-    // this.DataSource = this.DataSource.map((val) => {
-    //   if (val.id === event.id) {
-    //     return event;
-    //   } else {
-    //     return val;
-    //   }
-    // });
-    //
+    console.log('Dialog save changeFormValue All data', this.DataSource);
   }
 }
