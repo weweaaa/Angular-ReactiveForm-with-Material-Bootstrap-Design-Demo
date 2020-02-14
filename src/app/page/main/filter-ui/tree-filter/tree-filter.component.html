@@ -10,8 +10,7 @@
     <button mat-icon-button matTreeNodeToggle
             [attr.aria-label]="'toggle ' + node.filename">
       <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'v' : '>'}}
-        <!-- {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}} -->
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
     <mat-checkbox [checked]="descendantsAllSelected(node)"

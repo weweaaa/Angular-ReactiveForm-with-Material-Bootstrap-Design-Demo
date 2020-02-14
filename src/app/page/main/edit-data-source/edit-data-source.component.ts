@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
 
@@ -6,35 +6,35 @@ import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
   selector: 'app-edit-data-source',
   templateUrl: './edit-data-source.component.html',
   styleUrls: ['./edit-data-source.component.css'],
-  providers: [
-    { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: {} }
-  ]
+  // providers: [
+  //   { provide: MatDialogRef, useValue: {} },
+  //   { provide: MAT_DIALOG_DATA, useValue: {} }
+  // ]
 })
 export class EditDataSourceComponent implements OnInit {
 
+  /** 放置用來產生輸入控制項目的 JSON 清單 */
+  DataSource: FilterElement[];
+
   constructor(
     public dialogRef: MatDialogRef<EditDataSourceComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: FilterElement[]) { }
+    @Inject(MAT_DIALOG_DATA) public source: FilterElement[]) {
+
+    if (this.source !== undefined && this.source !== null && this.source.length > 0) {
+      this.DataSource = [...this.source];
+    } else {
+      console.error('EditDataSourceComponent FilterElement[] is null or undefined');
+      this.dialogRef.close();
+    }
+  }
 
   ngOnInit(): void {
+    // TODO 如果使用者傳入的內容是空則跳 Alert，或是在外部開啟前就先判斷並 return void，阻止視窗開啟
 
-    // ============== 假資料 ==============
-    this.data = [
-      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
-      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
-      { id: 'Checkbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBox, dataSource: undefined },
-      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, dataSource: undefined },
-      { id: 'Name', name: 'Name 查詢', value: 'true', type: FilterType.SlideChecked, dataSource: undefined },
-      { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, dataSource: undefined },
-      { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
-      { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
-      { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
-    ];
   }
 
   /**
-   * 使用者點擊關閉按鈕
+   * 使用者點擊存檔按鈕
    */
   onSaveClick(): void {
     console.log('使用者關閉按鈕');
@@ -42,7 +42,7 @@ export class EditDataSourceComponent implements OnInit {
     // this.data.height = this.dialogHeight;
     // this.data.weight = this.dialogWeight;
 
-    this.dialogRef.close(this.data);
+    this.dialogRef.close(this.DataSource);
   }
 
   /**
@@ -56,9 +56,23 @@ export class EditDataSourceComponent implements OnInit {
    * 重置資料
    */
   onResetClick(): void {
-    // this.dialogName = this.data.name;
-    // this.dialogHeight = this.data.height;
-    // this.dialogWeight = this.data.weight;
+    this.DataSource = [...this.source];
   }
 
+  /** 使用者更新輸入事件 */
+  changeFormValue(event: FilterElement) {
+    console.log('changeFormValue', event);
+    console.log('Now dataSource', this.DataSource);
+
+    // TODO 還不確定為什麼 this.DataSource 內容當使用者在 Dialog 內觸發輸入事件後 會同步更新
+
+    // this.DataSource = this.DataSource.map((val) => {
+    //   if (val.id === event.id) {
+    //     return event;
+    //   } else {
+    //     return val;
+    //   }
+    // });
+    //
+  }
 }

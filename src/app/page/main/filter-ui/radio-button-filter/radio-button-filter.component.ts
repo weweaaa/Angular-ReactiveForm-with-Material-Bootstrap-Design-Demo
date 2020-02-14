@@ -15,7 +15,7 @@ export class RadioButtonFilterComponent implements OnInit {
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
-      this.filterElement = filter;
+      this.filterElement = Object.assign({}, filter);
       this.defaultSelect = this.filterElement.value === '' ? this.getKey(this.filterElement.dataSource[0]) : this.filterElement.value;
       // this.cdf.detectChanges();
     } else {

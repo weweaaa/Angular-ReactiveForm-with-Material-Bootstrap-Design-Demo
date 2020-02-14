@@ -19,8 +19,16 @@ export class HeaderComponent implements OnInit {
   addDataSource() {
     console.log('使用者按下新增按鈕');
 
+    // ============== 新增用假資料 ==============
+    const data: FilterElement[] = [
+      { id: 'position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
+      { id: 'name', name: 'Name 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
+      { id: 'weight', name: 'Weight 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
+      { id: 'symbol', name: 'Symbol 查詢', value: '', type: FilterType.StringInput, dataSource: undefined }
+    ];
+
     // TODO 測試用假資料
-    this.openDialog(new FilterElement('id', 'name', '', FilterType.StringInput, undefined));
+    this.openDialog(data);
   }
 
   /** 使用者按下編輯按鈕 */
@@ -28,7 +36,7 @@ export class HeaderComponent implements OnInit {
     console.log('使用者按下編輯按鈕');
 
     // TODO 測試用假資料
-    this.openDialog(new FilterElement('id', 'name', '', FilterType.StringInput, undefined));
+    this.openDialog(null);
   }
 
   /** 使用者按下刪除按鈕 */
@@ -43,9 +51,8 @@ export class HeaderComponent implements OnInit {
    * @param Event event 點擊事件物件
    */
   // openDialog(evnet: MouseEvent): void {  //前端 openDialog($event) 改為 openDialog(data) 直接傳值
-  openDialog(dialogData: FilterElement): void {
-
-    // 2.開啟 Dialog 組件視窗
+  openDialog(dialogData: FilterElement[]): void {
+    // 1.開啟 Dialog 組件視窗
     const dialogRef = this.dialog.open(EditDataSourceComponent, {
       // height: '800px',
       // width: '400px',

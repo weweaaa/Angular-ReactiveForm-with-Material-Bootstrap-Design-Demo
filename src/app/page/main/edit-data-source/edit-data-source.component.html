@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>使用者 Dialog 編輯頁面</h1>
 <div mat-dialog-content>
-  <app-filter-ui [filterList]="data"></app-filter-ui>
+  <app-filter-ui [filterList]="DataSource" (FormValueChange)="changeFormValue($event)"></app-filter-ui>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">取消</button>
-  <button mat-button (click)="onResetClick()">重置</button>
+<div mat-dialog-actions style="float:right;">
+  <button mat-stroked-button color="accent" (click)="onNoClick()">取消</button>
+  <button mat-stroked-button color="accent" (click)="onResetClick()">重置</button>
   <!-- <button mat-button [mat-dialog-close]="data" cdkFocusInitial>存檔</button> -->
-  <button mat-button (click)="onSaveClick()">存檔</button>
+  <button mat-stroked-button color="accent" (click)="onSaveClick()">存檔</button>
 </div>

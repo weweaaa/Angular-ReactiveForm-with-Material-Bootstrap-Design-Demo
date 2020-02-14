@@ -10,13 +10,13 @@
     class="mat-elevation-z8 table_show"
   >
     <ng-container
+      *ngFor="let column of dataElementsColumns;"
       [matColumnDef]="column"
-      *ngFor="let column of dataElementsColumns"
     >
       <th mat-header-cell class="text-center px-4" *matHeaderCellDef>
         {{ column }}
       </th>
-      <td mat-cell class="text-center px-4" *matCellDef="let element">
+      <td mat-cell class="text-center px-4" *matCellDef="let element;">
         {{ element[column] }}
       </td>
     </ng-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
 @Component({
   selector: 'app-filter-ui',
@@ -11,11 +11,15 @@ export class FilterUIComponent implements OnInit {
   filterSource: FilterElement[];
   @Input('filterList') set setfilterList(filterList: FilterElement[]) {
     if (filterList !== undefined) {
-      this.filterSource = Object.assign([], filterList);
+      this.filterSource = [...filterList];
     }
   }
 
   FType = FilterType;
+
+  /** 使用者所有的輸入事件 */
+  @Output() FormValueChange = new EventEmitter<FilterElement>();
+
 
   /** 判斷是否需要呈現 class="w-100" DIV Block  */
   getDivW100(index: number) {
@@ -61,8 +65,11 @@ export class FilterUIComponent implements OnInit {
    * 使用者設定 查詢條件
    */
   ValueChange(setDate: FilterElement) {
-    console.log(setDate);
+    console.log('ValueChange', setDate);
 
     // TODO 查詢條件實作
+
+    // 拋出使用者輸入的事件
+    this.FormValueChange.emit(setDate);
   }
 }

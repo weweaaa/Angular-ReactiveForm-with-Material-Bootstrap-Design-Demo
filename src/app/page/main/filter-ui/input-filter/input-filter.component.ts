@@ -17,7 +17,7 @@ export class InputFilterComponent implements OnInit {
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
-      this.filterElement = filter;
+      this.filterElement = Object.assign({}, filter);
       this.setInputType(filter.type);
     } else {
       console.error(`InputFilterComponent FilterElement undefined`);
@@ -28,7 +28,7 @@ export class InputFilterComponent implements OnInit {
   @Output() ValueChange = new EventEmitter<FilterElement>();
 
   private subscription: Subscription;
-  keydown = new Subject<KeyboardEvent>();
+  keydown = new Subject<Event>();
 
   constructor() { }
 

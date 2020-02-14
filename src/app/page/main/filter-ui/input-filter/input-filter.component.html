@@ -1,3 +1,10 @@
 <mat-form-field>
-  <input matInput [type]="inputType" (keydown)="keydown.next($event)" placeholder="{{ filterElement.name }}" [value]="filterElement.value" [id]="filterElement.id" />
+  <input matInput 
+        [type]="inputType" 
+        (keydown)="keydown.next($event)" 
+        (change)="keydown.next($event)" 
+        
+        placeholder="{{ filterElement.name }}" 
+        [value]="filterElement.value" 
+        [id]="filterElement.id" />
 </mat-form-field>

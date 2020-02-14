@@ -13,7 +13,7 @@ export class CheckBoxFilterComponent implements OnInit {
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
-      this.filterElement = filter;
+      this.filterElement = Object.assign({}, filter);
     } else {
       console.error(`CheckBoxFilterComponent FilterElement undefined`);
     }

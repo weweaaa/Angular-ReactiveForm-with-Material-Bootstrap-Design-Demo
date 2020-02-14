@@ -16,7 +16,7 @@ export class TimePickerFilterComponent implements OnInit {
   filterElement: FilterElement;
   @Input('filterElement') set setLabeFilter(filter: FilterElement) {
     if (filter !== undefined) {
-      this.filterElement = filter;
+      this.filterElement = Object.assign({}, filter);
     } else {
       console.error(`DatePickerFilterComponent FilterElement undefined`);
     }
