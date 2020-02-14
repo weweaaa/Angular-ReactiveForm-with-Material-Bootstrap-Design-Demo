@@ -18,16 +18,16 @@ export class MainDataComponent implements OnInit {
     this.dataElements = this.dataService.getData1();
 
     // ============== 假資料 ==============
-    // this.data = [
-    //   { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
-    //   { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
-    //   { id: 'Checkbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBox, dataSource: undefined },
-    //   { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, dataSource: undefined },
-    //   { id: 'Name', name: 'Name 查詢', value: 'true', type: FilterType.SlideChecked, dataSource: undefined },
-    //   { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, dataSource: undefined },
-    //   { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
-    //   { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
-    //   { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
-    // ];
+    this.data = [
+      { id: 'dID', name: 'ID 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
+      { id: 'dPosition', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
+      { id: 'dCheckbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBox, dataSource: undefined },
+      { id: 'dName', name: 'Name 查詢', value: '', type: FilterType.TimePicker, dataSource: undefined },
+      { id: 'dName', name: 'Name 查詢', value: 'true', type: FilterType.SlideChecked, dataSource: undefined },
+      { id: 'dWeight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, dataSource: undefined },
+      { id: 'dMail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
+      { id: 'dSelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
+      { id: 'dSelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
+    ];
   }
 }
