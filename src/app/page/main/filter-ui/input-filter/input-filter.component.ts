@@ -33,6 +33,8 @@ export class InputFilterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // TODO 使用者在 Input 輸入時都會少一個字
+
     this.subscription = this.keydown.pipe(
       map(event => (event.target as HTMLInputElement).value),
       debounceTime(500),  // 如果輸入時間少於 300 ms 則 放棄 往後進行

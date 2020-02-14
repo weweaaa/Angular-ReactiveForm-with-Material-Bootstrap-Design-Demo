@@ -36,7 +36,7 @@ export class EditDataSourceComponent implements OnInit {
    */
   onSaveClick(): void {
     console.log('使用者儲存');
-    this.dialogRef.close(this.source);
+    this.dialogRef.close(this.DataSource);
   }
 
   /**
