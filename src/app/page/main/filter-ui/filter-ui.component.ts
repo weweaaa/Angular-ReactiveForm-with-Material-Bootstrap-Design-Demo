@@ -8,7 +8,12 @@ import { FilterElement, FilterType } from 'src/app/Domain/FilterElement';
 export class FilterUIComponent implements OnInit {
 
   /** 由外部傳入需要使用到的查詢條件清單 [呈現順序由外部傳入的清單順序決定] */
-  @Input() filterList: FilterElement[];
+  filterSource: FilterElement[];
+  @Input('filterList') set setfilterList(filterList: FilterElement[]) {
+    if (filterList !== undefined) {
+      this.filterSource = Object.assign([], filterList);
+    }
+  }
 
   FType = FilterType;
 
@@ -22,34 +27,34 @@ export class FilterUIComponent implements OnInit {
   ngOnInit(): void {
     // TODO 初始化 依據報表類型決定要顯示的查詢條件清單，依據各自 Component 傳進如下格式的 JSON 呼叫來動態建立
 
-    // ============== 假資料 ==============
-    this.filterList = [
-      { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
-      { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
-      { id: 'Checkbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBox, dataSource: undefined },
-      { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, dataSource: undefined },
-      { id: 'Name', name: 'Name 查詢', value: 'true', type: FilterType.SlideChecked, dataSource: undefined },
-      { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, dataSource: undefined },
-      { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
-      { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
-      { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
+    // // ============== 假資料 ==============
+    // this.filterList = [
+    //   { id: 'ID', name: 'ID 查詢', value: '', type: FilterType.StringInput, dataSource: undefined },
+    //   { id: 'Position', name: 'Position 查詢', value: '123', type: FilterType.NumberInput, dataSource: undefined },
+    //   { id: 'Checkbox', name: 'Checkbox 查詢', value: 'true', type: FilterType.CheckBox, dataSource: undefined },
+    //   { id: 'Name', name: 'Name 查詢', value: '', type: FilterType.TimePicker, dataSource: undefined },
+    //   { id: 'Name', name: 'Name 查詢', value: 'true', type: FilterType.SlideChecked, dataSource: undefined },
+    //   { id: 'Weight', name: 'Weight 查詢', value: '', type: FilterType.DatePicker, dataSource: undefined },
+    //   { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
+    //   { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
+    //   { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
 
-      // TreeCheckBox 暫時不做
-      // {
-      //   id: 'TreeCheckBox', name: 'TreeCheckBox 查詢', value: '', type: FilterType.TreeCheckbox, dataSource: {
-      //     Groceries: {
-      //       'Almond Meal flour': null,
-      //       'Organic eggs': null,
-      //       'Protein Powder': null,
-      //       Fruits: {
-      //         Apple: null,
-      //         Berries: ['Blueberry', 'Raspberry'],
-      //         Orange: null
-      //       }
-      //     }
-      //   }
-      // },
-    ];
+    //   // TreeCheckBox 暫時不做
+    //   // {
+    //   //   id: 'TreeCheckBox', name: 'TreeCheckBox 查詢', value: '', type: FilterType.TreeCheckbox, dataSource: {
+    //   //     Groceries: {
+    //   //       'Almond Meal flour': null,
+    //   //       'Organic eggs': null,
+    //   //       'Protein Powder': null,
+    //   //       Fruits: {
+    //   //         Apple: null,
+    //   //         Berries: ['Blueberry', 'Raspberry'],
+    //   //         Orange: null
+    //   //       }
+    //   //     }
+    //   //   }
+    //   // },
+    // ];
   }
 
   /**

@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row align-items-center">
-    <ng-container *ngFor="let filter of filterList; let i = index;">
+    <ng-container *ngFor="let filter of filterSource; let i = index;">
       <div class="w-100" *ngIf="getDivW100(i)"></div>
       <div class="col-sm" [ngSwitch]="FType[filter.type]">
 
