@@ -28,6 +28,7 @@ import { CheckBoxFilterComponent } from './page/main/filter-ui/check-box-filter/
 import { RadioButtonFilterComponent } from './page/main/filter-ui/radio-button-filter/radio-button-filter.component';
 import { SlideFilterComponent } from './page/main/filter-ui/slide-toggle-filter/slide-toggle-filter.component';
 import { TreeFilterComponent } from './page/main/filter-ui/tree-filter/tree-filter.component';
+import { EditDataSourceComponent } from './page/main/edit-data-source/edit-data-source.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TreeFilterComponent } from './page/main/filter-ui/tree-filter/tree-filt
     CheckBoxFilterComponent,
     RadioButtonFilterComponent,
     SlideFilterComponent,
-    TreeFilterComponent
+    TreeFilterComponent,
+    EditDataSourceComponent
   ],
   imports: [
     appRouting,

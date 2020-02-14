@@ -20,7 +20,7 @@ export class FilterUIComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // TODO 初始化 依據報表類型決定要顯示的查詢條件清單，透過 Service 動態建立
+    // TODO 初始化 依據報表類型決定要顯示的查詢條件清單，依據各自 Component 傳進如下格式的 JSON 呼叫來動態建立
 
     // ============== 假資料 ==============
     this.filterList = [
@@ -33,6 +33,8 @@ export class FilterUIComponent implements OnInit {
       { id: 'Mail', name: 'Mail 查詢', value: '', type: FilterType.MailInput, dataSource: undefined },
       { id: 'SelectDDL', name: 'SelectDDL 查詢', value: '', type: FilterType.DropDownList, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
       { id: 'SelectRBL', name: 'SelectRBL 查詢', value: '', type: FilterType.RadioButton, dataSource: [{ A: 'A!' }, { B: 'B!' }] },
+
+      // TreeCheckBox 暫時不做
       // {
       //   id: 'TreeCheckBox', name: 'TreeCheckBox 查詢', value: '', type: FilterType.TreeCheckbox, dataSource: {
       //     Groceries: {
