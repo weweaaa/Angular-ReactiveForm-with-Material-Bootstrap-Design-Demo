@@ -46,6 +46,8 @@ export class HeaderComponent implements OnInit {
 
         const userAdd = this.convertDialogData(result);
         this.addData.emit(userAdd);
+
+        console.log('使用者新增一筆資料', userAdd);
       }
     });
   }
@@ -68,6 +70,8 @@ export class HeaderComponent implements OnInit {
 
         const userEdit = this.convertDialogData(result);
         this.updateData.emit(userEdit);
+
+        console.log('使用者編輯一筆資料', userEdit);
       }
     });
   }
@@ -77,7 +81,7 @@ export class HeaderComponent implements OnInit {
     return arrayData.reduce((obj: any, item: FilterElement) => {
       return {
         ...obj,
-        [item.id]: [item.value],
+        [item.id]: item.value,
       };
     }, {});
   }
