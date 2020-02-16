@@ -1,5 +1,6 @@
-# LibrarySystem
+# Material-FormControl-Table-Boostrap-Demo
 *提供資料表呈現、查詢、編輯、凍結視窗*
+*封裝 Material 元件，提供 FormControl 的 Material 元件整合，資料表呈現、新增編輯、條件查詢*
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
 
