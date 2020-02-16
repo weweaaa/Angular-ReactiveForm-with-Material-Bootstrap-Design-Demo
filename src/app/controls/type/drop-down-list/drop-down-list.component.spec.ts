@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimePickerFilterComponent } from './time-picker-filter.component';
+import { DropDownListComponent } from './drop-down-list.component';
 
-describe('TimePickerFilterComponent', () => {
-  let component: TimePickerFilterComponent;
-  let fixture: ComponentFixture<TimePickerFilterComponent>;
+describe('DropDownListComponent', () => {
+  let component: DropDownListComponent;
+  let fixture: ComponentFixture<DropDownListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimePickerFilterComponent ]
+      declarations: [ DropDownListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimePickerFilterComponent);
+    fixture = TestBed.createComponent(DropDownListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row align-items-center">
+    <form [formGroup]="customForm">
+      <ng-container *ngFor="let item of dataSource; let i = index;">
+        <div class="w-100" *ngIf="getDivW100(i)"></div>
+        <div class="col-sm" [ngSwitch]="CType[item.controlType]">
+
+            <!-- Input Type  -->
+            <app-keydown-input *ngSwitchCase="CType[CType.KeydownInput]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-keydown-input>
+
+            <!-- Checked Box Type  -->
+            <app-checked-box *ngSwitchCase="CType[CType.CheckedBox]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-checked-box>
+
+            <!-- RadioButton Type  -->
+            <app-radio-button *ngSwitchCase="CType[CType.RadioButton]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-radio-button>
+
+            <!-- SlideToggle Type  -->
+            <app-slide-toggle *ngSwitchCase="CType[CType.SlideToggle]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-slide-toggle>
+
+            <!-- TimePicker Type  -->
+            <app-time-picker *ngSwitchCase="CType[CType.TimePicker]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-time-picker>
+
+            <!-- DatePicker Type  -->
+            <app-date-picker *ngSwitchCase="CType[CType.DatePicker]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-date-picker>
+
+            <!-- DropDownList Type  -->
+            <app-drop-down-list *ngSwitchCase="CType[CType.DropDownList]"
+              [customForm]="customForm"
+              [controlItem]="item"
+            ></app-drop-down-list>
+
+            <!-- Input Type  -->
+        </div>
+      </ng-container>
+    </form>
+  </div>
+</div>
+
+<hr />
+<pre>{{ customForm.value | json }}</pre>

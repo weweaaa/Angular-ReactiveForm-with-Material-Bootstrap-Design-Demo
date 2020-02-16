@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropDownListFilterComponent } from './drop-down-list-filter.component';
+import { SlideToggleComponent } from './slide-toggle.component';
 
-describe('DropDownListFilterComponent', () => {
-  let component: DropDownListFilterComponent;
-  let fixture: ComponentFixture<DropDownListFilterComponent>;
+describe('SlideToggleComponent', () => {
+  let component: SlideToggleComponent;
+  let fixture: ComponentFixture<SlideToggleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DropDownListFilterComponent ]
+      declarations: [ SlideToggleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DropDownListFilterComponent);
+    fixture = TestBed.createComponent(SlideToggleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,0 @@
-<div class="editable-dial-example">
-  <input matInput readonly [ngxTimepicker]="tpicker" placeholder="{{ filterElement.name }}" [value]="filterElement.value" [id]="filterElement.id" />
-  <ngx-material-timepicker
-    class="timepicker"
-    #tpicker
-    [enableKeyboardInput]="true"
-    (timeSet)="setTimeValue($event)"
-  ></ngx-material-timepicker>
-</div>

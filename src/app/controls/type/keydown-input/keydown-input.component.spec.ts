@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadioButtonFilterComponent } from './radio-button-filter.component';
+import { KeydownInputComponent } from './keydown-input.component';
 
-describe('RadioButtonFilterComponent', () => {
-  let component: RadioButtonFilterComponent;
-  let fixture: ComponentFixture<RadioButtonFilterComponent>;
+describe('KeydownInputComponent', () => {
+  let component: KeydownInputComponent;
+  let fixture: ComponentFixture<KeydownInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RadioButtonFilterComponent ]
+      declarations: [ KeydownInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadioButtonFilterComponent);
+    fixture = TestBed.createComponent(KeydownInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

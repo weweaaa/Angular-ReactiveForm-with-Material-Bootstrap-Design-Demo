@@ -1,0 +1,9 @@
+<ng-container [formGroup]="customForm">
+  <mat-slide-toggle
+    labelPosition="before"
+    formGroupName="{{ controlItem.id }}"
+    [checked]="controlItem.value"
+  >
+    {{ controlItem.displayName }}
+  </mat-slide-toggle>
+</ng-container>

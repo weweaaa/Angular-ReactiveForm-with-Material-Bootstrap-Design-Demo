@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatePickerFilterComponent } from './date-picker-filter.component';
+import { CheckedBoxComponent } from './checked-box.component';
 
-describe('DatePickerFilterComponent', () => {
-  let component: DatePickerFilterComponent;
-  let fixture: ComponentFixture<DatePickerFilterComponent>;
+describe('CheckedBoxComponent', () => {
+  let component: CheckedBoxComponent;
+  let fixture: ComponentFixture<CheckedBoxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatePickerFilterComponent ]
+      declarations: [ CheckedBoxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatePickerFilterComponent);
+    fixture = TestBed.createComponent(CheckedBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

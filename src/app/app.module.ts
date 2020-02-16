@@ -9,7 +9,7 @@ import { FooterComponent } from './page/footer/footer.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 import { appRouting } from './app.router.modules';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './controls/material.module';
 
 /** Table Show */
 import { ShowDataComponent } from './page/main/show-data/show-data.component';
@@ -19,16 +19,11 @@ import { MainData2Component } from './page/main/main-data2/main-data2.component'
 
 /** Filter UI */
 import { FilterUIComponent } from './page/main/filter-ui/filter-ui.component';
-import { DatePickerFilterComponent } from './page/main/filter-ui/date-picker-filter/date-picker-filter.component';
 import { InputFilterComponent } from './page/main/filter-ui/input-filter/input-filter.component';
-import { TimePickerFilterComponent } from './page/main/filter-ui/time-picker-filter/time-picker-filter.component';
 import { InputMailFilterComponent } from './page/main/filter-ui/input-filter/input-mail-filter/input-mail-filter.component';
-import { DropDownListFilterComponent } from './page/main/filter-ui/drop-down-list-filter/drop-down-list-filter.component';
-import { CheckBoxFilterComponent } from './page/main/filter-ui/check-box-filter/check-box-filter.component';
-import { RadioButtonFilterComponent } from './page/main/filter-ui/radio-button-filter/radio-button-filter.component';
-import { SlideFilterComponent } from './page/main/filter-ui/slide-toggle-filter/slide-toggle-filter.component';
 import { TreeFilterComponent } from './page/main/filter-ui/tree-filter/tree-filter.component';
 import { EditDataSourceComponent } from './page/main/edit-data-source/edit-data-source.component';
+import { ControlsModule } from './controls/controls.module';
 
 @NgModule({
   declarations: [
@@ -46,14 +41,8 @@ import { EditDataSourceComponent } from './page/main/edit-data-source/edit-data-
 
     /** Filter UI */
     FilterUIComponent,
-    DatePickerFilterComponent,
     InputFilterComponent,
-    TimePickerFilterComponent,
     InputMailFilterComponent,
-    DropDownListFilterComponent,
-    CheckBoxFilterComponent,
-    RadioButtonFilterComponent,
-    SlideFilterComponent,
     TreeFilterComponent,
     EditDataSourceComponent
   ],
@@ -65,6 +54,7 @@ import { EditDataSourceComponent } from './page/main/edit-data-source/edit-data-
     BrowserModule,
     ReactiveFormsModule,  // 要使用 FormsControll 需要引入的 Module
 
+    ControlsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

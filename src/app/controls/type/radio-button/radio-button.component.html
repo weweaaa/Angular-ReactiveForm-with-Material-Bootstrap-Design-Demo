@@ -1,0 +1,17 @@
+<section class="section" [formGroup]="customForm">
+  <label style="margin: 0 10px;">{{ controlItem.displayName }} : </label>
+  <mat-radio-group
+    labelPosition="before"
+    formGroupName="{{ controlItem.id }}"
+    [value]="controlItem.value"
+  >
+  <!-- TODO 選取切換事件尚無法正常動態更新 FormControl 物件 -->
+    <mat-radio-button
+      *ngFor="let selectItem of controlItem.dataSource"
+      style="margin: 0 10px;"
+      [value]="selectItem.key"
+    >
+      {{ selectItem.value }}
+    </mat-radio-button>
+  </mat-radio-group>
+</section>
