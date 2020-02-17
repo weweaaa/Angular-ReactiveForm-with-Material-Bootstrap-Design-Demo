@@ -1,0 +1,57 @@
+/* HEAD */
+/* =========================================== */
+/* 頂部 - 顯示的屬性、用來做對齊排版 */
+/* .display-flex {
+  display: flex;
+} */
+
+/* 頂部 */
+.flex-hor-center {
+  justify-content: center; /* 水平置中*/
+}
+
+/* 頂部 */
+.flex-ver-center {
+  align-items: center; /* 垂直置中*/
+}
+
+/* 頂部 fix bar */
+/* header {
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+
+  專門用來做元素定位使用、排版使用
+  position: fixed;
+  top: 0;
+  left: 0;
+} */
+
+/* 頂部 */
+.wrapper {
+  max-width: 1200px;
+}
+
+/* 頂部 - 選單 */
+.menu {
+}
+
+/* 頂部 - 選單  */
+.menu ul {
+  list-style: none;
+  padding: 0; /* 去除內推的空白*/
+}
+
+/* 頂部 - 選單  */
+.menu ul li {
+  display: inline;
+  margin: 0 5px;
+  /* margin: 5px; 上右下左 */
+  cursor: pointer; /*滑過可以點擊的狀態*/
+}
+.menu ul li:hover {
+  color: var(--color-primary);
+}
+/* =========================================== */

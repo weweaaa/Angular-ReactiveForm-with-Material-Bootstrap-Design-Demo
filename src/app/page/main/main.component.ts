@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TestDataElement1 } from 'src/app/Domain/TestDataElement1';
 
 @Component({
   selector: 'app-main',

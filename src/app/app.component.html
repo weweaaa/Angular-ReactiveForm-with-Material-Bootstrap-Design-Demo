@@ -1,12 +1,38 @@
 
 <!-- Header Start-->
-<!-- <app-header (addData)="addTableData($event)"></app-header> -->
+<header class="display-flex flex-ver-center">
+  <div class="wrapper">
+    <div class="menu display-flex flex-align-items">
+      <ul>
+        <li class="list-group-item list-group-item-action list-group-item-primary" (click)="addData()">
+          新增一筆資料
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-success" (click)="editData()">
+          修改一筆資料
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-danger" (click)="deleteCheckedList()">
+          刪除勾選清單
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
 <!-- Header End-->
 
 <!-- Main Start-->
 <!-- <app-main></app-main> -->
-<app-form-controls [dataSource]="controlItemList"></app-form-controls>
+<app-form-controls [dataSource]="controlData"></app-form-controls>
 <!-- Main End-->
+
+<!-- TODO 塞假資料 -->
+<app-table-manager
+  [pageSize]="3"
+  [StickyColumns]="dataTableStickyCols"
+  [StickyEndColumns]="dataTableStickyEndCols"
+  [dataSource]="dataTableSource"
+  [reportName]="reportName"
+></app-table-manager>
+
 
 <!-- Footer Start-->
 <!-- <div align="center">

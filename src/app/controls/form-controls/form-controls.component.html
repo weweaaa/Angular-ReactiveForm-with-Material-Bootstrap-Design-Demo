@@ -6,25 +6,25 @@
         <div class="col-sm" [ngSwitch]="CType[item.controlType]">
 
             <!-- Input Type  -->
-            <app-keydown-input *ngSwitchCase="CType[CType.KeydownInput]"
+            <app-keydown-input *ngSwitchCase="CType[CType.KeywordInput]"
               [customForm]="customForm"
               [controlItem]="item"
             ></app-keydown-input>
 
             <!-- Checked Box Type  -->
-            <app-checked-box *ngSwitchCase="CType[CType.CheckedBox]"
+            <app-checked-box *ngSwitchCase="CType[CType.CheckBox]"
               [customForm]="customForm"
               [controlItem]="item"
             ></app-checked-box>
 
             <!-- RadioButton Type  -->
-            <app-radio-button *ngSwitchCase="CType[CType.RadioButton]"
+            <app-radio-button *ngSwitchCase="CType[CType.RadioButtonList]"
               [customForm]="customForm"
               [controlItem]="item"
             ></app-radio-button>
 
             <!-- SlideToggle Type  -->
-            <app-slide-toggle *ngSwitchCase="CType[CType.SlideToggle]"
+            <app-slide-toggle *ngSwitchCase="CType[CType.SlideChecked]"
               [customForm]="customForm"
               [controlItem]="item"
             ></app-slide-toggle>

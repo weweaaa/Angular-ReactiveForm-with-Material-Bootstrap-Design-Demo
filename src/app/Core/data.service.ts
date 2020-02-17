@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TestDataElement1, StickyType } from '../Domain/TestDataElement1';
+import { ControlItem, ControlType } from '../controls/form-controls/form-controls.model';
+import { StickyType } from '../tables/table-manager/table-manager.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,19 @@ export class DataService {
 
   constructor() { }
 
+  /** 取得資料表欄位定義設定 */
+  public getTableSchema(): ControlItem[] {
+    return [
+      { id: 'id', displayName: '我是 ID', value: '', controlType: ControlType.KeywordInput },
+      { id: 'position', displayName: '我是 position', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight', displayName: '我是 weight', value: '', controlType: ControlType.KeywordInput },
+    ];
+  }
+
   /**
    * 取得範例一資料
    */
-  public getData1(): TestDataElement1[] {
+  public getData1(filterItem: any): Array<any> {
     return [
       { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', _HideSticky: StickyType.sticky },
       { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', _HideSticky: StickyType.none },
@@ -33,7 +43,13 @@ export class DataService {
   /**
    * 取得範例二資料
    */
-  public getData2() {
+  public getData2(filterItem: any): Array<any> {
+
+    // TODO 依據查詢條件回傳 Filter 後的結果
+    if (filterItem !== undefined && filterItem.CKB === false) {
+      return this.getData1(undefined);
+    }
+
     return [
       {
         position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',

@@ -31,13 +31,12 @@ export class ControlItem {
  * 目前支援的 FormControl 類型
  */
 export enum ControlType {
-  /** 輸入 查詢條件 */
-  KeydownInput,
+  /** 字串 查詢條件 */
+  KeywordInput,
 
   /** true/false 查詢條件 */
-  CheckedBox,
-  SlideToggle,
-  RadioButton,
+  CheckBox,
+  SlideChecked,
 
   /** 日期 查詢條件 */
   DatePicker,
@@ -47,9 +46,6 @@ export enum ControlType {
   /** 選單 查詢條件 */
   DropDownList,
   RadioButtonList,
-
-  /** 勾選清單 查詢條件 */
-  CheckedBoxList,
-  CheckBoxTree
+  CheckBoxList,
 }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeFilterComponent } from './tree-filter.component';
+import { DialogFormControlsComponent } from './dialog-form-controls.component';
 
-describe('TreeFilterComponent', () => {
-  let component: TreeFilterComponent;
-  let fixture: ComponentFixture<TreeFilterComponent>;
+describe('DialogFormControlsComponent', () => {
+  let component: DialogFormControlsComponent;
+  let fixture: ComponentFixture<DialogFormControlsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TreeFilterComponent ]
+      declarations: [ DialogFormControlsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TreeFilterComponent);
+    fixture = TestBed.createComponent(DialogFormControlsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

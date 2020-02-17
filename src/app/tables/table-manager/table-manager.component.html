@@ -1,0 +1,64 @@
+<caption class="TitleNoWrap" *ngIf="checkShowReportName()">
+  表名稱：{{
+    reportName
+  }}
+</caption>
+<div class="overflow-auto table_div" *ngIf="checkShowData()">
+  <table
+    mat-table
+    [dataSource]="dataSourcePaginator"
+    class="mat-elevation-z8 table_show"
+  >
+    <!-- Checkbox Column -->
+    <ng-container [matColumnDef]="'select'">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()"
+        >
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row;">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="($event ? selection.toggle(row) : null)"
+          [checked]="selection.isSelected(row)"
+          [aria-label]="checkboxLabel(row)"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- RowData Column -->
+    <ng-container
+      *ngFor="let column of getColumns();"
+      [sticky]="setStickyColumn(column)"
+      [stickyEnd]="setStickyEndColumn(column)"
+      [matColumnDef]="column"
+    >
+      <th mat-header-cell class="text-center px-4" *matHeaderCellDef>
+        {{ column }}
+      </th>
+      <td mat-cell class="text-center px-4" *matCellDef="let element;">
+        {{ element[column] }}
+      </td>
+    </ng-container>
+
+    <!-- 選項就直接在 Foreach 時加上 checkbox -->
+    <!-- 直接建一個欄位是 控制功能相關的，在裡面塞按鈕 -->
+    <!-- 新增/編輯的控制項定義就相當於是資料表的定義 -->
+
+    <tr mat-header-row *matHeaderRowDef="AlldataElementsColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: AlldataElementsColumns"></tr>
+  </table>
+</div>
+
+<br />
+<br />
+<!-- <fub-paginator
+  [rowCount]="dataSource.length"
+  [rowPageSize]="pageSize"
+  (changePage)="changeTablePage($event)"
+></fub-paginator> -->

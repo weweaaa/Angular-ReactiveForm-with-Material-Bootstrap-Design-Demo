@@ -10,12 +10,23 @@ import { DatePickerComponent } from './type/date-picker/date-picker.component';
 import { RadioButtonComponent } from './type/radio-button/radio-button.component';
 import { SlideToggleComponent } from './type/slide-toggle/slide-toggle.component';
 import { DropDownListComponent } from './type/drop-down-list/drop-down-list.component';
+import { DialogFormControlsComponent } from './dialog-form-controls/dialog-form-controls.component';
 
 
 
 @NgModule({
-  declarations: [FormControlsComponent, KeydownInputComponent, CheckedBoxComponent, TimePickerComponent, DatePickerComponent, RadioButtonComponent, SlideToggleComponent, DropDownListComponent],
-  exports: [FormControlsComponent],
+  declarations: [
+    FormControlsComponent,
+    KeydownInputComponent,
+    CheckedBoxComponent,
+    TimePickerComponent,
+    DatePickerComponent,
+    RadioButtonComponent,
+    SlideToggleComponent,
+    DropDownListComponent,
+    DialogFormControlsComponent
+  ],
+  exports: [FormControlsComponent, DialogFormControlsComponent],
   imports: [
     CommonModule,
     MaterialModule,
