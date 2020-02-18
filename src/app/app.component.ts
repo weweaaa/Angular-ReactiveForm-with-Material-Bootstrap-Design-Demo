@@ -111,3 +111,6 @@ export class AppComponent implements OnInit {
   // ---------------------------------------------------------------------
 
 }
+
+
+// console.log() 快捷鍵 --> 'clo' + tab鍵盤
