@@ -3,9 +3,20 @@
 }
 
 .table_div {
-  width: 90vw
+  width: 90vw;
 }
 
 .table_show {
   height: 50vh;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  padding: 10px;
+  text-align: center;
+}
+
+.mat-column-select {
+  overflow: initial;
 }

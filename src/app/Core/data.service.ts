@@ -13,12 +13,46 @@ export class DataService {
 
   constructor() { }
 
+  /** 使用者呼叫更新資料 */
+  public editData(data: any): boolean {
+    return true;
+  }
+
   /** 取得資料表欄位定義設定 */
   public getTableSchema(): ControlItem[] {
     return [
-      { id: 'id', displayName: '我是 ID', value: '', controlType: ControlType.KeywordInput },
-      { id: 'position', displayName: '我是 position', value: '', controlType: ControlType.KeywordInput },
-      { id: 'weight', displayName: '我是 weight', value: '', controlType: ControlType.KeywordInput },
+      { id: 'id', displayName: 'ID', value: '', disable: false, controlType: ControlType.KeywordInput },
+      { id: 'position', displayName: 'Position', value: '', controlType: ControlType.DatePicker, dataSource: undefined },
+      { id: 'name', displayName: 'Name', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
+      { id: 'weight', displayName: 'Weight', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
+      { id: 'symbol', displayName: 'Symbol', value: '', controlType: ControlType.KeywordInput, dataSource: undefined }
+    ];
+  }
+
+  /** 取得查詢條件設定檔 */
+  public getFilterConfing(): ControlItem[] {
+    return [
+      { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: 'xx' },
+      { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
+      {
+        id: 't3',
+        displayName: 'test3',
+        controlType: ControlType.RadioButtonList,
+        value: 'A',
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
+      { id: 't4', displayName: 'test4', controlType: ControlType.SlideChecked, value: true },
+      { id: 't5', displayName: 'test5', controlType: ControlType.KeywordInput, value: '' },
+      {
+        id: 't6',
+        displayName: 'test3',
+        controlType: ControlType.DropDownList,
+        value: 'A',
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
+      { id: 't7', displayName: 'test6', controlType: ControlType.DatePicker, value: '' },
+      { id: 't8', displayName: 'test7', controlType: ControlType.TimePicker, value: '' },
+      { id: 't9', displayName: 'test8', controlType: ControlType.CheckBox, value: '' },
     ];
   }
 

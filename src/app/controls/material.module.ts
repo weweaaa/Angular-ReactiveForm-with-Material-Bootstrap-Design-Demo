@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {
   MatDialogModule, MatTableModule, MatFormFieldModule,
   MatDatepickerModule, MatNativeDateModule, MatInputModule, MAT_DATE_FORMATS,
-  MatSelectModule, MatCheckboxModule, MatRadioModule, MatSlideToggleModule, MatTreeModule, MatIconModule
+  MatSelectModule, MatCheckboxModule, MatRadioModule, MatSlideToggleModule, MatTreeModule, MatIconModule, MatPaginatorModule
 } from '@angular/material';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
@@ -29,6 +29,7 @@ export const MY_FORMATS = {
     /** Table */
     MatTableModule,
     MatDialogModule,
+    MatPaginatorModule,
 
     MatInputModule,
     MatSelectModule,

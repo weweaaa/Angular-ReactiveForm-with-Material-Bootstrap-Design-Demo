@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>使用者 Dialog 編輯頁面</h1>
 <div mat-dialog-content>
-  <app-form-controls [dataSource]="controlItem"></app-form-controls>
+  <app-form-controls #tform [dataSource]="controlItem"></app-form-controls>
 </div>
 
 <div mat-dialog-actions style="float:right;">
@@ -8,3 +8,7 @@
   <button mat-stroked-button color="accent" (click)="onResetClick()">重置</button>
   <button mat-stroked-button color="accent" (click)="onSaveClick()">存檔</button>
 </div>
+
+<br />
+<br />
+<pre>{{ tform.customForm.value | json }}</pre>

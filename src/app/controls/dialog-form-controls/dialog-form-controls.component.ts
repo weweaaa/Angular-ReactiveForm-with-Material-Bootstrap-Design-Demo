@@ -14,9 +14,9 @@ export class DialogFormControlsComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogFormControlsComponent>,
-    @Inject(MAT_DIALOG_DATA) public item: ControlItem[]) {
-      if (this.item !== undefined && this.item !== null && this.item.length > 0) {
-        this.controlItem = [...this.item];
+    @Inject(MAT_DIALOG_DATA) public controls: ControlItem[]) {
+      if (this.controls !== undefined && this.controls !== null && this.controls.length > 0) {
+        this.controlItem = [...this.controls];
       } else {
         // 如果使用者傳入的內容是空則跳 Alert，或是在外部開啟前就先判斷並 return void，阻止視窗開啟
         alert('EditDataSourceComponent FilterElement[] is null or undefined');
@@ -31,11 +31,9 @@ export class DialogFormControlsComponent implements OnInit {
   /**
    * 使用者點擊存檔按鈕
    */
-  onSaveClick(): void {
+  onSaveClick(event: any): void {
     console.log('使用者儲存');
-
-    // TODO
-    // this.dialogRef.close(this.DataSource);
+    this.dialogRef.close(event);
   }
 
   /**
@@ -43,6 +41,7 @@ export class DialogFormControlsComponent implements OnInit {
    */
   onNoClick(): void {
     console.log('使用者關閉');
+    this.dialogRef.close();
   }
 
   /**
@@ -50,6 +49,6 @@ export class DialogFormControlsComponent implements OnInit {
    */
   onResetClick(): void {
     console.log('使用者重置');
+    this.controlItem = [...this.controls];
   }
-
 }

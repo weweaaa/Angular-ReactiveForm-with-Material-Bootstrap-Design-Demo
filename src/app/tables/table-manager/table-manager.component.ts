@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PageEvent } from '@angular/material';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { PageEvent, MatCheckboxChange } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
@@ -20,10 +20,12 @@ export class TableManagerComponent implements OnInit {
     const StartRow = this.pageSize * 0;
     const EndRow = StartRow + this.pageSize;
     this.dataSourcePaginator = this._dataSource.slice(StartRow, EndRow);
+
+    this.reloadSelected();
   }
 
   dataSourcePaginator: Array<any>;
-  AlldataElementsColumns: string[]
+  AlldataElementsColumns: string[];
   dataElementsColumns: string[];
 
   /** 外部傳遞資料表 名稱 */
@@ -36,7 +38,14 @@ export class TableManagerComponent implements OnInit {
   /** 資料表分頁筆數 [預設50筆] */
   @Input() pageSize: number;
 
+  /** 勾選事件發生，當下勾選的清單 */
+  @Output() isSelectedEvent = new EventEmitter<any>();
+  /** 全部勾選清單異動發生，目前所有勾選的清單 */
+  @Output() selectedAllValueChange = new EventEmitter<any>();
+
+
   /** 使用者勾選設定 */
+  allSelection = new SelectionModel<any>(true, []);
   selection = new SelectionModel<any>(true, []);
 
 
@@ -65,8 +74,10 @@ export class TableManagerComponent implements OnInit {
     const EndRow = StartRow + this.pageSize;
     this.dataSourcePaginator = this._dataSource.slice(StartRow, EndRow);
 
-    // console.log('要切換的起始筆', StartRow);
-    // console.log('要切換的結尾筆', EndRow);
+    // console.log('切換後的起始筆', StartRow);
+    // console.log('切換後的結尾筆', EndRow);
+
+    this.reloadSelected();
   }
 
   // [欄位顯示相關處理]
@@ -105,7 +116,40 @@ export class TableManagerComponent implements OnInit {
     }
   }
 
-  /** The label for the checkbox on the passed row */
+  // ------------------------------------------------------------------------------------------------------
+
+  // [清單選項勾選相關處理]
+  // ------------------------------------------------------------------------------------------------------
+
+  /** 重新整理勾選狀態 */
+  reloadSelected() {
+
+    /** 檢查目前總勾選清單中，是否有不存在的資料，找到並清除不存在資料 */
+    const allselected = this.allSelection.selected.length;
+    this.allSelection.selected.forEach((val) => {
+      if (this._dataSource.includes(val) === false) {
+        this.allSelection.deselect(val);
+      }
+    });
+    if (allselected !== this.allSelection.selected.length) {
+      // 發送總勾選清單變更事件
+      this.selectedAllValueChange.emit(this.allSelection.selected);
+    }
+
+
+    this.selection.clear();
+
+    // 取出總勾選紀錄，來還原上次勾選的狀態
+    this.allSelection.selected.forEach((val) => {
+      this.dataSourcePaginator.forEach((v) => {
+        if (val === v) {
+          this.selection.select(val);
+        }
+      });
+    });
+  }
+
+  /** 勾選框框圖示狀態調整 */
   checkboxLabel(row?: any): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
@@ -113,18 +157,44 @@ export class TableManagerComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
+  /** 檢查所勾選數量是否與總資料數匹配 */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSourcePaginator.length;
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  /** 全勾選 / 取消全勾選 */
   masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSourcePaginator.forEach(row => this.selection.select(row));
+
+    // 判斷此分頁是否全部勾選
+    if (this.isAllSelected() === true) {
+      this.dataSourcePaginator.forEach(row => {
+        this.selection.deselect(row);
+        this.allSelection.deselect(row);
+      });
+
+    } else {
+      this.dataSourcePaginator.forEach(row => {
+        this.selection.select(row);
+        this.allSelection.select(row);
+      });
+
+      this.isSelectedEvent.emit(this.selection.selected);
+    }
+
+    this.selectedAllValueChange.emit(this.allSelection.selected);
+  }
+
+  /** 單一勾選 */
+  changeSelected(event?: MatCheckboxChange, toggleRow?: any) {
+    if (event !== undefined && toggleRow !== undefined) {
+      this.selection.toggle(toggleRow);
+      this.allSelection.toggle(toggleRow);
+
+      this.isSelectedEvent.emit(toggleRow);
+      this.selectedAllValueChange.emit(this.allSelection.selected);
+    }
   }
 
   // ------------------------------------------------------------------------------------------------------

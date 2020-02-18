@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
   dataTableStickyCols = ['position'];
   /** 後 凍結欄位清單 */
   dataTableStickyEndCols = ['symbol29'];
+
+  /** 使用者在資料表上已勾選的清單 */
+  selectedList = [];
   /** 報表名稱 */
   reportName = '我是小資料報表';
   /** 資料表內容 */
@@ -23,29 +26,7 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog, private dataService: DataService) { }
 
   /** 設定表單呈現內容 */
-  controlData: ControlItem[] = [
-    { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: 'xx' },
-    { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
-    {
-      id: 't3',
-      displayName: 'test3',
-      controlType: ControlType.RadioButtonList,
-      value: 'A',
-      dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
-    },
-    { id: 't4', displayName: 'test4', controlType: ControlType.SlideChecked, value: true },
-    { id: 't5', displayName: 'test5', controlType: ControlType.KeywordInput, value: '' },
-    {
-      id: 't6',
-      displayName: 'test3',
-      controlType: ControlType.DropDownList,
-      value: 'A',
-      dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
-    },
-    { id: 't7', displayName: 'test6', controlType: ControlType.DatePicker, value: '' },
-    { id: 't8', displayName: 'test7', controlType: ControlType.TimePicker, value: '' },
-    { id: 't9', displayName: 'test8', controlType: ControlType.CheckBox, value: '' },
-  ];
+  controlData: ControlItem[] = this.dataService.getFilterConfing();
 
   ngOnInit(): void {
     this.dataTableSource = this.dataService.getData1(this.getFilterData());
@@ -79,13 +60,8 @@ export class AppComponent implements OnInit {
   addData() {
     // 1.開啟 Dialog 組件視窗
     const dialogRef = this.dialog.open(DialogFormControlsComponent, {
-      // TODO Dialog 測試用資料
-      data: [
-        { id: 'position', name: 'Position 查詢', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
-        { id: 'name', name: 'name', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
-        { id: 'weight', name: 'weight', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
-        { id: 'symbol', name: 'symbol', value: '', controlType: ControlType.KeywordInput, dataSource: undefined }
-      ],
+      width: '350px',
+      data: this.dataService.getTableSchema(),
     });
 
     // 2.Dialog 組件視窗關閉後的操作動作
@@ -93,7 +69,7 @@ export class AppComponent implements OnInit {
       if (result !== undefined) {
         console.log('關閉事件後接收到的的物件資料內容', result);
 
-        // TODO 使用者新增一筆資料，透過 Service 更新
+        // TODO 使用者新增一筆資料，透過 Service 重新查詢資料
         this.dataTableSource = [...this.dataTableSource, result];
       }
     });
@@ -101,15 +77,77 @@ export class AppComponent implements OnInit {
 
   /** 編輯一筆資料 */
   editData() {
+    if (this.selectedList.length === 0) {
+      alert('請至少選擇一筆進行編輯!!!');
+    } else if (this.selectedList.length > 1) {
+      alert(`請選擇單一筆進行編輯，您目前選取了 ${this.selectedList.length}`);
+    } else {
 
+      // 1. 提取使用者選取的資料列內容
+      const dataDialog = this.dataService.getTableSchema();
+      dataDialog.forEach(val => val.value = this.selectedList[0][val.id]);  // 範例結果 => val.id : 'position', this.selectedList[0][val.id] : 1
+
+      // 2. 開啟 Dialog 組件視窗
+      const dialogRef = this.dialog.open(DialogFormControlsComponent, {
+        width: '350px',
+        data: dataDialog,
+      });
+
+      // 3. Dialog 組件視窗關閉後的操作動作
+      dialogRef.afterClosed().subscribe(result => {
+        if (result !== undefined) {
+          console.log('關閉事件後接收到的的物件資料內容', result);
+
+
+          // TODO 使用者編輯一筆資料，透過 Service 重新查詢資料
+          // ---------------------------------------------------
+          if (this.dataService.editData(result) === true) {
+
+            const editTempData = [...this.dataTableSource];
+
+            editTempData.forEach((val) => {
+              if (val.id === result.id) {
+                alert('update success...');
+                const editKeys = Object.keys(result.id);
+                editKeys.forEach(valk => val[valk] = result[result]);
+                console.log(editTempData);
+              }
+            });
+
+            this.dataTableSource = [...editTempData];
+          }
+          // ---------------------------------------------------
+        }
+      });
+    }
   }
 
   /** 批次刪除資料 */
   deleteCheckedList() {
+    if (this.selectedList.length > 0) {
+      console.log('使用者批次刪除');
+      this.dataTableSource = this.dataTableSource.concat(this.selectedList).filter((val) => {
+        return !this.dataTableSource.includes(val) || !this.selectedList.includes(val);
+      });
 
+      // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
+
+    } else {
+      alert('請至少選擇一筆');
+    }
   }
   // ---------------------------------------------------------------------
 
+  /** 勾選事件發生 */
+  isSelectedEvent(event: any) {
+    // console.log('isSelected', event);
+  }
+
+  /** 全部勾選清單異動發生 */
+  selectedAllValueChange(event: any) {
+    this.selectedList = event;
+    // console.log('selectedAll', event);
+  }
 }
 
 

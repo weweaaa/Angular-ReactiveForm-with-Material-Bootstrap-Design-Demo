@@ -32,21 +32,7 @@ export class FormControlsComponent implements OnInit {
     // 儲存外部傳入的 formGroup 設定檔
     this._dataSource = v;
 
-    // 模擬預設外部動態調整及傳入設定的情境
-    setTimeout(() => {
-      console.log('兩秒後在 t1 FormControl 內輸入 orz 值');
-      this.customForm.get('t1').setValue('orz');
-
-      setTimeout(() => {
-        console.log('接著再兩秒後將 t1 FormControl disable');
-        this.customForm.get('t1').disable();
-
-        setTimeout(() => {
-          console.log('接著再兩秒後將 t1 FormControl enable');
-          this.customForm.get('t1').enable();
-        }, 2000);
-      }, 2000);
-    }, 2000);
+    // this.TestE2E();
   }
   // tslint:disable-next-line: variable-name
   private _dataSource: Array<ControlItem>;
@@ -64,6 +50,25 @@ export class FormControlsComponent implements OnInit {
   /** 判斷是否需要呈現 class="w-100" DIV Block  */
   getDivW100(index: number) {
     return (index !== 0) && (index % 2 === 0);
+  }
+
+  /** 測試操作 */
+  TestE2E() {
+    // 模擬預設外部動態調整及傳入設定的情境
+    setTimeout(() => {
+      console.log('兩秒後在 t1 FormControl 內輸入 orz 值');
+      this.customForm.get('t1').setValue('orz');
+
+      setTimeout(() => {
+        console.log('接著再兩秒後將 t1 FormControl disable');
+        this.customForm.get('t1').disable();
+
+        setTimeout(() => {
+          console.log('接著再兩秒後將 t1 FormControl enable');
+          this.customForm.get('t1').enable();
+        }, 2000);
+      }, 2000);
+    }, 2000);
   }
 }
 

@@ -1,16 +1,18 @@
-<div class="editable-dial-example" [formGroup]="customForm">
-  <input
-    matInput
-    readonly
-    [ngxTimepicker]="tpicker"
-    placeholder="{{ controlItem.displayName }}"
-    [value]="controlItem.value"
-    formControlName="{{ controlItem.id }}"
-  />
-  <ngx-material-timepicker
-    class="timepicker"
-    #tpicker
-    [enableKeyboardInput]="true"
-    (timeSet)="setTimeValue($event)"
-  ></ngx-material-timepicker>
-</div>
+<mat-form-field [formGroup]="customForm">
+  <div class="editable-dial-example">
+    <input
+      matInput
+      readonly
+      [ngxTimepicker]="tpicker"
+      placeholder="{{ controlItem.displayName }}"
+      [value]="controlItem.value"
+      formControlName="{{ controlItem.id }}"
+    />
+    <ngx-material-timepicker
+      class="timepicker"
+      #tpicker
+      [enableKeyboardInput]="true"
+      (timeSet)="setTimeValue($event)"
+    ></ngx-material-timepicker>
+  </div>
+</mat-form-field>

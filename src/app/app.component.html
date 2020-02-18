@@ -1,16 +1,24 @@
-
 <!-- Header Start-->
 <header class="display-flex flex-ver-center">
   <div class="wrapper">
     <div class="menu display-flex flex-align-items">
       <ul>
-        <li class="list-group-item list-group-item-action list-group-item-primary" (click)="addData()">
+        <li
+          class="list-group-item list-group-item-action list-group-item-primary"
+          (click)="addData()"
+        >
           新增一筆資料
         </li>
-        <li class="list-group-item list-group-item-action list-group-item-success" (click)="editData()">
+        <li
+          class="list-group-item list-group-item-action list-group-item-success"
+          (click)="editData()"
+        >
           修改一筆資料
         </li>
-        <li class="list-group-item list-group-item-action list-group-item-danger" (click)="deleteCheckedList()">
+        <li
+          class="list-group-item list-group-item-action list-group-item-danger"
+          (click)="deleteCheckedList()"
+        >
           刪除勾選清單
         </li>
       </ul>
@@ -21,11 +29,18 @@
 
 <!-- Main Start-->
 <!-- <app-main></app-main> -->
-<app-form-controls #myForm [dataSource]="controlData"></app-form-controls>
+<app-form-controls
+  #myForm
+  [dataSource]="controlData"
+  (valueChanges)="filterChange($event)"
+></app-form-controls>
 <!-- Main End-->
 
 <hr />
-<pre>{{ myForm.customForm.value | json }}</pre>
+<FieldSet>
+  <Legend>即時查看使用者查詢條件輸入狀況</Legend>
+  <pre>{{ myForm.customForm.value | json }}</pre>
+</FieldSet>
 
 <!-- TODO 塞假資料 -->
 <app-table-manager
@@ -34,8 +49,11 @@
   [StickyEndColumns]="dataTableStickyEndCols"
   [dataSource]="dataTableSource"
   [reportName]="reportName"
+  (isSelectedEvent)="isSelectedEvent($event)"
+  (selectedAllValueChange)="selectedAllValueChange($event)"
 ></app-table-manager>
 
+<pre *ngIf="selectedList.length > 0">{{ selectedList | json }}</pre>
 
 <!-- Footer Start-->
 <!-- <div align="center">
