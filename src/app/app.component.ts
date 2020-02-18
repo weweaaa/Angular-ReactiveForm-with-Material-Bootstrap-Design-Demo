@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   /** 設定表單呈現內容 */
   controlData: ControlItem[] = [
-    { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: '' },
+    { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: 'xx' },
     { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
     {
       id: 't3',

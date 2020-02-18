@@ -1,8 +1,6 @@
-<mat-form-field [formGroup]="customForm">
+<mat-form-field>
   <input
     matInput
-    formControlName="{{ controlItem.id }}"
-    placeholder="{{ controlItem.displayName }}"
-    [value]="controlItem.value"
+    [formControl]="control"
   />
 </mat-form-field>

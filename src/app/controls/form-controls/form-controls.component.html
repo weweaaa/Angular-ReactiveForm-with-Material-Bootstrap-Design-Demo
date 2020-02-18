@@ -6,9 +6,9 @@
         <div class="col-sm" [ngSwitch]="CType[item.controlType]">
 
             <!-- Input Type  -->
+            <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
             <app-keydown-input *ngSwitchCase="CType[CType.KeywordInput]"
-              [customForm]="customForm"
-              [controlItem]="item"
+              formControlName="{{ item.id }}"
             ></app-keydown-input>
 
             <!-- Checked Box Type  -->
@@ -54,5 +54,5 @@
   </div>
 </div>
 
-<hr />
-<pre>{{ customForm.value | json }}</pre>
+<!-- <hr />
+<pre>{{ customForm.value | json }}</pre> -->

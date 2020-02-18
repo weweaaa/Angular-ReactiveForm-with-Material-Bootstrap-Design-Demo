@@ -21,8 +21,11 @@
 
 <!-- Main Start-->
 <!-- <app-main></app-main> -->
-<app-form-controls [dataSource]="controlData"></app-form-controls>
+<app-form-controls #myForm [dataSource]="controlData"></app-form-controls>
 <!-- Main End-->
+
+<hr />
+<pre>{{ myForm.customForm.value | json }}</pre>
 
 <!-- TODO 塞假資料 -->
 <app-table-manager

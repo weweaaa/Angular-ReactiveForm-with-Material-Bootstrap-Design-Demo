@@ -23,12 +23,30 @@ export class FormControlsComponent implements OnInit {
 
       // id 對應的就是 formControlName，value 對應的就是 formControl 內的 value
       return { ...obj, [id]: value };
+      // 如果想要透過外部傳入預設是否 disabled/enable 則使用以下語法進行設定
+      // return { ...obj, [id]: { value, disabled: true } };
     }, {});
 
     // 將 formGroup 設定塞給想要定義的 form 物件
     this.customForm = this.fb.group(controlsConfig);
     // 儲存外部傳入的 formGroup 設定檔
     this._dataSource = v;
+
+    // 模擬預設外部動態調整及傳入設定的情境
+    setTimeout(() => {
+      console.log('兩秒後在 t1 FormControl 內輸入 orz 值');
+      this.customForm.get('t1').setValue('orz');
+
+      setTimeout(() => {
+        console.log('接著再兩秒後將 t1 FormControl disable');
+        this.customForm.get('t1').disable();
+
+        setTimeout(() => {
+          console.log('接著再兩秒後將 t1 FormControl enable');
+          this.customForm.get('t1').enable();
+        }, 2000);
+      }, 2000);
+    }, 2000);
   }
   // tslint:disable-next-line: variable-name
   private _dataSource: Array<ControlItem>;
