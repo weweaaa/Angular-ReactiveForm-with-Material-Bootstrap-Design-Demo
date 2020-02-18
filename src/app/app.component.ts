@@ -22,11 +22,10 @@ export class AppComponent implements OnInit {
   reportName = '我是小資料報表';
   /** 資料表內容 */
   dataTableSource: Array<any>;
-
-  constructor(public dialog: MatDialog, private dataService: DataService) { }
-
   /** 設定表單呈現內容 */
   controlData: ControlItem[] = this.dataService.getFilterConfing();
+
+  constructor(public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataTableSource = this.dataService.getData1(this.getFilterData());
@@ -40,14 +39,14 @@ export class AppComponent implements OnInit {
   }
 
   /** 將使用者的輸入轉化成 資料表 需要的物件 */
-  convertDialogData(arrayData) {
-    return arrayData.reduce((obj: any, item: ControlItem) => {
-      return {
-        ...obj,
-        [item.id]: item.value,
-      };
-    }, {});
-  }
+  // convertDialogData(arrayData) {
+  //   return arrayData.reduce((obj: any, item: ControlItem) => {
+  //     return {
+  //       ...obj,
+  //       [item.id]: item.value,
+  //     };
+  //   }, {});
+  // }
 
   /** 使用者進行查詢條件內容變化 */
   filterChange(event: { key: string, value: string | boolean }) {
