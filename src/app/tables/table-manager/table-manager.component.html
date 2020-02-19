@@ -10,7 +10,7 @@
     class="mat-elevation-z8 table_show"
   >
     <!-- Checkbox Column -->
-    <ng-container [matColumnDef]="'select'">
+    <ng-container [matColumnDef]="'select'" [sticky]="true">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox
           (change)="$event ? masterToggle() : null"
@@ -34,15 +34,15 @@
     <!-- RowData Column -->
     <ng-container
       *ngFor="let column of getColumns();"
-      [sticky]="setStickyColumn(column)"
-      [stickyEnd]="setStickyEndColumn(column)"
-      [matColumnDef]="column"
+      [sticky]="setStickyColumn(column.key)"
+      [stickyEnd]="setStickyEndColumn(column.key)"
+      [matColumnDef]="column.key"
     >
       <th mat-header-cell class="text-center px-4" *matHeaderCellDef>
-        {{ column }}
+        {{ column.value }}
       </th>
       <td mat-cell class="text-center px-4" *matCellDef="let element;">
-        {{ element[column] }}
+        {{ element[column.key] }}
       </td>
     </ng-container>
 

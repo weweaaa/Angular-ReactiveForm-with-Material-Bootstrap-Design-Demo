@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   /** 前 凍結欄位清單 */
   dataTableStickyCols = ['position'];
   /** 後 凍結欄位清單 */
-  dataTableStickyEndCols = ['symbol29'];
+  dataTableStickyEndCols = ['weight10'];
 
   /** 使用者在資料表上已勾選的清單 */
   selectedList = [];
@@ -22,13 +22,25 @@ export class AppComponent implements OnInit {
   reportName = '我是小資料報表';
   /** 資料表內容 */
   dataTableSource: Array<any>;
+  /** 資料表欄位定義 */
+  tableSchema: ControlItem[];
   /** 設定表單呈現內容 */
   controlData: ControlItem[] = this.dataService.getFilterConfing();
+
+  change = true;
 
   constructor(public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataTableSource = this.dataService.getData1(this.getFilterData());
+    if (this.change === true) {
+      this.tableSchema = this.dataService.getTableSchema2(this.getFilterData());
+      this.dataTableSource = this.dataService.getData2(this.getFilterData());
+      this.change = false;
+    } else {
+      this.tableSchema = this.dataService.getTableSchema1(this.getFilterData());
+      this.dataTableSource = this.dataService.getData1(this.getFilterData());
+      this.change = true;
+    }
   }
 
   /** 轉換使用者輸入的內容變成查詢條件物件 */
@@ -50,8 +62,15 @@ export class AppComponent implements OnInit {
 
   /** 使用者進行查詢條件內容變化 */
   filterChange(event: { key: string, value: string | boolean }) {
-    console.log('app 接收到事件', event);
-    this.dataTableSource = this.dataService.getData1(event);
+    if (this.change === true) {
+      this.tableSchema = this.dataService.getTableSchema2(this.getFilterData());
+      this.dataTableSource = this.dataService.getData2(this.getFilterData());
+      this.change = false;
+    } else {
+      this.tableSchema = this.dataService.getTableSchema1(this.getFilterData());
+      this.dataTableSource = this.dataService.getData1(this.getFilterData());
+      this.change = true;
+    }
   }
 
   // ---------------------------------------------------------------------
@@ -59,8 +78,8 @@ export class AppComponent implements OnInit {
   addData() {
     // 1.開啟 Dialog 組件視窗
     const dialogRef = this.dialog.open(DialogFormControlsComponent, {
-      width: '350px',
-      data: this.dataService.getTableSchema(),
+      width: '400px',
+      data: this.change === true ? this.dataService.getTableSchema1() : this.dataService.getTableSchema2(),
     });
 
     // 2.Dialog 組件視窗關閉後的操作動作
@@ -83,12 +102,12 @@ export class AppComponent implements OnInit {
     } else {
 
       // 1. 提取使用者選取的資料列內容
-      const dataDialog = this.dataService.getTableSchema();
+      const dataDialog = this.dataService.getTableSchema1();
       dataDialog.forEach(val => val.value = this.selectedList[0][val.id]);  // 範例結果 => val.id : 'position', this.selectedList[0][val.id] : 1
 
       // 2. 開啟 Dialog 組件視窗
       const dialogRef = this.dialog.open(DialogFormControlsComponent, {
-        width: '350px',
+        width: '400px',
         data: dataDialog,
       });
 

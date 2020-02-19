@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PageEvent, MatCheckboxChange } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
 
 @Component({
   selector: 'app-table-manager',
@@ -32,9 +33,14 @@ export class TableManagerComponent implements OnInit {
   @Input() reportName: string;
   private _dataSource: Array<any>;
   /** 前凍結欄位清單 */
-  @Input() StickyColumns: string[];
+  @Input() stickyColumns: string[];
   /** 尾巴凍結欄位清單 */
-  @Input() StickyEndColumns: string[];
+  @Input() stickyEndColumns: string[];
+  /** 隱藏欄位清單 */
+  @Input() disableColumns: string[];
+
+  /** 資料表結構定義，同新增時使用的 ControlItem[]  */
+  @Input() tableSchema: ControlItem[];
   /** 資料表分頁筆數 [預設50筆] */
   @Input() pageSize: number;
 
@@ -60,7 +66,18 @@ export class TableManagerComponent implements OnInit {
 
   /** 檢查是否需要顯示報表 */
   checkShowData(): boolean {
-    return (this._dataSource !== undefined && this._dataSource !== null && this._dataSource.length > 0);
+    const checkSchema = (this.tableSchema && this.tableSchema.length > 0);
+    const checkData = (this._dataSource && this._dataSource.length > 0);
+
+    if (checkSchema === false) {
+      console.error('Table Schema undefined');
+    }
+
+    if (checkData === false) {
+      console.error('Table Data undefined');
+    }
+
+    return (checkSchema && checkData);
   }
 
   /** 資料表 切換分頁事件 */
@@ -85,34 +102,54 @@ export class TableManagerComponent implements OnInit {
   /**
    * 依據資料模型取得要呈現的欄位
    */
-  getColumns(): string[] {
-    if (this._dataSource !== undefined && this._dataSource.length > 0) {
+  getColumns(): Array<{ key: string, value: string }> {
+    if (this.tableSchema && this.tableSchema.length > 0) {
 
-      const sourceCol = Object.keys(this._dataSource[0]);
+      // 資料表定義 轉換模型 範例數據
+      // [
+      //   { id: 'id', displayName: '我是 ID', value: '', disable: false, controlType: ControlType.KeywordInput },
+      //   { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker, dataSource: undefined },
+      // ]
+
+      // [
+      //   { 'id': '我是 ID' },
+      //   { 'position': '我是 Position' },
+      // ]
+
+      const sourceCol = this.tableSchema.map((val) => ({ key: val.id, value: val.displayName }));
 
       // 處理隱藏欄位
-      this.dataElementsColumns = sourceCol.filter(val => val !== '_HideSticky');
-      this.AlldataElementsColumns = ['select', ...this.dataElementsColumns];
+      const dataElementsColumns = sourceCol.map(val => val.key).filter((val) => {
+        if (this.disableColumns) {
+          if (!this.disableColumns.includes('_HideSticky')) {
+            return val;
+          }
+        } else {
+          return val;
+        }
+      });
 
-      return this.dataElementsColumns;
+      /** 加上 CheckBox 按鈕欄位 */
+      this.AlldataElementsColumns = ['select', ...dataElementsColumns];
+
+      return sourceCol;
 
     } else {
-      console.error('report data undefined.');
       return [];
     }
   }
 
   /** 判斷是否要設定 前 凍結欄位 */
   setStickyColumn(colName: string): boolean {
-    if (this.StickyColumns !== undefined) {
-      return (this.StickyColumns.filter(val => val === colName).length > 0);
+    if (this.stickyColumns !== undefined) {
+      return (this.stickyColumns.filter(val => val === colName).length > 0);
     }
   }
 
   /** 判斷是否要設定 後 凍結欄位 */
   setStickyEndColumn(colName: string): boolean {
-    if (this.StickyEndColumns !== undefined) {
-      return (this.StickyEndColumns.filter(val => val === colName).length > 0);
+    if (this.stickyEndColumns !== undefined) {
+      return (this.stickyEndColumns.filter(val => val === colName).length > 0);
     }
   }
 

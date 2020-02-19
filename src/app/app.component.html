@@ -45,9 +45,10 @@
 <!-- TODO 塞假資料 -->
 <app-table-manager
   [pageSize]="3"
-  [StickyColumns]="dataTableStickyCols"
-  [StickyEndColumns]="dataTableStickyEndCols"
+  [stickyColumns]="dataTableStickyCols"
+  [stickyEndColumns]="dataTableStickyEndCols"
   [dataSource]="dataTableSource"
+  [tableSchema]="tableSchema"
   [reportName]="reportName"
   (isSelectedEvent)="isSelectedEvent($event)"
   (selectedAllValueChange)="selectedAllValueChange($event)"

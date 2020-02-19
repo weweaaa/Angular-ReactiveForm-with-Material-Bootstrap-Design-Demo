@@ -18,14 +18,78 @@ export class DataService {
     return true;
   }
 
-  /** 取得資料表欄位定義設定 */
-  public getTableSchema(): ControlItem[] {
+  /** 取得資料表定義 */
+  public getTableSchema1(filterItem?: any): ControlItem[] {
     return [
-      { id: 'id', displayName: 'ID', value: '', disable: false, controlType: ControlType.KeywordInput },
-      { id: 'position', displayName: 'Position', value: '', controlType: ControlType.DatePicker, dataSource: undefined },
-      { id: 'name', displayName: 'Name', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
-      { id: 'weight', displayName: 'Weight', value: '', controlType: ControlType.KeywordInput, dataSource: undefined },
-      { id: 'symbol', displayName: 'Symbol', value: '', controlType: ControlType.KeywordInput, dataSource: undefined }
+      { id: 'id', displayName: '我是 ID', value: '', disable: false, controlType: ControlType.KeywordInput },
+      { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
+      { id: 'name', displayName: '我是 Name', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol', displayName: '我是 Symbol', value: '', controlType: ControlType.KeywordInput }
+    ];
+  }
+
+  /** 取得資料表定義 */
+  public getTableSchema2(filterItem?: any): ControlItem[] {
+    // TODO 依據查詢條件回傳 Filter 後的結果
+    if (filterItem !== undefined && filterItem.CKB === false) {
+      return this.getTableSchema1(undefined);
+    }
+
+    return [
+      { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
+      { id: 'name', displayName: '我是 Name', value: '', controlType: ControlType.RadioButtonList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol', displayName: '我是 Symbol', value: '', controlType: ControlType.DropDownList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+
+      { id: 'position1', displayName: '我是 Position1', value: '', controlType: ControlType.TimePicker },
+      { id: 'name1', displayName: '我是 Name1', value: '', controlType: ControlType.RadioButtonList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      { id: 'weight1', displayName: '我是 Weight1', value: '', controlType: ControlType.SlideChecked },
+      { id: 'symbol1', displayName: '我是 Symbol1', value: '', controlType: ControlType.DropDownList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      { id: 'position2', displayName: '我是 Position2', value: '', controlType: ControlType.DatePicker },
+      { id: 'name2', displayName: '我是 Name2', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight2', displayName: '我是 Weight2', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol2', displayName: '我是 Symbol2', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position3', displayName: '我是 Position3', value: '', controlType: ControlType.DatePicker },
+      { id: 'name3', displayName: '我是 Name3', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight3', displayName: '我是 Weight3', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol3', displayName: '我是 Symbol3', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position4', displayName: '我是 Position4', value: '', controlType: ControlType.DatePicker },
+      { id: 'name4', displayName: '我是 Name4', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight4', displayName: '我是 Weight4', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol4', displayName: '我是 Symbol4', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position5', displayName: '我是 Position5', value: '', controlType: ControlType.DatePicker },
+      { id: 'name5', displayName: '我是 Name5', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight5', displayName: '我是 Weight5', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol5', displayName: '我是 Symbol5', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position6', displayName: '我是 Position6', value: '', controlType: ControlType.DatePicker },
+      { id: 'name6', displayName: '我是 Name6', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight6', displayName: '我是 Weight6', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol6', displayName: '我是 Symbol6', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position7', displayName: '我是 Position7', value: '', controlType: ControlType.DatePicker },
+      { id: 'name7', displayName: '我是 Name7', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight7', displayName: '我是 Weight7', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol7', displayName: '我是 Symbol7', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position8', displayName: '我是 Position8', value: '', controlType: ControlType.DatePicker },
+      { id: 'name8', displayName: '我是 Name8', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight8', displayName: '我是 Weight8', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol8', displayName: '我是 Symbol8', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position9', displayName: '我是 Position9', value: '', controlType: ControlType.DatePicker },
+      { id: 'name9', displayName: '我是 Name9', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight9', displayName: '我是 Weight9', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol9', displayName: '我是 Symbol9', value: '', controlType: ControlType.KeywordInput },
+
+      { id: 'position10', displayName: '我是 Position10', value: '', controlType: ControlType.DatePicker },
+      { id: 'name10', displayName: '我是 Name10', value: '', controlType: ControlType.KeywordInput },
+      { id: 'weight10', displayName: '我是 Weight10', value: '', controlType: ControlType.KeywordInput },
+      { id: 'symbol10', displayName: '我是 Symbol10', value: '', controlType: ControlType.KeywordInput },
     ];
   }
 
@@ -59,7 +123,7 @@ export class DataService {
   /**
    * 取得範例一資料
    */
-  public getData1(filterItem: any): Array<any> {
+  public getData1(filterItem?: any): Array<any> {
     return [
       { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', _HideSticky: StickyType.sticky },
       { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', _HideSticky: StickyType.none },
@@ -77,10 +141,9 @@ export class DataService {
   /**
    * 取得範例二資料
    */
-  public getData2(filterItem: any): Array<any> {
-
+  public getData2(filterItem?: any): Array<any> {
     // TODO 依據查詢條件回傳 Filter 後的結果
-    if (filterItem !== undefined && filterItem.CKB === false) {
+    if (filterItem !== undefined && filterItem.t2 === false) {
       return this.getData1(undefined);
     }
 
