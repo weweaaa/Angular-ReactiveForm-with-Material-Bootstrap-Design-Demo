@@ -1,7 +1,8 @@
-import { Component, forwardRef, OnDestroy } from '@angular/core';
+import { Component, forwardRef, OnDestroy, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ControlItem } from '../../form-controls/form-controls.model';
 
 // 要在元件中實作自訂的 FormControl，記得要 providers 註冊以下內容
 // 教學文：https://dotblogs.com.tw/wellwind/2017/03/20/angular-advanced-customize-component-with-ngmodel
@@ -20,6 +21,20 @@ export const KEYDOWN_INPUT_VALUE_ACCESSOR: any = {
 export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
 
   control: FormControl;
+  displayName: string;
+
+  @Input()
+  public get controlItem(): ControlItem {
+    return this._controlItem;
+  }
+  public set controlItem(v: ControlItem) {
+    this._controlItem = v;
+
+    if (this._controlItem) {
+      this.displayName = this._controlItem.displayName;
+    }
+  }
+  private _controlItem: ControlItem;
 
   private _onChange: (val: string) => void;
   private _onTouch: (val: string) => void;

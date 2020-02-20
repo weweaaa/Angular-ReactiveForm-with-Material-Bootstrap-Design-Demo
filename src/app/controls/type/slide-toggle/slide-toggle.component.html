@@ -1,14 +1,3 @@
-<ng-container [formGroup]="customForm">
-  <mat-slide-toggle
-    labelPosition="before"
-    formGroupName="{{ controlItem.id }}"
-    [checked]="controlItem.value"
-  >
-    {{ controlItem.displayName }}
-  </mat-slide-toggle>
-</ng-container>
-
-<!--
-    FormGroup 沒有即時更新值，可能解決辦法
-    https://mlog.club/article/2533710
--->
+<mat-slide-toggle labelPosition="before" [formControl]="control">
+  {{ displayName }}
+</mat-slide-toggle>

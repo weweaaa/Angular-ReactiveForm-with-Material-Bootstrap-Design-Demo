@@ -1,21 +1,13 @@
-<section class="section" [formGroup]="customForm">
-  <label style="margin: 0 10px;">{{ controlItem.displayName }} : </label>
-  <mat-radio-group
-    labelPosition="before"
-    formGroupName="{{ controlItem.id }}"
-    [value]="controlItem.value"
-  >
-  <!-- TODO 選取切換事件尚無法正常動態更新 FormControl 物件 -->
-  <!--
-      FormGroup 沒有即時更新值，可能解決辦法
-      https://mlog.club/article/2533710
-  -->
+<section class="section">
+  <label style="margin: 0 10px;">{{ displayName }} : </label>
+  <mat-radio-group labelPosition="before" [formControl]="control">
     <mat-radio-button
-      *ngFor="let selectItem of controlItem.dataSource"
+      *ngFor="let r of dataSource; let i = index"
       style="margin: 0 10px;"
-      [value]="selectItem.key"
+      [checked]="i === 0"
+      [value]="r.key"
     >
-      {{ selectItem.value }}
+      {{ r.value }}
     </mat-radio-button>
   </mat-radio-group>
 </section>

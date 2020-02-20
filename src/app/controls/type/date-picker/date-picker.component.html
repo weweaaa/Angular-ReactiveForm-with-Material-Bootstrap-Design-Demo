@@ -1,13 +1,15 @@
-<mat-form-field [formGroup]="customForm">
+<mat-form-field>
   <input
     matInput
     readonly
     [matDatepicker]="tpicker"
     (dateChange)="setTimeValue($event)"
-    placeholder="{{ controlItem.displayName }}"
-    [value]="controlItem.value"
-    formControlName="{{ controlItem.id }}"
+    [formControl]="control"
+    [placeholder]="displayName"
   />
-  <mat-datepicker-toggle matSuffix [for]="tpicker"></mat-datepicker-toggle>
+  <mat-datepicker-toggle
+    matSuffix
+    [for]="tpicker"
+  ></mat-datepicker-toggle>
   <mat-datepicker #tpicker></mat-datepicker>
 </mat-form-field>

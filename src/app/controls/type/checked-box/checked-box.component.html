@@ -1,11 +1,13 @@
-<!-- 補充說明：formGroup 定義不能定義在 mat-checkbox 上，
-因為 mat-checkbox 上要定義 formControlName，所以不能再使用 formGroup -->
-<ng-container [formGroup]="customForm">
+<mat-checkbox labelPosition="before" [formControl]="control">
+  {{ displayName }}
+</mat-checkbox>
+
+<!-- <div>
+  {{ displayName }}
   <mat-checkbox
-    labelPosition="before"
-    formControlName="{{ controlItem.id }}"
-    [value]="controlItem.value"
+    [formControl]="control"
+    style="margin: 0 10px;"
+    *ngFor="let r of dataSource"
+    >{{ r.value }}</mat-checkbox
   >
-    {{ controlItem.displayName }}
-  </mat-checkbox>
-</ng-container>
+</div> -->

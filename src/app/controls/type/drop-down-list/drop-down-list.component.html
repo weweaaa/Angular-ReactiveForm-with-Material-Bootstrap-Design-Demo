@@ -1,11 +1,8 @@
-<mat-form-field [formGroup]="customForm">
-  <mat-label>{{ controlItem.displayName }}</mat-label>
-  <mat-select
-    [value]="controlItem.value"
-    formControlName="{{ controlItem.id }}"
-  >
-    <mat-option [value]="''">-- 請選擇 --</mat-option>
-    <mat-option *ngFor="let r of controlItem.dataSource" [value]="r.key">
+<mat-form-field>
+  <mat-label>{{ displayName }}</mat-label>
+  <mat-select [formControl]="control">
+    <!-- <mat-option [value]="''">-- 請選擇 --</mat-option> -->
+    <mat-option *ngFor="let r of dataSource" [value]="r.key">
       {{ r.value }}
     </mat-option>
   </mat-select>

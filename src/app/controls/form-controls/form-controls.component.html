@@ -9,41 +9,42 @@
             <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
             <app-keydown-input *ngSwitchCase="CType[CType.KeywordInput]"
               formControlName="{{ item.id }}"
+              [controlItem]="item"
             ></app-keydown-input>
 
             <!-- Checked Box Type  -->
             <app-checked-box *ngSwitchCase="CType[CType.CheckBox]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-checked-box>
 
             <!-- RadioButton Type  -->
             <app-radio-button *ngSwitchCase="CType[CType.RadioButtonList]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-radio-button>
 
             <!-- SlideToggle Type  -->
             <app-slide-toggle *ngSwitchCase="CType[CType.SlideChecked]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-slide-toggle>
 
             <!-- TimePicker Type  -->
             <app-time-picker *ngSwitchCase="CType[CType.TimePicker]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-time-picker>
 
             <!-- DatePicker Type  -->
             <app-date-picker *ngSwitchCase="CType[CType.DatePicker]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-date-picker>
 
             <!-- DropDownList Type  -->
             <app-drop-down-list *ngSwitchCase="CType[CType.DropDownList]"
-              [customForm]="customForm"
+              formControlName="{{ item.id }}"
               [controlItem]="item"
             ></app-drop-down-list>
 
