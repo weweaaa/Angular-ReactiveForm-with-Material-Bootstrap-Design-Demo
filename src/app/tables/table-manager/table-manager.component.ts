@@ -44,6 +44,20 @@ export class TableManagerComponent implements OnInit {
   /** 資料表分頁筆數 [預設50筆] */
   @Input() pageSize: number;
 
+  /** 是否顯示新增按鈕 */
+  @Input() isShowAddButton: boolean;
+  /** 是否顯示編輯按鈕 */
+  @Input() isShowEditButton: boolean;
+  /** 是否顯示刪除按鈕 */
+  @Input() isShowDeleteButton: boolean;
+
+  /** 新增資料 事件 */
+  @Output() addRowEvent = new EventEmitter<any>();
+  /** 編輯勾選的資料 事件 */
+  @Output() editRowEvent = new EventEmitter<any>();
+  /** 刪除勾選的資料 事件 */
+  @Output() deleteRowEvent = new EventEmitter<any>();
+
   /** 勾選事件發生，當下勾選的清單 */
   @Output() isSelectedEvent = new EventEmitter<any>();
   /** 全部勾選清單異動發生，目前所有勾選的清單 */
@@ -131,6 +145,11 @@ export class TableManagerComponent implements OnInit {
 
       /** 加上 CheckBox 按鈕欄位 */
       this.AlldataElementsColumns = ['select', ...dataElementsColumns];
+
+      /** 判斷是否需要加上 按鈕欄位 */
+      if (this.isShowAddButton || this.isShowEditButton || this.isShowDeleteButton) {
+        this.AlldataElementsColumns = [...this.AlldataElementsColumns, 'btn'];
+      }
 
       return sourceCol;
 
@@ -235,4 +254,18 @@ export class TableManagerComponent implements OnInit {
   }
 
   // ------------------------------------------------------------------------------------------------------
+  add() {
+    console.log('add event');
+    this.addRowEvent.emit();
+  }
+
+  edit(event: any) {
+    console.log('edit event click :', event);
+    this.editRowEvent.emit(event);
+  }
+
+  delete(event: any) {
+    console.log('delete event click :', event);
+    this.deleteRowEvent.emit(event);
+  }
 }

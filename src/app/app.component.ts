@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ControlItem, ControlType } from './controls/form-controls/form-controls.model';
 import { DialogFormControlsComponent } from './controls/dialog-form-controls/dialog-form-controls.component';
 import { MatDialog } from '@angular/material';
-import { DataService } from './Core/data.service';
+import { DataService } from './core/data.service';
 
 @Component({
   selector: 'app-root',
