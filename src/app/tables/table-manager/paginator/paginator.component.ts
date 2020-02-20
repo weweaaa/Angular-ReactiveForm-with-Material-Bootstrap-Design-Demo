@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-paginator',
@@ -7,6 +7,8 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnInit {
+
+  @ViewChild('myPaginator') myPaginator: MatPaginator;
 
   /** 總資料筆數 */
   @Input()
@@ -17,6 +19,10 @@ export class PaginatorComponent implements OnInit {
   public set rowCount(count: number) {
     this.pageIndex = 0;
     this._rowCount = count;
+
+    if (this.myPaginator) {
+      this.myPaginator.firstPage();
+    }
   }
   private _rowCount: number;
 
