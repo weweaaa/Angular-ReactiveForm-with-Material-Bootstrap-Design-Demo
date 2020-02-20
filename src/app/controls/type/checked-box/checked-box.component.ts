@@ -2,7 +2,7 @@ import { Component, OnDestroy, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ControlItem } from '../../form-controls/form-controls.model';
+import { ControlItem, ControlType } from '../../form-controls/form-controls.model';
 
 export const CHECKED_BOX_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -20,7 +20,7 @@ export class CheckedBoxComponent implements ControlValueAccessor, OnDestroy {
 
   control: FormControl;
   displayName: string;
-  // dataSource: string | Array<{ key: string, value: string }>;
+  dataSource: string | Array<{ key: string, value: string }>;
 
   @Input()
   public get controlItem(): ControlItem {
@@ -30,9 +30,9 @@ export class CheckedBoxComponent implements ControlValueAccessor, OnDestroy {
     this._controlItem = v;
     if (this._controlItem) {
       this.displayName = this._controlItem.displayName;
-      // if (ControlType[this._controlItem.controlType] === ControlType[ControlType.CheckBoxList]) {
-      //   this.dataSource = this._controlItem.dataSource;
-      // }
+      if (ControlType[this._controlItem.controlType] === ControlType[ControlType.CheckBoxList]) {
+        this.dataSource = this._controlItem.dataSource;
+      }
     }
   }
   private _controlItem: ControlItem;
@@ -55,7 +55,6 @@ export class CheckedBoxComponent implements ControlValueAccessor, OnDestroy {
 
   /** 外部傳入值變化就會觸發此方法 */
   writeValue(obj: any): void {
-
     // 判斷 control 是否為 undefined
     if (!this.control) {
       this.control = new FormControl(obj);

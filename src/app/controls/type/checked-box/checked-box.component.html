@@ -1,13 +1,26 @@
-<mat-checkbox labelPosition="before" [formControl]="control">
-  {{ displayName }}
-</mat-checkbox>
+<!-- 一般勾選項 true/false -->
+<ng-container *ngIf="!dataSource">
+  <mat-checkbox labelPosition="before" [formControl]="control">
+    {{ displayName }}
+  </mat-checkbox>
+</ng-container>
 
-<!-- <div>
-  {{ displayName }}
-  <mat-checkbox
-    [formControl]="control"
-    style="margin: 0 10px;"
-    *ngFor="let r of dataSource"
-    >{{ r.value }}</mat-checkbox
-  >
-</div> -->
+<!-- 多選單勾選 -->
+<ng-container *ngIf="dataSource">
+  <!-- <div>
+    {{ displayName }}
+    <mat-checkbox
+      [formControl]="control"
+      style="margin: 0 10px;"
+      *ngFor="let r of dataSource"
+      >{{ r.value }}</mat-checkbox
+    >
+  </div> -->
+
+  <mat-selection-list [formControl]="control">
+    {{ displayName }}
+    <mat-list-option *ngFor="let r of dataSource" [id]="r.key">
+      {{ r.value }}
+    </mat-list-option>
+  </mat-selection-list>
+</ng-container>

@@ -22,7 +22,7 @@ export class FormControlsComponent implements OnInit {
       // debugger;
 
       // id 對應的就是 formControlName，value 對應的就是 formControl 內的 value
-      return { ...obj, [id]: value };
+      return { ...obj, [id]: [value] };
       // 如果想要透過外部傳入預設是否 disabled/enable 則使用以下語法進行設定
       // return { ...obj, [id]: { value, disabled: true } };
     }, {});

@@ -38,14 +38,30 @@ export class DataService {
 
     return [
       { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
-      { id: 'name', displayName: '我是 Name', value: '', controlType: ControlType.RadioButtonList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      {
+        id: 'name', displayName: '我是 Name', value: '',
+        controlType: ControlType.RadioButtonList,
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
       { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
-      { id: 'symbol', displayName: '我是 Symbol', value: '', controlType: ControlType.DropDownList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      {
+        id: 'symbol', displayName: '我是 Symbol', value: '',
+        controlType: ControlType.DropDownList,
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
 
       { id: 'position1', displayName: '我是 Position1', value: '', controlType: ControlType.TimePicker },
-      { id: 'name1', displayName: '我是 Name1', value: '', controlType: ControlType.RadioButtonList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      {
+        id: 'name1', displayName: '我是 Name1', value: '',
+        controlType: ControlType.RadioButtonList,
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
       { id: 'weight1', displayName: '我是 Weight1', value: '', controlType: ControlType.SlideChecked },
-      { id: 'symbol1', displayName: '我是 Symbol1', value: '', controlType: ControlType.DropDownList, dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }] },
+      {
+        id: 'symbol1', displayName: '我是 Symbol1', value: '',
+        controlType: ControlType.DropDownList,
+        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+      },
       { id: 'position2', displayName: '我是 Position2', value: '', controlType: ControlType.DatePicker },
       { id: 'name2', displayName: '我是 Name2', value: '', controlType: ControlType.KeywordInput },
       { id: 'weight2', displayName: '我是 Weight2', value: '', controlType: ControlType.KeywordInput },
@@ -97,6 +113,14 @@ export class DataService {
   public getFilterConfing(): ControlItem[] {
     return [
       { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: 'xx' },
+      {
+        id: 'Test',
+        displayName: '多選單', value: ['B'],
+        controlType: ControlType.CheckBoxList,
+        dataSource: [
+          { key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }
+        ]
+      },
       { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
       {
         id: 't3',

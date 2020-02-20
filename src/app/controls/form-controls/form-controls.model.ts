@@ -13,7 +13,7 @@ export class ControlItem {
   controlType: ControlType;
 
   /** Control 值 */
-  value?: string | boolean;
+  value?: string | boolean | string[];
 
   dataSource?: string | Array<{ key: string, value: string }>;
 
@@ -24,7 +24,7 @@ export class ControlItem {
 
   constructor(
     id: string, displayName: string, controlType: ControlType,
-    value?: string, dataSource?: string | Array<{ key: string, value: string }>,
+    value?: string | boolean  | string[], dataSource?: string | Array<{ key: string, value: string }>,
     disable?: boolean, hidden?: boolean) {
     this.id = id;
     this.displayName = displayName;

@@ -4,51 +4,59 @@
       <ng-container *ngFor="let item of dataSource; let i = index;">
         <div class="w-100" *ngIf="getDivW100(i)"></div>
         <div class="col-sm" [ngSwitch]="CType[item.controlType]">
+          <!-- Input Type  -->
+          <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
+          <app-keydown-input
+            *ngSwitchCase="CType[CType.KeywordInput]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-keydown-input>
 
-            <!-- Input Type  -->
-            <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
-            <app-keydown-input *ngSwitchCase="CType[CType.KeywordInput]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-keydown-input>
+          <!-- Checked Box Type  -->
+          <app-checked-box
+            *ngSwitchCase="
+              CType[item.controlType] === CType[CType.CheckBox] ||
+              CType[item.controlType] === CType[CType.CheckBoxList] ? CType[item.controlType] : ''"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-checked-box>
 
-            <!-- Checked Box Type  -->
-            <app-checked-box *ngSwitchCase="CType[CType.CheckBox]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-checked-box>
+          <!-- RadioButton Type  -->
+          <app-radio-button
+            *ngSwitchCase="CType[CType.RadioButtonList]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-radio-button>
 
-            <!-- RadioButton Type  -->
-            <app-radio-button *ngSwitchCase="CType[CType.RadioButtonList]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-radio-button>
+          <!-- SlideToggle Type  -->
+          <app-slide-toggle
+            *ngSwitchCase="CType[CType.SlideChecked]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-slide-toggle>
 
-            <!-- SlideToggle Type  -->
-            <app-slide-toggle *ngSwitchCase="CType[CType.SlideChecked]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-slide-toggle>
+          <!-- TimePicker Type  -->
+          <app-time-picker
+            *ngSwitchCase="CType[CType.TimePicker]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-time-picker>
 
-            <!-- TimePicker Type  -->
-            <app-time-picker *ngSwitchCase="CType[CType.TimePicker]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-time-picker>
+          <!-- DatePicker Type  -->
+          <app-date-picker
+            *ngSwitchCase="CType[CType.DatePicker]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-date-picker>
 
-            <!-- DatePicker Type  -->
-            <app-date-picker *ngSwitchCase="CType[CType.DatePicker]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-date-picker>
+          <!-- DropDownList Type  -->
+          <app-drop-down-list
+            *ngSwitchCase="CType[CType.DropDownList]"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-drop-down-list>
 
-            <!-- DropDownList Type  -->
-            <app-drop-down-list *ngSwitchCase="CType[CType.DropDownList]"
-              formControlName="{{ item.id }}"
-              [controlItem]="item"
-            ></app-drop-down-list>
-
-            <!-- Input Type  -->
+          <!-- Input Type  -->
         </div>
       </ng-container>
     </form>
