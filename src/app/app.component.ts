@@ -133,18 +133,13 @@ export class AppComponent implements OnInit {
         // ---------------------------------------------------
         if (this.dataService.editData(result) === true) {
 
-          const editTempData = [...this.dataTableSource];
+          this.dataTableSource = this.dataTableSource.filter(val => +val.id !== +event.id);
 
-          editTempData.forEach((val) => {
-            if (val.id === result.id) {
-              alert('update success...');
-              const editKeys = Object.keys(result.id);
-              editKeys.forEach(valk => val[valk] = result[result]);
-              console.log(editTempData);
-            }
-          });
+          console.log('start this.dataTableSource :', this.dataTableSource);
 
-          this.dataTableSource = [...editTempData];
+          this.dataTableSource = [result, ...this.dataTableSource];
+
+          console.log('end this.dataTableSource :', this.dataTableSource);
         }
         // ---------------------------------------------------
       }

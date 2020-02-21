@@ -88,6 +88,11 @@ export class DatePickerComponent implements ControlValueAccessor, OnDestroy {
   }
 
   // --------------- Custom Setting ---------------
+  /** 使用者設定時間查詢條件 */
+  // setTimeValue(setDate: MatDatepickerInputEvent<Moment>) {
+  //   this.controlItem.value = setDate.value.format('YYYY-MM-DD');
+  // }
+
   /** 取得今天日期 */
   getNowDate() {
     const today = new Date();
