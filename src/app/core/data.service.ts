@@ -21,7 +21,7 @@ export class DataService {
   /** 取得資料表定義 */
   public getTableSchema1(filterItem?: any): ControlItem[] {
     return [
-      { id: 'id', displayName: '我是 ID', value: '', disable: false, controlType: ControlType.KeywordInput },
+      { id: 'id', displayName: '我是 ID', value: '', disable: true, hidden: false, controlType: ControlType.KeywordInput },
       { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
       { id: 'name', displayName: '我是 Name', value: '', controlType: ControlType.KeywordInput },
       { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
@@ -112,35 +112,69 @@ export class DataService {
   /** 取得查詢條件設定檔 */
   public getFilterConfing(): ControlItem[] {
     return [
-      { id: 't1', displayName: 'Input', controlType: ControlType.KeywordInput, value: 'xx' },
       {
-        id: 'Test',
-        displayName: '多選單', value: ['B'],
+        id: 'position',
+        displayName: 'Position 查詢',
+        value: '123',
+        disable: true,
+        hidden: false,
+        controlType: ControlType.KeywordInput,
+        dataSource: undefined
+      },
+      {
+        id: 'DatePicker',
+        displayName: 'DatePicker 查詢',
+        value: '',
+        controlType: ControlType.DatePicker, dataSource: undefined
+      },
+      {
+        id: 'SlideChecked',
+        displayName: 'SlideChecked 查詢',
+        value: 'true',
+        controlType: ControlType.SlideChecked,
+        dataSource: undefined
+      },
+      {
+        id: 'Time',
+        displayName: 'Time 查詢',
+        value: '',
+        controlType: ControlType.TimePicker,
+        dataSource: undefined
+      },
+      {
+        id: 'CKB',
+        displayName: '查詢大資料',
+        value: 'true',
+        controlType: ControlType.CheckBoxList, dataSource: undefined
+      },
+      {
+        id: 'CKB2',
+        displayName: '查詢大資料',
+        value: ['B'],
+        disable: false,
+        hidden: false,
         controlType: ControlType.CheckBoxList,
         dataSource: [
           { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
         ]
       },
-      { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
       {
-        id: 't3',
-        displayName: 'test3',
-        controlType: ControlType.RadioButtonList,
-        value: 'A',
-        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
-      },
-      { id: 't4', displayName: 'test4', controlType: ControlType.SlideChecked, value: true },
-      { id: 't5', displayName: 'test5', controlType: ControlType.KeywordInput, value: '' },
-      {
-        id: 't6',
-        displayName: 'test3',
+        id: 'DDL',
+        displayName: 'DDL 查詢',
+        value: '',
         controlType: ControlType.DropDownList,
-        value: 'A',
-        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
+        dataSource: [
+          { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
+        ]
       },
-      { id: 't7', displayName: 'test6', controlType: ControlType.DatePicker, value: '' },
-      { id: 't8', displayName: 'test7', controlType: ControlType.TimePicker, value: '' },
-      { id: 't9', displayName: 'test8', controlType: ControlType.CheckBox, value: '' },
+      {
+        id: 'Radio',
+        displayName: 'Radio 查詢',
+        value: '',
+        controlType: ControlType.RadioButtonList,
+        dataSource: [
+          { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
+      }
     ];
   }
 

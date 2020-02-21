@@ -1,3 +1,5 @@
-<mat-slide-toggle labelPosition="before" [formControl]="control">
-  {{ displayName }}
-</mat-slide-toggle>
+<div [hidden]="isHidden">
+  <mat-slide-toggle labelPosition="before" [formControl]="control">
+    {{ displayName }}
+  </mat-slide-toggle>
+</div>

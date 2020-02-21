@@ -1,9 +1,11 @@
-<mat-form-field>
-  <mat-label>{{ displayName }}</mat-label>
-  <mat-select [formControl]="control">
-    <!-- <mat-option [value]="''">-- 請選擇 --</mat-option> -->
-    <mat-option *ngFor="let r of dataSource" [value]="r.key">
-      {{ r.lable }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div [hidden]="isHidden">
+  <mat-form-field>
+    <mat-label>{{ displayName }}</mat-label>
+    <mat-select [formControl]="control">
+      <!-- <mat-option [value]="''">-- 請選擇 --</mat-option> -->
+      <mat-option *ngFor="let r of dataSource;" [value]="r.key">
+        {{ r.lable }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

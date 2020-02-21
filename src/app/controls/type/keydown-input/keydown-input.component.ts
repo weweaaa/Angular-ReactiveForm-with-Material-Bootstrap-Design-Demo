@@ -22,6 +22,7 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
 
   control: FormControl;
   displayName: string;
+  isHidden: boolean;
 
   @Input()
   public get controlItem(): ControlItem {
@@ -49,6 +50,11 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
     // 判斷 control 是否為 undefined，如果是則 new FormControl 物件出來，並訂閱 判斷值是否改變的事件
     if (!this.control) {
       this.control = new FormControl(obj);
+
+      /** 判斷是否需要鎖定控制項 */
+      this.setDisabledState(this._controlItem.disable);
+      /** 判斷是否需要引藏控制項 */
+      this.isHidden = this._controlItem.hidden;
 
       // 當外部傳入值 obj 引發 control.valueChanges 實，內部同步引發 noticeValueChange()
       // takeUntil(this.destroy$) 就是為了在 valueChanges 前送出一個訊息到 Subject，以便 Complete Observable

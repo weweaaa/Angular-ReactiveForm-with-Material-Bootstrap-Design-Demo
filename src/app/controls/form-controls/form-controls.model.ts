@@ -19,18 +19,26 @@ export class ControlItem {
 
   /** 是否鎖定控制項 */
   disable?: boolean;
-  /** 是否顯示控制項 */
+  /** 是否隱藏控制項 */
   hidden?: boolean;
+
+  /** Control 驗證條件 */
+  // requiredList: RequiredElement[];
 
   constructor(
     id: string, displayName: string, controlType: ControlType,
-    value?: string | boolean  | string[], dataSource?: string | Array<{ key: string, lable: string }>,
-    disable?: boolean, hidden?: boolean) {
+    value?: string | boolean | string[], dataSource?: any,
+    disable?: boolean, hidden?: boolean) { // , requiredList?: RequiredElement[]) {
+
     this.id = id;
     this.displayName = displayName;
-    this.controlType = controlType;
     this.value = value;
+    this.controlType = controlType;
     this.dataSource = dataSource;
+
+    this.disable = disable === undefined ? false : disable;
+    this.hidden = hidden === undefined ? false : hidden;
+    // this.requiredList = requiredList === undefined ? [] : requiredList;
   }
 }
 

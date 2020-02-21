@@ -1,16 +1,18 @@
-<mat-form-field>
-  <div class="editable-dial-example">
-    <input
-      matInput
-      readonly
-      [ngxTimepicker]="tpicker"
-      [formControl]="control"
-      [placeholder]="displayName"
-    />
-    <ngx-material-timepicker
-      class="timepicker"
-      #tpicker
-      [enableKeyboardInput]="true"
-    ></ngx-material-timepicker>
-  </div>
-</mat-form-field>
+<div [hidden]="isHidden">
+  <mat-form-field>
+    <div class="editable-dial-example">
+      <input
+        matInput
+        readonly
+        [ngxTimepicker]="tpicker"
+        [formControl]="control"
+        [placeholder]="displayName"
+      />
+      <ngx-material-timepicker
+        class="timepicker"
+        #tpicker
+        [enableKeyboardInput]="true"
+      ></ngx-material-timepicker>
+    </div>
+  </mat-form-field>
+</div>

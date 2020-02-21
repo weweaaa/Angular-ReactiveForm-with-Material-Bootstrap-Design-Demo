@@ -1,13 +1,15 @@
-<section class="section">
-  <label style="margin: 0 10px;">{{ displayName }} : </label>
-  <mat-radio-group labelPosition="before" [formControl]="control">
-    <mat-radio-button
-      *ngFor="let r of dataSource; let i = index"
-      style="margin: 0 10px;"
-      [checked]="i === 0"
-      [value]="r.key"
-    >
-      {{ r.lable }}
-    </mat-radio-button>
-  </mat-radio-group>
-</section>
+<div [hidden]="isHidden">
+  <section class="section">
+    <label style="margin: 0 10px;">{{ displayName }} : </label>
+    <mat-radio-group labelPosition="before" [formControl]="control">
+      <mat-radio-button
+        *ngFor="let r of dataSource; let i = index;"
+        style="margin: 0 10px;"
+        [checked]="i === 0"
+        [value]="r.key"
+      >
+        {{ r.lable }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </section>
+</div>

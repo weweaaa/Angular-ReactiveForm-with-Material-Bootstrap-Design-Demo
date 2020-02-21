@@ -20,6 +20,7 @@ export class RadioButtonComponent implements ControlValueAccessor, OnDestroy {
 
   control: FormControl;
   displayName: string;
+  isHidden: boolean;
   dataSource: string | Array<{ key: string, lable: string }>;
 
   @Input()
@@ -57,6 +58,11 @@ export class RadioButtonComponent implements ControlValueAccessor, OnDestroy {
     // 判斷 control 是否為 undefined
     if (!this.control) {
       this.control = new FormControl(obj);
+
+      /** 判斷是否需要鎖定控制項 */
+      this.setDisabledState(this._controlItem.disable);
+      /** 判斷是否需要引藏控制項 */
+      this.isHidden = this._controlItem.hidden;
 
       // 訂閱資料發生變化事件
       this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));

@@ -1,3 +1,5 @@
-<mat-form-field>
-  <input matInput [formControl]="control" [placeholder]="displayName" />
-</mat-form-field>
+<div [hidden]="isHidden">
+  <mat-form-field>
+    <input matInput [formControl]="control" [placeholder]="displayName" />
+  </mat-form-field>
+</div>
