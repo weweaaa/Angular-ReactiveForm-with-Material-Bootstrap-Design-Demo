@@ -55,6 +55,10 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
       this.setDisabledState(this._controlItem.disable);
       /** 判斷是否需要引藏控制項 */
       this.isHidden = this._controlItem.hidden;
+      /** 內部設定檢查規則，或是在 from-control binding 時期設定檢查 */
+      // if (this._controlItem.requiredList && this._controlItem.requiredList.length > 0) {
+      //   this.control.setValidators(this._controlItem.requiredList);
+      // }
 
       // 當外部傳入值 obj 引發 control.valueChanges 實，內部同步引發 noticeValueChange()
       // takeUntil(this.destroy$) 就是為了在 valueChanges 前送出一個訊息到 Subject，以便 Complete Observable

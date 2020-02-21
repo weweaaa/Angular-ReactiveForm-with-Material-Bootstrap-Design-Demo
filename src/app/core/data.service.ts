@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ControlItem, ControlType } from '../controls/form-controls/form-controls.model';
 import { StickyType } from '../tables/table-manager/table-manager.model';
+import { Validators, FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -115,11 +116,41 @@ export class DataService {
       {
         id: 'position',
         displayName: 'Position 查詢',
-        value: '123',
-        disable: true,
+        value: '123@gmail.com',
+        disable: false,
         hidden: false,
         controlType: ControlType.KeywordInput,
-        dataSource: undefined
+        dataSource: undefined,
+        requiredList: [
+          Validators.minLength(2),
+          Validators.maxLength(100),
+          validateEmail   // 使用自訂的驗證 Email 格式方法
+        ]
+      },
+      {
+        id: 'position2',
+        displayName: 'Position2 輸入測試',
+        value: '',
+        disable: false,
+        hidden: false,
+        controlType: ControlType.KeywordInput,
+        dataSource: undefined,
+        requiredList: [
+          Validators.pattern('[a-zA-Z ]*'),  // 使用者自訂正規運算式，限定只能輸入英文大小寫字母
+          Validators.pattern('abc') // 限定輸入必須是 abc，或是不輸入全空
+        ]
+      },
+      {
+        id: 'position3',
+        displayName: 'Position3 email 輸入測試',
+        value: 'zzzzz',
+        disable: false,
+        hidden: false,
+        controlType: ControlType.KeywordInput,
+        dataSource: undefined,
+        requiredList: [
+          Validators.email  // 使用官方的驗證 Email 格式
+        ]
       },
       {
         id: 'DatePicker',
@@ -156,6 +187,9 @@ export class DataService {
         controlType: ControlType.CheckBoxList,
         dataSource: [
           { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
+        ],
+        requiredList: [
+          Validators.required   // 至少勾選一筆
         ]
       },
       {
@@ -538,4 +572,17 @@ export class DataService {
       },
     ];
   }
+}
+
+
+/** 測試自訂驗證方法 */
+export function validateEmail(c: FormControl) {
+  // tslint:disable-next-line: max-line-length
+  const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  return EMAIL_REGEXP.test(c.value) ? null : {
+    validateEmail: {
+      valid: false
+    }
+  };
 }

@@ -1,3 +1,5 @@
+import { ValidatorFn } from '@angular/forms';
+
 /**
  * 定義外部傳入 Custom FormControls 的資料格式
  */
@@ -23,12 +25,12 @@ export class ControlItem {
   hidden?: boolean;
 
   /** Control 驗證條件 */
-  // requiredList: RequiredElement[];
+  requiredList?: ValidatorFn[];
 
   constructor(
     id: string, displayName: string, controlType: ControlType,
     value?: string | boolean | string[], dataSource?: any,
-    disable?: boolean, hidden?: boolean) { // , requiredList?: RequiredElement[]) {
+    disable?: boolean, hidden?: boolean, requiredList?: ValidatorFn[]) {
 
     this.id = id;
     this.displayName = displayName;
@@ -38,7 +40,7 @@ export class ControlItem {
 
     this.disable = disable === undefined ? false : disable;
     this.hidden = hidden === undefined ? false : hidden;
-    // this.requiredList = requiredList === undefined ? [] : requiredList;
+    this.requiredList = requiredList === undefined ? [] : requiredList;
   }
 }
 

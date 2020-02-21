@@ -38,6 +38,10 @@
 
 <hr />
 <FieldSet>
+  <Legend>表單檢查結果</Legend>
+  <pre>{{ !myForm.customForm.invalid | json }}</pre>
+</FieldSet>
+<FieldSet>
   <Legend>即時查看使用者查詢條件輸入狀況</Legend>
   <pre>{{ myForm.customForm.value | json }}</pre>
 </FieldSet>
