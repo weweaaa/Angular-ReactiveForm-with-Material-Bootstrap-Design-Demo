@@ -50,6 +50,12 @@
   [dataSource]="dataTableSource"
   [tableSchema]="tableSchema"
   [reportName]="reportName"
+  [isShowAddButton]="true"
+  [isShowEditButton]="true"
+  [isShowDeleteButton]="true"
+  (addRowEvent)="addData()"
+  (editRowEvent)="editData($event)"
+  (deleteRowEvent)="deleteCheckedList($event)"
   (isSelectedEvent)="isSelectedEvent($event)"
   (selectedAllValueChange)="selectedAllValueChange($event)"
 ></app-table-manager>

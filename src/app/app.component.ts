@@ -94,7 +94,8 @@ export class AppComponent implements OnInit {
   }
 
   /** 編輯一筆資料 */
-  editData() {
+  editData(event?: any) {
+    /* ============ 由外部元件控制 table-manager 的作法 ============
     if (this.selectedList.length === 0) {
       alert('請至少選擇一筆進行編輯!!!');
     } else if (this.selectedList.length > 1) {
@@ -110,48 +111,68 @@ export class AppComponent implements OnInit {
         width: '400px',
         data: dataDialog,
       });
+    */
 
-      // 3. Dialog 組件視窗關閉後的操作動作
-      dialogRef.afterClosed().subscribe(result => {
-        if (result !== undefined) {
-          console.log('關閉事件後接收到的的物件資料內容', result);
+    /** ============ 直接操作 table-manager 事件的做法 ============ */
+    // 2. 開啟 Dialog 組件視窗
+    const dataDialog = this.dataService.getTableSchema1();
+    dataDialog.forEach(val => val.value = event[val.id]);
+
+    const dialogRef = this.dialog.open(DialogFormControlsComponent, {
+      width: '400px',
+      data: dataDialog,
+    });
+
+    // 3. Dialog 組件視窗關閉後的操作動作
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        console.log('關閉事件後接收到的的物件資料內容', result);
 
 
-          // TODO 使用者編輯一筆資料，透過 Service 重新查詢資料
-          // ---------------------------------------------------
-          if (this.dataService.editData(result) === true) {
+        // TODO 使用者編輯一筆資料，透過 Service 重新查詢資料
+        // ---------------------------------------------------
+        if (this.dataService.editData(result) === true) {
 
-            const editTempData = [...this.dataTableSource];
+          const editTempData = [...this.dataTableSource];
 
-            editTempData.forEach((val) => {
-              if (val.id === result.id) {
-                alert('update success...');
-                const editKeys = Object.keys(result.id);
-                editKeys.forEach(valk => val[valk] = result[result]);
-                console.log(editTempData);
-              }
-            });
+          editTempData.forEach((val) => {
+            if (val.id === result.id) {
+              alert('update success...');
+              const editKeys = Object.keys(result.id);
+              editKeys.forEach(valk => val[valk] = result[result]);
+              console.log(editTempData);
+            }
+          });
 
-            this.dataTableSource = [...editTempData];
-          }
-          // ---------------------------------------------------
+          this.dataTableSource = [...editTempData];
         }
-      });
-    }
+        // ---------------------------------------------------
+      }
+    });
+    /* } */
   }
 
   /** 批次刪除資料 */
-  deleteCheckedList() {
+  deleteCheckedList(event?: any) {
+    console.log('使用者批次刪除');
+
+    /* ============ 由外部元件控制 table-manager 的作法 ============
     if (this.selectedList.length > 0) {
-      console.log('使用者批次刪除');
       this.dataTableSource = this.dataTableSource.concat(this.selectedList).filter((val) => {
         return !this.dataTableSource.includes(val) || !this.selectedList.includes(val);
       });
-
       // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
-
     } else {
       alert('請至少選擇一筆');
+    }
+    */
+
+    /** ============ 直接操作 table-manager 事件的做法 ============ */
+    if (event) {
+      this.dataTableSource = this.dataTableSource.concat(event).filter(val =>  val !== event);
+      // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
+    } else {
+      console.log('test2');
     }
   }
   // ---------------------------------------------------------------------
