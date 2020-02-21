@@ -15,7 +15,7 @@ export class ControlItem {
   /** Control 值 */
   value?: string | boolean | string[];
 
-  dataSource?: string | Array<{ key: string, value: string }>;
+  dataSource?: string | Array<{ key: string, lable: string }>;
 
   /** 是否鎖定控制項 */
   disable?: boolean;
@@ -24,7 +24,7 @@ export class ControlItem {
 
   constructor(
     id: string, displayName: string, controlType: ControlType,
-    value?: string | boolean  | string[], dataSource?: string | Array<{ key: string, value: string }>,
+    value?: string | boolean  | string[], dataSource?: string | Array<{ key: string, lable: string }>,
     disable?: boolean, hidden?: boolean) {
     this.id = id;
     this.displayName = displayName;

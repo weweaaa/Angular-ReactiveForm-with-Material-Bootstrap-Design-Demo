@@ -20,7 +20,7 @@ export class CheckedBoxComponent implements ControlValueAccessor, OnDestroy {
 
   control: FormControl;
   displayName: string;
-  dataSource: string | Array<{ key: string, value: string }>;
+  dataSource: string | Array<{ key: string, lable: string }>;
 
   @Input()
   public get controlItem(): ControlItem {

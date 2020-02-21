@@ -13,14 +13,16 @@
       [formControl]="control"
       style="margin: 0 10px;"
       *ngFor="let r of dataSource"
-      >{{ r.value }}</mat-checkbox
+      >{{ r.lable }}</mat-checkbox
     >
   </div> -->
 
   <mat-selection-list [formControl]="control">
     {{ displayName }}
-    <mat-list-option *ngFor="let r of dataSource" [id]="r.key">
-      {{ r.value }}
+
+    <!-- 注意要記得給予 value 值，代表此控制項選擇的值， r.lable 是用來呈現給使用者的文字 -->
+    <mat-list-option *ngFor="let r of dataSource" [id]="r.key" [value]="r.key">
+      {{ r.lable }}
     </mat-list-option>
   </mat-selection-list>
 </ng-container>

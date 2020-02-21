@@ -41,26 +41,26 @@ export class DataService {
       {
         id: 'name', displayName: '我是 Name', value: '',
         controlType: ControlType.RadioButtonList,
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
       { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
       {
         id: 'symbol', displayName: '我是 Symbol', value: '',
         controlType: ControlType.DropDownList,
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
 
       { id: 'position1', displayName: '我是 Position1', value: '', controlType: ControlType.TimePicker },
       {
         id: 'name1', displayName: '我是 Name1', value: '',
         controlType: ControlType.RadioButtonList,
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
       { id: 'weight1', displayName: '我是 Weight1', value: '', controlType: ControlType.SlideChecked },
       {
         id: 'symbol1', displayName: '我是 Symbol1', value: '',
         controlType: ControlType.DropDownList,
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
       { id: 'position2', displayName: '我是 Position2', value: '', controlType: ControlType.DatePicker },
       { id: 'name2', displayName: '我是 Name2', value: '', controlType: ControlType.KeywordInput },
@@ -118,7 +118,7 @@ export class DataService {
         displayName: '多選單', value: ['B'],
         controlType: ControlType.CheckBoxList,
         dataSource: [
-          { key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }
+          { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
         ]
       },
       { id: 't2', displayName: 'CKkk', controlType: ControlType.CheckBox, value: true },
@@ -127,7 +127,7 @@ export class DataService {
         displayName: 'test3',
         controlType: ControlType.RadioButtonList,
         value: 'A',
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
       { id: 't4', displayName: 'test4', controlType: ControlType.SlideChecked, value: true },
       { id: 't5', displayName: 'test5', controlType: ControlType.KeywordInput, value: '' },
@@ -136,7 +136,7 @@ export class DataService {
         displayName: 'test3',
         controlType: ControlType.DropDownList,
         value: 'A',
-        dataSource: [{ key: 'A', value: 'A!' }, { key: 'B', value: 'B!' }]
+        dataSource: [{ key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
       },
       { id: 't7', displayName: 'test6', controlType: ControlType.DatePicker, value: '' },
       { id: 't8', displayName: 'test7', controlType: ControlType.TimePicker, value: '' },
