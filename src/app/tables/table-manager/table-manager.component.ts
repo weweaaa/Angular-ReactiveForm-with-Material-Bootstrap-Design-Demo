@@ -29,6 +29,8 @@ export class TableManagerComponent implements OnInit {
   AlldataElementsColumns: string[];
   dataElementsColumns: string[];
 
+  // -------------------------------------------------------------
+
   /** 外部傳遞資料表 名稱 */
   @Input() reportName: string;
   private _dataSource: Array<any>;
@@ -37,12 +39,15 @@ export class TableManagerComponent implements OnInit {
   /** 尾巴凍結欄位清單 */
   @Input() stickyEndColumns: string[];
   /** 隱藏欄位清單 */
-  @Input() disableColumns: string[];
+  @Input() hiddenColumns: string[];
 
   /** 資料表結構定義，同新增時使用的 ControlItem[]  */
   @Input() tableSchema: ControlItem[];
   /** 資料表分頁筆數 [預設50筆] */
   @Input() pageSize: number;
+
+  /** 是否顯示勾選欄位 */
+  @Input() isShowCheckBox: boolean;
 
   /** 是否顯示新增按鈕 */
   @Input() isShowAddButton: boolean;
@@ -50,6 +55,8 @@ export class TableManagerComponent implements OnInit {
   @Input() isShowEditButton: boolean;
   /** 是否顯示刪除按鈕 */
   @Input() isShowDeleteButton: boolean;
+
+  // -------------------------------------------------------------
 
   /** 新增資料 事件 */
   @Output() addRowEvent = new EventEmitter<any>();
@@ -63,6 +70,7 @@ export class TableManagerComponent implements OnInit {
   /** 全部勾選清單異動發生，目前所有勾選的清單 */
   @Output() selectedAllValueChange = new EventEmitter<any>();
 
+  // -------------------------------------------------------------
 
   /** 使用者勾選設定 */
   allSelection = new SelectionModel<any>(true, []);
@@ -121,7 +129,7 @@ export class TableManagerComponent implements OnInit {
 
       // 資料表定義 轉換模型 範例數據
       // [
-      //   { id: 'id', displayName: '我是 ID', value: '', disable: false, controlType: ControlType.KeywordInput },
+      //   { id: 'id', displayName: '我是 ID', value: '', disabled: false, controlType: ControlType.KeywordInput },
       //   { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker, dataSource: undefined },
       // ]
 
@@ -134,8 +142,8 @@ export class TableManagerComponent implements OnInit {
 
       // 處理隱藏欄位
       const dataElementsColumns = sourceCol.map(val => val.key).filter((val) => {
-        if (this.disableColumns) {
-          if (!this.disableColumns.includes('_HideSticky')) {
+        if (this.hiddenColumns) {
+          if (!this.hiddenColumns.includes('_HideSticky')) {
             return val;
           }
         } else {
@@ -143,8 +151,12 @@ export class TableManagerComponent implements OnInit {
         }
       });
 
+      this.AlldataElementsColumns = [...dataElementsColumns];
+
       /** 加上 CheckBox 按鈕欄位 */
-      this.AlldataElementsColumns = ['select', ...dataElementsColumns];
+      if (this.isShowCheckBox) {
+        this.AlldataElementsColumns = ['select', ...this.AlldataElementsColumns];
+      }
 
       /** 判斷是否需要加上 按鈕欄位 */
       if (this.isShowAddButton || this.isShowEditButton || this.isShowDeleteButton) {

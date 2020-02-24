@@ -22,7 +22,7 @@ export class DataService {
   /** 取得資料表定義 */
   public getTableSchema1(filterItem?: any): ControlItem[] {
     return [
-      { id: 'id', displayName: '我是 ID', value: '', disable: true, hidden: false, controlType: ControlType.KeywordInput },
+      { id: 'id', displayName: '我是 ID', value: '', disabled: true, hidden: false, controlType: ControlType.KeywordInput },
       { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
       { id: 'name', displayName: '我是 Name', value: '', controlType: ControlType.KeywordInput },
       { id: 'weight', displayName: '我是 Weight', value: '', controlType: ControlType.KeywordInput },
@@ -117,7 +117,7 @@ export class DataService {
         id: 'position',
         displayName: 'Position 查詢',
         value: '123@gmail.com',
-        disable: false,
+        disabled: false,
         hidden: false,
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
@@ -131,7 +131,7 @@ export class DataService {
         id: 'position2',
         displayName: 'Position2 輸入測試',
         value: '',
-        disable: false,
+        disabled: false,
         hidden: false,
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
@@ -144,7 +144,7 @@ export class DataService {
         id: 'position3',
         displayName: 'Position3 email 輸入測試',
         value: 'zzzzz',
-        disable: false,
+        disabled: false,
         hidden: false,
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
@@ -182,7 +182,7 @@ export class DataService {
         id: 'CKB2',
         displayName: '查詢大資料',
         value: ['B'],
-        disable: false,
+        disabled: false,
         hidden: false,
         controlType: ControlType.CheckBoxList,
         dataSource: [

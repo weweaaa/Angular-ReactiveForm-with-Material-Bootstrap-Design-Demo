@@ -20,7 +20,7 @@ export class ControlItem {
   dataSource?: string | Array<{ key: string, lable: string }>;
 
   /** 是否鎖定控制項 */
-  disable?: boolean;
+  disabled?: boolean;
   /** 是否隱藏控制項 */
   hidden?: boolean;
 
@@ -30,7 +30,7 @@ export class ControlItem {
   constructor(
     id: string, displayName: string, controlType: ControlType,
     value?: string | boolean | string[], dataSource?: any,
-    disable?: boolean, hidden?: boolean, requiredList?: ValidatorFn[]) {
+    disabled?: boolean, hidden?: boolean, requiredList?: ValidatorFn[]) {
 
     this.id = id;
     this.displayName = displayName;
@@ -38,7 +38,7 @@ export class ControlItem {
     this.controlType = controlType;
     this.dataSource = dataSource;
 
-    this.disable = disable === undefined ? false : disable;
+    this.disabled = disabled === undefined ? false : disabled;
     this.hidden = hidden === undefined ? false : hidden;
     this.requiredList = requiredList === undefined ? [] : requiredList;
   }

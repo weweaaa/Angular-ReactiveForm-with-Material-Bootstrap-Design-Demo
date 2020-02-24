@@ -151,23 +151,22 @@ export class AppComponent implements OnInit {
   deleteCheckedList(event?: any) {
     console.log('使用者批次刪除');
 
-    /* ============ 由外部元件控制 table-manager 的作法 ============
-    if (this.selectedList.length > 0) {
+    /* ============ 由外部元件控制 table-manager 的作法 ============ */
+    if (!event && this.selectedList.length > 0) {
       this.dataTableSource = this.dataTableSource.concat(this.selectedList).filter((val) => {
         return !this.dataTableSource.includes(val) || !this.selectedList.includes(val);
       });
       // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
     } else {
-      alert('請至少選擇一筆');
+      // alert('請至少選擇一筆');
     }
-    */
 
     /** ============ 直接操作 table-manager 事件的做法 ============ */
     if (event) {
-      this.dataTableSource = this.dataTableSource.concat(event).filter(val =>  val !== event);
+      this.dataTableSource = this.dataTableSource.concat(event).filter(val => val !== event);
       // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
     } else {
-      console.log('test2');
+      // console.log('selected data is null');
     }
   }
   // ---------------------------------------------------------------------

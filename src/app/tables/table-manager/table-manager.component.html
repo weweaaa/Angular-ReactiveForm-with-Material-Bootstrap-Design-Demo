@@ -48,7 +48,7 @@
 
     <!-- 直接建一個欄位是 控制功能相關的，在裡面塞按鈕 -->
     <!-- Checkbox Column -->
-    <ng-container [matColumnDef]="'btn'" [stickyEnd]="true">
+    <ng-container *ngIf="isShowCheckBox" [matColumnDef]="'btn'" [stickyEnd]="true">
       <th mat-header-cell *matHeaderCellDef>
         <button mat-mini-fab color="warn"
           *ngIf="isShowAddButton"
