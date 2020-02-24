@@ -11,6 +11,7 @@ import { RadioButtonComponent } from './type/radio-button/radio-button.component
 import { SlideToggleComponent } from './type/slide-toggle/slide-toggle.component';
 import { DropDownListComponent } from './type/drop-down-list/drop-down-list.component';
 import { DialogFormControlsComponent } from './dialog-form-controls/dialog-form-controls.component';
+import { MultipleDropDownListComponent } from './type/multiple-drop-down-list/multiple-drop-down-list.component';
 
 
 
@@ -24,7 +25,8 @@ import { DialogFormControlsComponent } from './dialog-form-controls/dialog-form-
     RadioButtonComponent,
     SlideToggleComponent,
     DropDownListComponent,
-    DialogFormControlsComponent
+    DialogFormControlsComponent,
+    MultipleDropDownListComponent
   ],
   exports: [FormControlsComponent, DialogFormControlsComponent],
   imports: [

@@ -10,35 +10,28 @@ import { ControlItem, ControlType } from './form-controls.model';
 export class FormControlsComponent implements OnInit {
 
   @Input()
-  get dataSource(): Array<ControlItem> {
+  get dataSource() {
     return this._dataSource;
   }
   set dataSource(v: Array<ControlItem>) {
+    const controlsConfig = v.reduce((obj, { id, value, disabled, requiredList }) => {
 
-    // 透過 array.reduce 來攤平陣列整理出希望取得的資料物件
-    const controlsConfig = v.reduce((obj, { id, value, requiredList }) => {
-
-      // 補充：Angular 運行時，如果想要下中斷點，可以使用此語法
+      // Angular 運行時，可以使用的中斷點
       // debugger;
-
-      // id 對應的就是 formControlName，value 對應的就是 formControl 內的 value
       if (requiredList && requiredList.length > 0) {
         /** 設定檢查規則 */
-        return { ...obj, [id]: [value, requiredList] };
+        return { ...obj, [id]: [{ value, disabled }, requiredList] };
       } else {
-        return { ...obj, [id]: [value] };
+        return { ...obj, [id]: [value, { disabled }] };
       }
-
-      // 如果想要透過外部傳入預設是否 disabled/enable 則使用以下語法進行設定
-      // return { ...obj, [id]: { value, disabled: true } };
     }, {});
 
-    // 將 formGroup 設定塞給想要定義的 form 物件
     this.customForm = this.fb.group(controlsConfig);
-    // 儲存外部傳入的 formGroup 設定檔
     this._dataSource = v;
 
-    // this.TestE2E();
+    // setInterval(() => {
+    //   console.log('error :', this.form.valid);
+    // }, 1000);
   }
   // tslint:disable-next-line: variable-name
   private _dataSource: Array<ControlItem>;

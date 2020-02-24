@@ -52,7 +52,7 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
       this.control = new FormControl(obj);
 
       /** 判斷是否需要鎖定控制項 */
-      this.setDisabledState(this._controlItem.disabled);
+      // this.setDisabledState(this._controlItem.disabled);
       /** 判斷是否需要引藏控制項 */
       this.isHidden = this._controlItem.hidden;
       /** 內部設定檢查規則，或是在 from-control binding 時期設定檢查 */

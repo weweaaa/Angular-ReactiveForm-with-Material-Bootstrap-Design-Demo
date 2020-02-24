@@ -117,7 +117,7 @@ export class DataService {
         id: 'position',
         displayName: 'Position 查詢',
         value: '123@gmail.com',
-        disabled: false,
+        disabled: true,
         hidden: false,
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
