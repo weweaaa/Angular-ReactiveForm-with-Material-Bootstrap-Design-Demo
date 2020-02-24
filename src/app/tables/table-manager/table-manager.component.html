@@ -68,7 +68,7 @@
     </ng-container>
     <!-- 新增/編輯的控制項定義就相當於是資料表的定義 -->
 
-    <tr mat-header-row *matHeaderRowDef="AlldataElementsColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="AlldataElementsColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: AlldataElementsColumns"></tr>
   </table>
 </div>
