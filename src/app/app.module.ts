@@ -11,6 +11,11 @@ import { appRouting } from './app.router.modules';
 
 import { ControlsModule } from './controls/controls.module';
 import { TablesModule } from './tables/tables.module';
+import { HeaderComponent } from './page/header/header.component';
+import { FormManagerDemoComponent } from './page/main/form-manager-demo/form-manager-demo.component';
+import { TableManagerDemoComponent } from './page/main/table-manager-demo/table-manager-demo.component';
+import { FilterTableManagerDemoComponent } from './page/main/filter-table-manager-demo/filter-table-manager-demo.component';
+import { AllManagerDemoComponent } from './page/main/all-manager-demo/all-manager-demo.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +23,11 @@ import { TablesModule } from './tables/tables.module';
     MainComponent,
     FooterComponent,
     ErrorPageComponent,
+    HeaderComponent,
+    FormManagerDemoComponent,
+    TableManagerDemoComponent,
+    FilterTableManagerDemoComponent,
+    AllManagerDemoComponent,
   ],
   imports: [
     appRouting,

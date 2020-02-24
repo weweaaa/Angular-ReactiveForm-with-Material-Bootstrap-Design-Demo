@@ -51,7 +51,7 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
     if (!this.control) {
       this.control = new FormControl(obj);
 
-      /** 判斷是否需要鎖定控制項 */
+      /** 判斷是否需要鎖定控制項，統一透過 ReactForm 的方式處理 */
       // this.setDisabledState(this._controlItem.disabled);
       /** 判斷是否需要引藏控制項 */
       this.isHidden = this._controlItem.hidden;

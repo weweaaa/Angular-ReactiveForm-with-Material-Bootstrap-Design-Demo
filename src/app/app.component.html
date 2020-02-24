@@ -1,5 +1,6 @@
+<app-header></app-header>
 <!-- Header Start-->
-<header class="display-flex flex-ver-center">
+<!-- <header class="display-flex flex-ver-center">
   <div class="wrapper">
     <div class="menu display-flex flex-align-items">
       <ul>
@@ -24,19 +25,18 @@
       </ul>
     </div>
   </div>
-</header>
+</header> -->
 <!-- Header End-->
 
+<app-main></app-main>
 <!-- Main Start-->
-<!-- <app-main></app-main> -->
-<app-form-controls
+<!-- <app-form-controls
   #myForm
   [dataSource]="controlData"
   (valueChanges)="filterChange($event)"
-></app-form-controls>
-<!-- Main End-->
+></app-form-controls> -->
 
-<hr />
+<!-- <hr />
 <FieldSet>
   <Legend>表單檢查結果</Legend>
   <pre>{{ !myForm.customForm.invalid | json }}</pre>
@@ -44,10 +44,11 @@
 <FieldSet>
   <Legend>即時查看使用者查詢條件輸入狀況</Legend>
   <pre>{{ myForm.customForm.value | json }}</pre>
-</FieldSet>
+</FieldSet> -->
+<!-- Main End-->
 
-<!-- TODO 塞假資料 -->
-<app-table-manager
+
+<!-- <app-table-manager
   [pageSize]="3"
   [stickyColumns]="dataTableStickyCols"
   [stickyEndColumns]="dataTableStickyEndCols"
@@ -65,10 +66,8 @@
   (selectedAllValueChange)="selectedAllValueChange($event)"
 ></app-table-manager>
 
-<pre *ngIf="selectedList.length > 0">{{ selectedList | json }}</pre>
+<pre *ngIf="selectedList.length > 0">{{ selectedList | json }}</pre> -->
 
 <!-- Footer Start-->
-<!-- <div align="center">
-  <app-footer></app-footer>
-</div> -->
+<app-footer></app-footer>
 <!-- Footer End-->
