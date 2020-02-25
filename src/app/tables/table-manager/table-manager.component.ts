@@ -3,6 +3,7 @@ import { PageEvent, MatCheckboxChange } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
 
+// 套版用參考：https://mdbootstrap.com/docs/angular/tables/basic/
 @Component({
   selector: 'app-table-manager',
   templateUrl: './table-manager.component.html',

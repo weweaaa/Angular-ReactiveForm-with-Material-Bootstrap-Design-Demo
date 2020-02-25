@@ -1,1 +1,17 @@
-<p>table-manager-demo works!</p>
+<app-table-manager
+  [pageSize]="3"
+  [stickyColumns]="dataTableStickyCols"
+  [stickyEndColumns]="dataTableStickyEndCols"
+  [dataSource]="dataTableSource"
+  [tableSchema]="tableSchema"
+  [reportName]="reportName"
+  [isShowCheckBox]="true"
+  [isShowAddButton]="true"
+  [isShowEditButton]="true"
+  [isShowDeleteButton]="true"
+  (addRowEvent)="addData()"
+  (editRowEvent)="editData($event)"
+  (deleteRowEvent)="deleteCheckedList($event)"
+  (isSelectedEvent)="isSelectedEvent($event)"
+  (selectedAllValueChange)="selectedAllValueChange($event)"
+></app-table-manager>
