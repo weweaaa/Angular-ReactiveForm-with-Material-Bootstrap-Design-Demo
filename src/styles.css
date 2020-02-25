@@ -14,11 +14,11 @@
   z-index: 10000 !important;
 }
 
-
-* {
+/* 延遲動畫效果，不建議使用 * 整個
+ * {
   transition: 1s !important;
   -webkit-transition: 1s !important;
-}
+} */
 
 /*頁面框架排版*/
 body,
