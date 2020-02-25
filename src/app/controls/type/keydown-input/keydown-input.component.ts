@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnDestroy, Input } from '@angular/core';
+import { Component, forwardRef, OnDestroy, Input, AfterViewInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,9 +18,9 @@ export const KEYDOWN_INPUT_VALUE_ACCESSOR: any = {
   styleUrls: ['./keydown-input.component.css'],
   providers: [KEYDOWN_INPUT_VALUE_ACCESSOR]
 })
-export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
+export class KeydownInputComponent implements OnDestroy, AfterViewInit, ControlValueAccessor {
 
-  control: FormControl;
+  control: FormControl = new FormControl();
   displayName: string;
   isHidden: boolean;
 
@@ -45,28 +45,15 @@ export class KeydownInputComponent implements OnDestroy, ControlValueAccessor {
 
   constructor() { }
 
+  /** 等到畫面渲染完成後再進行值改變的事件監聽訂閱 */
+  ngAfterViewInit(): void {
+    this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));
+  }
+
   /** 只要 外部 傳入值發生了變化就會觸發 writeValue */
   writeValue(obj: any): void {
-    // 判斷 control 是否為 undefined，如果是則 new FormControl 物件出來，並訂閱 判斷值是否改變的事件
-    if (!this.control) {
-      this.control = new FormControl(obj);
-
-      /** 判斷是否需要鎖定控制項，統一透過 ReactForm 的方式處理 */
-      // this.setDisabledState(this._controlItem.disabled);
-      /** 判斷是否需要引藏控制項 */
-      this.isHidden = this._controlItem.hidden;
-      /** 內部設定檢查規則，或是在 from-control binding 時期設定檢查 */
-      // if (this._controlItem.requiredList && this._controlItem.requiredList.length > 0) {
-      //   this.control.setValidators(this._controlItem.requiredList);
-      // }
-
-      // 當外部傳入值 obj 引發 control.valueChanges 實，內部同步引發 noticeValueChange()
-      // takeUntil(this.destroy$) 就是為了在 valueChanges 前送出一個訊息到 Subject，以便 Complete Observable
-      this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));
-    } else {
-      // 如果不是 undefined 則僅需要設定新的值即可
-      this.control.setValue(obj);
-    }
+    this.isHidden = this._controlItem.hidden;
+    this.control.setValue(obj);
   }
 
   /** 登記註冊 OnChange */

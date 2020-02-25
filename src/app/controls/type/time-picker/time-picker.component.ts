@@ -1,4 +1,4 @@
-import { Component, OnDestroy, forwardRef, Input } from '@angular/core';
+import { Component, OnDestroy, forwardRef, Input, AfterViewInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -17,9 +17,9 @@ export const TIME_PICKER_VALUE_ACCESSOR: any = {
   styleUrls: ['./time-picker.component.css'],
   providers: [TIME_PICKER_VALUE_ACCESSOR]
 })
-export class TimePickerComponent implements ControlValueAccessor, OnDestroy {
+export class TimePickerComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
 
-  control: FormControl;
+  control: FormControl = new FormControl();
   displayName: string;
   isHidden: boolean;
 
@@ -43,6 +43,11 @@ export class TimePickerComponent implements ControlValueAccessor, OnDestroy {
 
   constructor() { }
 
+  /** 等到畫面渲染完成後再進行值改變的事件監聽訂閱 */
+  ngAfterViewInit(): void {
+    this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));
+  }
+
   /** 內部實作資料改變事件 */
   noticeValueChange(val: string) {
     this._onChange(val);
@@ -53,21 +58,8 @@ export class TimePickerComponent implements ControlValueAccessor, OnDestroy {
 
   /** 外部傳入值變化就會觸發此方法 */
   writeValue(obj: any): void {
-
-    // 判斷 control 是否為 undefined
-    if (!this.control) {
-      this.control = new FormControl(obj);
-
-      /** 判斷是否需要鎖定控制項，統一透過 ReactForm 的方式處理 */
-      // this.setDisabledState(this._controlItem.disabled);
-      /** 判斷是否需要引藏控制項 */
-      this.isHidden = this._controlItem.hidden;
-
-      // 訂閱資料發生變化事件
-      this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));
-    } else {
-      this.control.setValue(obj);
-    }
+    this.isHidden = this._controlItem.hidden;
+    this.control.setValue(obj);
   }
 
   registerOnChange(fn: any): void {

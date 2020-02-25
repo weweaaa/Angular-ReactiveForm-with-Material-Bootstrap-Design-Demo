@@ -16,6 +16,9 @@ export class FormControlsComponent implements OnInit {
   set dataSource(v: Array<ControlItem>) {
     const controlsConfig = v.reduce((obj, { id, value, disabled, requiredList }) => {
 
+      // 參考 Disable Input fields in reactive form 作法解
+      // https://stackoverflow.com/questions/42840136/disable-input-fields-in-reactive-form
+
       // Angular 運行時，可以使用的中斷點
       // debugger;
       if (requiredList && requiredList.length > 0) {
@@ -32,8 +35,9 @@ export class FormControlsComponent implements OnInit {
     // setInterval(() => {
     //   console.log('error :', this.form.valid);
     // }, 1000);
+
+    // TestE2E();
   }
-  // tslint:disable-next-line: variable-name
   private _dataSource: Array<ControlItem>;
 
   // 提供給外部控制表單的物件定義

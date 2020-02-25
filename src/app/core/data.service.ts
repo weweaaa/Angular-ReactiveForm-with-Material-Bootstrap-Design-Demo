@@ -122,9 +122,9 @@ export class DataService {
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
         requiredList: [
-          Validators.minLength(2),
-          Validators.maxLength(100),
-          validateEmail   // 使用自訂的驗證 Email 格式方法
+          // Validators.minLength(2),
+          // Validators.maxLength(100),
+          // validateEmail   // 使用自訂的驗證 Email 格式方法
         ]
       },
       {
@@ -136,8 +136,8 @@ export class DataService {
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
         requiredList: [
-          Validators.pattern('[a-zA-Z ]*'),  // 使用者自訂正規運算式，限定只能輸入英文大小寫字母
-          Validators.pattern('abc') // 限定輸入必須是 abc，或是不輸入全空
+          // Validators.pattern('[a-zA-Z ]*'),  // 使用者自訂正規運算式，限定只能輸入英文大小寫字母
+          // Validators.pattern('abc') // 限定輸入必須是 abc，或是不輸入全空
         ]
       },
       {
@@ -149,7 +149,7 @@ export class DataService {
         controlType: ControlType.KeywordInput,
         dataSource: undefined,
         requiredList: [
-          Validators.email  // 使用官方的驗證 Email 格式
+          // Validators.email  // 使用官方的驗證 Email 格式
         ]
       },
       {
