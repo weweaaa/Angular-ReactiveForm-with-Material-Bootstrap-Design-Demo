@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlItem, ControlType } from './controls/form-controls/form-controls.model';
 import { DialogFormControlsComponent } from './controls/dialog-form-controls/dialog-form-controls.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DataService } from './core/data.service';
 
 @Component({

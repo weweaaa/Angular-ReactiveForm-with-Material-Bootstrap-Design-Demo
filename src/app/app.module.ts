@@ -17,6 +17,8 @@ import { TableManagerDemoComponent } from './page/main/table-manager-demo/table-
 import { FilterTableManagerDemoComponent } from './page/main/filter-table-manager-demo/filter-table-manager-demo.component';
 import { AllManagerDemoComponent } from './page/main/all-manager-demo/all-manager-demo.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { AllManagerDemoComponent } from './page/main/all-manager-demo/all-manage
 
     /* 自訂封裝模組 */
     ControlsModule,
-    TablesModule
+    TablesModule,
+
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

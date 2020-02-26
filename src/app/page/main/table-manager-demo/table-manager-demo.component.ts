@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
 import { DialogFormControlsComponent } from 'src/app/controls/dialog-form-controls/dialog-form-controls.component';
-import { MatDialog } from '@angular/material';
 import { DataService } from 'src/app/core/data.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-table-manager-demo',
