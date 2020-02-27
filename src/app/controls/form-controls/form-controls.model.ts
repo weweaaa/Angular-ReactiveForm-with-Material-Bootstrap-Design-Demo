@@ -67,3 +67,14 @@ export enum ControlType {
   CheckBoxList,
 }
 
+/** 取得 字串 命名
+ *
+ * 自訂實作 nameof 功能，使用方式
+ *
+ * 範例使用：nameof<ControlItem>('controlType'); ----> 可以正常顯示，不會有紅色錯誤
+ *
+ * 範例使用：nameof<ControlItem>('aaaaaa'); ----> 因為 ControlItem class 當中沒有 aaaaaa 屬性，所以開發時期就會知道有打錯問題
+ */
+export function nameof<T>(propertyName: keyof T) {
+  return propertyName;
+}
