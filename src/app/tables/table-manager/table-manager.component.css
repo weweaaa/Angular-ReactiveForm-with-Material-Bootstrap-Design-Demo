@@ -9,14 +9,15 @@
 .table_show {
   height: 50vh;
 }
-
+/*
 td.mat-cell,
 td.mat-footer-cell,
 th.mat-header-cell {
   padding: 10px;
   text-align: center;
-}
+} */
 
-.mat-column-select {
-  overflow: initial;
+.mat-column-select,
+.mat-column-btn {
+  padding: 10px 24px !important;
 }
