@@ -1,6 +1,7 @@
 import { BaseControl } from '../base-control';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef, Component, Injector } from '@angular/core';
+import { ControlType } from '../../form-controls/form-controls.model';
 
 export const TIME_PICKER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -14,7 +15,7 @@ export const TIME_PICKER_VALUE_ACCESSOR: any = {
   styleUrls: ['./time-picker.component.css'],
   providers: [TIME_PICKER_VALUE_ACCESSOR]
 })
-export class TimePickerComponent extends BaseControl {
+export class TimePickerComponent extends BaseControl<ControlType.TimePicker> {
   constructor(injector: Injector) {
     super(injector);
   }

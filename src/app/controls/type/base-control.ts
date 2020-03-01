@@ -2,9 +2,10 @@ import { ControlValueAccessor, FormControl, ControlContainer } from '@angular/fo
 import { AfterViewInit, OnDestroy, Input, Injector } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ControlItem, ControlType } from '../form-controls/form-controls.model';
+import { ControlItem, ControlType, ControlValueType } from '../form-controls/form-controls.model';
 
-export class BaseControl implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class BaseControl<TControlType extends ControlType> implements ControlValueAccessor, AfterViewInit, OnDestroy {
+
   @Input() controlItem: ControlItem<ControlType>;
   @Input() set formControlName(name: string) {
     this.outsideContorl = this.injector.get(ControlContainer)?.control?.get(name) as FormControl;
@@ -13,8 +14,8 @@ export class BaseControl implements ControlValueAccessor, AfterViewInit, OnDestr
   control: FormControl = new FormControl();
   outsideContorl: FormControl;
 
-  protected _onChange: (val: any) => void;
-  protected _onTouch: (val: any) => void;
+  protected _onChange: (val: ControlValueType[TControlType]) => void;
+  protected _onTouch: (val: ControlValueType[TControlType]) => void;
 
   /** 釋放 subscribe 用的物件 */
   protected destroy$ = new Subject<any>();
@@ -27,7 +28,7 @@ export class BaseControl implements ControlValueAccessor, AfterViewInit, OnDestr
   }
 
   /** 內部實作資料改變事件 */
-  noticeValueChange(val: any) {
+  noticeValueChange(val: ControlValueType[TControlType]) {
     if (this._onChange) {
       this._onChange(val);
     }
@@ -39,15 +40,15 @@ export class BaseControl implements ControlValueAccessor, AfterViewInit, OnDestr
   // --------------- ControlValueAccessor ---------------
 
   /** 外部傳入值變化就會觸發此方法 */
-  writeValue(val: any): void {
+  writeValue(val: ControlValueType[TControlType]): void {
     this.control.setValue(val);
   }
 
-  registerOnChange(fn: (val: any) => void): void {
+  registerOnChange(fn: (val: ControlValueType[TControlType]) => void): void {
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: (val: any) => void): void {
+  registerOnTouched(fn: (val: ControlValueType[TControlType]) => void): void {
     this._onTouch = fn;
   }
 

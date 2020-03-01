@@ -27,7 +27,6 @@ export class ControlItem<TControlType extends ControlType> {
   ) { }
 }
 
-
 /**
  * 目前支援的 FormControl 類型
  */
@@ -51,6 +50,27 @@ export enum ControlType {
   RadioButton = 'RadioButton',
   /** 勾選清單 選擇器 */
   CheckBoxList = 'CheckBoxList',
+}
+
+/**
+ * 目前支援的 Form Control 輸入資料型態對應表
+ */
+export interface ControlValueType {
+  [ControlType.KeydownInput]: string;
+
+  [ControlType.CheckBox]: boolean;
+
+  [ControlType.SlideToggle]: boolean;
+
+  [ControlType.DatePicker]: string;
+
+  [ControlType.TimePicker]: string;
+
+  [ControlType.DropDownList]: string;
+
+  [ControlType.RadioButton]: string;
+
+  [ControlType.CheckBoxList]: Array<string>;
 }
 
 // [驗證物件 定義]
@@ -116,13 +136,13 @@ export interface ControlValidator {
   };
 }
 
-
-
 // [驗證類型 定義]
 // -----------------------------------------------------------------------------
 
 /** 所有驗證類型的 根物件 */
-interface BaseValidator { message?: string; }
+interface BaseValidator {
+  message?: string;
+}
 
 /** 最小長度驗證 */
 interface MinLengthValidator extends BaseValidator {
