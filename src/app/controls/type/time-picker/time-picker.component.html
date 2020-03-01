@@ -1,4 +1,4 @@
-<div [hidden]="isHidden">
+<div [hidden]="controlItem?.hidden">
   <mat-form-field>
     <div class="editable-dial-example">
       <input
@@ -6,7 +6,7 @@
         readonly
         [ngxTimepicker]="tpicker"
         [formControl]="control"
-        [placeholder]="displayName"
+        [placeholder]="controlItem?.displayName"
       />
       <ngx-material-timepicker
         class="timepicker"

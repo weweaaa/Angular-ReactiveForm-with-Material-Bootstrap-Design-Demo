@@ -1,8 +1,6 @@
-import { Component, OnDestroy, forwardRef, Input, AfterViewInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ControlItem } from '../../form-controls/form-controls.model';
+import { Component, forwardRef, Injector } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseControl } from '../base-control';
 
 export const DROP_DOWN_LIST_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -10,79 +8,14 @@ export const DROP_DOWN_LIST_VALUE_ACCESSOR: any = {
   multi: true
 };
 
-
 @Component({
   selector: 'app-drop-down-list',
   templateUrl: './drop-down-list.component.html',
   styleUrls: ['./drop-down-list.component.css'],
   providers: [DROP_DOWN_LIST_VALUE_ACCESSOR]
 })
-export class DropDownListComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
-
-  control: FormControl = new FormControl();
-  displayName: string;
-  isHidden: boolean;
-  dataSource: string | Array<{ key: string, lable: string }>;
-
-  @Input()
-  public get controlItem(): ControlItem {
-    return this._controlItem;
-  }
-  public set controlItem(v: ControlItem) {
-    this._controlItem = v;
-    if (this._controlItem) {
-      this.displayName = this._controlItem.displayName;
-      this.dataSource = this._controlItem.dataSource;
-    }
-  }
-  private _controlItem: ControlItem;
-
-  private _onChange: (val: string) => void;
-  private _onTouch: (val: string) => void;
-
-  /** 釋放 subscribe 用的物件 */
-  private destroy$ = new Subject<any>();
-
-  constructor() { }
-
-  /** 等到畫面渲染完成後再進行值改變的事件監聽訂閱 */
-  ngAfterViewInit(): void {
-    this.control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(val => this.noticeValueChange(val));
-  }
-
-  /** 內部實作資料改變事件 */
-  noticeValueChange(val: string) {
-    this._onChange(val);
-    this._onTouch(val);
-  }
-
-  // --------------- ControlValueAccessor ---------------
-
-  /** 外部傳入值變化就會觸發此方法 */
-  writeValue(obj: any): void {
-    this.isHidden = this._controlItem.hidden;
-    this.control.setValue(obj);
-  }
-
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
-  }
-  registerOnTouched(fn: any): void {
-    this._onTouch = fn;
-  }
-
-  /** 外部觸發 Disable/Enable 事件 */
-  setDisabledState?(isDisabled: boolean): void {
-
-    // 依據外部傳入的設定控制 Disable/Enable
-    isDisabled ? this.control.disable() : this.control.enable();
-  }
-
-  // --------------- OnDestroy ---------------
-
-  /** 取消 subscribe 訂閱，釋放資源 */
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+export class DropDownListComponent extends BaseControl {
+  constructor(injector: Injector) {
+    super(injector);
   }
 }

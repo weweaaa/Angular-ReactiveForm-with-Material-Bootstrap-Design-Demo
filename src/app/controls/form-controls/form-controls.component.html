@@ -7,30 +7,30 @@
           <!-- Input Type  -->
           <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
           <app-keydown-input
-            *ngSwitchCase="CType[CType.KeywordInput]"
+            *ngSwitchCase="CType[CType.KeydownInput]"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-keydown-input>
 
           <!-- Checked Box Type  -->
-          <app-checked-box
+          <app-check-box
             *ngSwitchCase="
               CType[item.controlType] === CType[CType.CheckBox] ||
               CType[item.controlType] === CType[CType.CheckBoxList] ? CType[item.controlType] : ''"
             formControlName="{{ item.id }}"
             [controlItem]="item"
-          ></app-checked-box>
+          ></app-check-box>
 
           <!-- RadioButton Type  -->
           <app-radio-button
-            *ngSwitchCase="CType[CType.RadioButtonList]"
+            *ngSwitchCase="CType[CType.RadioButton]"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-radio-button>
 
           <!-- SlideToggle Type  -->
           <app-slide-toggle
-            *ngSwitchCase="CType[CType.SlideChecked]"
+            *ngSwitchCase="CType[CType.SlideToggle]"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-slide-toggle>

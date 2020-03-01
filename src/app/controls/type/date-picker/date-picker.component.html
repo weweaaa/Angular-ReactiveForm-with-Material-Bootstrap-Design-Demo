@@ -1,16 +1,18 @@
-<div [hidden]="isHidden">
+<div [hidden]="controlItem?.hidden">
   <mat-form-field>
     <input
       matInput
       readonly
       [matDatepicker]="tpicker"
       [formControl]="control"
-      [placeholder]="displayName"
+      [placeholder]="controlItem?.displayName"
+      [min]="minDate"
+      [max]="maxDate"
     />
     <mat-datepicker-toggle matSuffix [for]="tpicker"></mat-datepicker-toggle>
     <mat-datepicker #tpicker></mat-datepicker>
   </mat-form-field>
-
-  <!-- (dateChange)="setTimeValue($event)"
-    [value]="controlItem.value" -->
 </div>
+
+<!-- (dateChange)="setTimeValue($event)"
+    [value]="controlItem.value" -->

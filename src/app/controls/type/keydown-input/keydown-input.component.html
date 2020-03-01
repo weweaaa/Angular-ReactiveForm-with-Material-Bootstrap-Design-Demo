@@ -1,5 +1,10 @@
-<div [hidden]="isHidden">
+<div [hidden]="controlItem?.hidden">
   <mat-form-field>
-    <input matInput [formControl]="control" [placeholder]="displayName" />
+    <input
+      matInput
+      [formControl]="control"
+      [placeholder]="controlItem?.displayName"
+      autocomplete="no"
+    />
   </mat-form-field>
 </div>

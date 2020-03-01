@@ -1,0 +1,8 @@
+<div [hidden]="controlItem?.hidden">
+  <!-- 一般勾選項 true/false -->
+  <ng-container *ngIf="!controlItem?.dataSource">
+    <mat-checkbox labelPosition="before" [formControl]="control">
+      {{ controlItem?.displayName }}
+    </mat-checkbox>
+  </ng-container>
+</div>

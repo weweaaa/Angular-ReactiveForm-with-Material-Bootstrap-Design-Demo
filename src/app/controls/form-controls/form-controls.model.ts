@@ -50,11 +50,11 @@ export class ControlItem {
  */
 export enum ControlType {
   /** 字串 查詢條件 */
-  KeywordInput,
+  KeydownInput,
 
   /** true/false 查詢條件 */
   CheckBox,
-  SlideChecked,
+  SlideToggle,
 
   /** 日期 查詢條件 */
   DatePicker,
@@ -63,7 +63,7 @@ export enum ControlType {
 
   /** 選單 查詢條件 */
   DropDownList,
-  RadioButtonList,
+  RadioButton,
   CheckBoxList,
 }
 
