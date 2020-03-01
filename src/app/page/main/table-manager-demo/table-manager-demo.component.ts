@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
+import { ControlItem, ControlType } from 'src/app/controls/form-controls/form-controls.model';
 import { DialogFormControlsComponent } from 'src/app/controls/dialog-form-controls/dialog-form-controls.component';
 import { DataService } from 'src/app/core/data.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,7 +23,7 @@ export class TableManagerDemoComponent implements OnInit {
   /** 資料表內容 */
   dataTableSource: Array<any>;
   /** 資料表欄位定義 */
-  tableSchema: ControlItem[];
+  tableSchema: ControlItem<ControlType>[];
 
   constructor(public dialog: MatDialog, private dataService: DataService) { }
 

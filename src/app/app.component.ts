@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
   /** 資料表內容 */
   dataTableSource: Array<any>;
   /** 資料表欄位定義 */
-  tableSchema: ControlItem[];
+  tableSchema: ControlItem<ControlType>[];
   /** 設定表單呈現內容 */
-  controlData: ControlItem[] = this.dataService.getFilterConfing();
+  controlData: ControlItem<ControlType>[] = this.dataService.getFilterConfing();
 
   change = true;
 

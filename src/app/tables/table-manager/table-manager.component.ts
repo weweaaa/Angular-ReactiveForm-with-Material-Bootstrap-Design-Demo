@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { PageEvent } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
-import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
+import { ControlItem, ControlType } from 'src/app/controls/form-controls/form-controls.model';
 
 // 套版用參考：https://mdbootstrap.com/docs/angular/tables/basic/
 @Component({
@@ -44,7 +44,7 @@ export class TableManagerComponent implements OnInit {
   @Input() hiddenColumns: string[];
 
   /** 資料表結構定義，同新增時使用的 ControlItem[]  */
-  @Input() tableSchema: ControlItem[];
+  @Input() tableSchema: ControlItem<ControlType>[];
   /** 資料表分頁筆數 [預設50筆] */
   @Input() pageSize: number;
 

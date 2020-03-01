@@ -1,1 +1,6 @@
-<p>form-manager-demo works!</p>
+<app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+
+<FieldSet>
+  <Legend>表單檢查結果</Legend>
+  <pre>{{ !tform.customForm.invalid | json }}</pre>
+</FieldSet>

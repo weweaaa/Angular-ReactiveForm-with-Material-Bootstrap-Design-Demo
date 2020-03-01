@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ControlItem } from '../form-controls/form-controls.model';
+import { ControlItem, ControlType } from '../form-controls/form-controls.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -10,11 +10,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogFormControlsComponent implements OnInit {
 
   /** 放置用來產生輸入控制項目的 JSON 清單 */
-  controlItem: ControlItem[];
+  controlItem: ControlItem<ControlType>[];
 
   constructor(
     public dialogRef: MatDialogRef<DialogFormControlsComponent>,
-    @Inject(MAT_DIALOG_DATA) public controls: ControlItem[]) {
+    @Inject(MAT_DIALOG_DATA) public controls: ControlItem<ControlType>[]) {
       if (this.controls !== undefined && this.controls !== null && this.controls.length > 0) {
         this.controlItem = [...this.controls];
       } else {

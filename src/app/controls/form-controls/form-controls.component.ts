@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ControlItem, ControlType } from './form-controls.model';
+import { getValidMapTable } from './form-manager.validator';
 
 @Component({
   selector: 'app-form-controls',
@@ -13,20 +14,17 @@ export class FormControlsComponent implements OnInit {
   get dataSource() {
     return this._dataSource;
   }
-  set dataSource(v: Array<ControlItem>) {
-    const controlsConfig = v.reduce((obj, { id, value, disabled, requiredList }) => {
+  set dataSource(v: Array<ControlItem<ControlType>>) {
+    const controlsConfig = v.reduce((obj, { id, value, controlType, disabled, validatorList }) => {
 
       // 參考 Disable Input fields in reactive form 作法解
       // https://stackoverflow.com/questions/42840136/disable-input-fields-in-reactive-form
 
       // Angular 運行時，可以使用的中斷點
       // debugger;
-      if (requiredList && requiredList.length > 0) {
-        /** 設定檢查規則 */
-        return { ...obj, [id]: [{ value, disabled }, requiredList] };
-      } else {
-        return { ...obj, [id]: [value, { disabled }] };
-      }
+
+      return { ...obj, [id]: [{ value, disabled: !!disabled }, getValidMapTable(controlType, validatorList) || []] };
+
     }, {});
 
     this.customForm = this.fb.group(controlsConfig);
@@ -38,12 +36,12 @@ export class FormControlsComponent implements OnInit {
 
     // TestE2E();
   }
-  private _dataSource: Array<ControlItem>;
+  private _dataSource: Array<ControlItem<ControlType>>;
 
   // 提供給外部控制表單的物件定義
   customForm: FormGroup;
   // 提供給表單強行別判斷要產出的項目
-  CType = ControlType;
+  readonly cType = ControlType;
 
   constructor(private fb: FormBuilder) { }
 

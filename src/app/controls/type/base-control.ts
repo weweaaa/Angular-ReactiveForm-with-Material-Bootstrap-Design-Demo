@@ -2,10 +2,10 @@ import { ControlValueAccessor, FormControl, ControlContainer } from '@angular/fo
 import { AfterViewInit, OnDestroy, Input, Injector } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ControlItem } from '../form-controls/form-controls.model';
+import { ControlItem, ControlType } from '../form-controls/form-controls.model';
 
 export class BaseControl implements ControlValueAccessor, AfterViewInit, OnDestroy {
-  @Input() controlItem: ControlItem;
+  @Input() controlItem: ControlItem<ControlType>;
   @Input() set formControlName(name: string) {
     this.outsideContorl = this.injector.get(ControlContainer)?.control?.get(name) as FormControl;
   }

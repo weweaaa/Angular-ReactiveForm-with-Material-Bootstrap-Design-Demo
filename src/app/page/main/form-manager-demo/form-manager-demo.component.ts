@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/core/data.service';
+import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
 
 @Component({
   selector: 'app-form-manager-demo',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormManagerDemoComponent implements OnInit {
 
-  constructor() { }
+  controlData: ControlItem<any>[] = this.dataService.getFilterConfing();
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }

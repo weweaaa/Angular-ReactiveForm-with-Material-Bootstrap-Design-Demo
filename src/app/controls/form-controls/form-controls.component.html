@@ -3,55 +3,60 @@
     <form [formGroup]="customForm">
       <ng-container *ngFor="let item of dataSource; let i = index;">
         <div class="w-100" *ngIf="getDivW100(i)"></div>
-        <div class="col-sm" [ngSwitch]="CType[item.controlType]">
+        <div class="col-sm" [ngSwitch]="item.controlType">
           <!-- Input Type  -->
           <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
           <app-keydown-input
-            *ngSwitchCase="CType[CType.KeydownInput]"
+            *ngSwitchCase="cType.KeydownInput"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-keydown-input>
 
           <!-- Checked Box Type  -->
           <app-check-box
-            *ngSwitchCase="
-              CType[item.controlType] === CType[CType.CheckBox] ||
-              CType[item.controlType] === CType[CType.CheckBoxList] ? CType[item.controlType] : ''"
+            *ngSwitchCase="cType.CheckBox"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-check-box>
 
+          <!-- Checked Box Type  -->
+          <app-check-box-list
+            *ngSwitchCase="cType.CheckBoxList"
+            formControlName="{{ item.id }}"
+            [controlItem]="item"
+          ></app-check-box-list>
+
           <!-- RadioButton Type  -->
           <app-radio-button
-            *ngSwitchCase="CType[CType.RadioButton]"
+            *ngSwitchCase="cType.RadioButton"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-radio-button>
 
           <!-- SlideToggle Type  -->
           <app-slide-toggle
-            *ngSwitchCase="CType[CType.SlideToggle]"
+            *ngSwitchCase="cType.SlideToggle"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-slide-toggle>
 
           <!-- TimePicker Type  -->
           <app-time-picker
-            *ngSwitchCase="CType[CType.TimePicker]"
+            *ngSwitchCase="cType.TimePicker"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-time-picker>
 
           <!-- DatePicker Type  -->
           <app-date-picker
-            *ngSwitchCase="CType[CType.DatePicker]"
+            *ngSwitchCase="cType.DatePicker"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-date-picker>
 
           <!-- DropDownList Type  -->
           <app-drop-down-list
-            *ngSwitchCase="CType[CType.DropDownList]"
+            *ngSwitchCase="cType.DropDownList"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-drop-down-list>

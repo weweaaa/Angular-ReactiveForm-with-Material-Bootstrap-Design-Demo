@@ -20,7 +20,7 @@ export class DataService {
   }
 
   /** 取得資料表定義 */
-  public getTableSchema1(filterItem?: any): ControlItem[] {
+  public getTableSchema1(filterItem?: any): ControlItem<ControlType>[] {
     return [
       { id: 'id', displayName: '我是 ID', value: '', disabled: true, hidden: false, controlType: ControlType.KeydownInput },
       { id: 'position', displayName: '我是 Position', value: '', controlType: ControlType.DatePicker },
@@ -31,7 +31,7 @@ export class DataService {
   }
 
   /** 取得資料表定義 */
-  public getTableSchema2(filterItem?: any): ControlItem[] {
+  public getTableSchema2(filterItem?: any): ControlItem<ControlType>[] {
     // TODO 依據查詢條件回傳 Filter 後的結果
     if (filterItem !== undefined && filterItem.CKB === false) {
       return this.getTableSchema1(undefined);
@@ -111,17 +111,22 @@ export class DataService {
   }
 
   /** 取得查詢條件設定檔 */
-  public getFilterConfing(): ControlItem[] {
+  public getFilterConfing(): ControlItem<ControlType>[] {
     return [
       {
         id: 'position',
         displayName: 'Position 查詢',
         value: '123@gmail.com',
-        disabled: true,
+        disabled: false,
         hidden: false,
         controlType: ControlType.KeydownInput,
-        dataSource: undefined,
-      },
+        dataSource: undefined, validatorList: {
+          required: { message: '不可為空值' },
+          minlength: { message: '最小長度 5 個字元', value: 5 },
+          // rocDate: { message: '請輸入正確的民國年' },
+          // idNumber: { message: '身分證格式不符' }
+        }
+      } as ControlItem<ControlType.KeydownInput>,
       {
         id: 'position2',
         displayName: 'Position2 輸入測試',
@@ -130,7 +135,7 @@ export class DataService {
         hidden: false,
         controlType: ControlType.KeydownInput,
         dataSource: undefined,
-      },
+      } as ControlItem<ControlType.KeydownInput>,
       {
         id: 'position3',
         displayName: 'Position3 email 輸入測試',
@@ -139,33 +144,34 @@ export class DataService {
         hidden: false,
         controlType: ControlType.KeydownInput,
         dataSource: undefined,
-      },
+      } as ControlItem<ControlType.KeydownInput>,
       {
         id: 'DatePicker',
         displayName: 'DatePicker 查詢',
         value: '',
         controlType: ControlType.DatePicker, dataSource: undefined
-      },
+      } as ControlItem<ControlType.DatePicker>,
       {
         id: 'SlideChecked',
         displayName: 'SlideChecked 查詢',
         value: 'true',
         controlType: ControlType.SlideToggle,
         dataSource: undefined
-      },
+      } as ControlItem<ControlType.SlideToggle>,
       {
         id: 'Time',
         displayName: 'Time 查詢',
         value: '',
         controlType: ControlType.TimePicker,
         dataSource: undefined
-      },
+      } as ControlItem<ControlType.TimePicker>,
       {
         id: 'CKB',
         displayName: '查詢大資料',
         value: 'true',
-        controlType: ControlType.CheckBoxList, dataSource: undefined
-      },
+        controlType: ControlType.CheckBox,
+        dataSource: undefined
+      } as ControlItem<ControlType.CheckBox>,
       {
         id: 'CKB2',
         displayName: '查詢大資料',
@@ -176,7 +182,7 @@ export class DataService {
         dataSource: [
           { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
         ],
-      },
+      } as ControlItem<ControlType.CheckBoxList>,
       {
         id: 'DDL',
         displayName: 'DDL 查詢',
@@ -185,7 +191,7 @@ export class DataService {
         dataSource: [
           { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }
         ]
-      },
+      } as ControlItem<ControlType.DropDownList>,
       {
         id: 'Radio',
         displayName: 'Radio 查詢',
@@ -193,7 +199,7 @@ export class DataService {
         controlType: ControlType.RadioButton,
         dataSource: [
           { key: 'A', lable: 'A!' }, { key: 'B', lable: 'B!' }]
-      }
+      } as ControlItem<ControlType.RadioButton>
     ];
   }
 
