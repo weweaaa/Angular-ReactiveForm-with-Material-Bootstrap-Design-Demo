@@ -1,1 +1,12 @@
-<p>filter-table-manager-demo works!</p>
+<app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+
+<FieldSet>
+  <Legend>表單檢查結果</Legend>
+  <pre>{{ !tform.customForm.invalid | json }}</pre>
+</FieldSet>
+
+<app-table-manager
+  [dataSource]="dataTableSource"
+  [tableSchema]="tableSchema"
+  [reportName]="reportName"
+></app-table-manager>

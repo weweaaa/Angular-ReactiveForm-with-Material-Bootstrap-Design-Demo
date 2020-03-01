@@ -27,21 +27,13 @@ export function getValidMapTable(controlType: ControlType, validatorList: any): 
   if (validatorList) {
     switch (controlType) {
       case ControlType.KeydownInput: {
-        const validators = getKeywordInputValidators(validatorList);
-
-        console.log('KeywordInput validators :', validators);
-
-        return validators;
+        return getKeywordInputValidators(validatorList);
       }
       case ControlType.CheckBoxList: {
-        const validators = getCheckBoxListValidators(validatorList);
-
-        console.log('CheckBoxList validators :', validators);
-
-        return validators;
+        return getCheckBoxListValidators(validatorList);
       }
       default:
-        console.log('controlType :', controlType);
+        console.log('controlType not defined -> ', controlType);
         return undefined;
     }
   }

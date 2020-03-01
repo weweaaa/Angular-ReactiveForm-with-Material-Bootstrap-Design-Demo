@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ControlItem, ControlType } from '../controls/form-controls/form-controls.model';
 import { StickyType } from '../tables/table-manager/table-manager.model';
-import { Validators, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -225,12 +225,7 @@ export class DataService {
    * 取得範例二資料
    */
   public getData2(filterItem?: any): Array<any> {
-    // TODO 依據查詢條件回傳 Filter 後的結果
-    if (filterItem !== undefined && filterItem.t2 === false) {
-      return this.getData1(undefined);
-    }
-
-    return [
+    const data = [
       {
         position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',
         position1: 1, name1: 'Hydrogen', weight1: 1.0079, symbol1: 'H',
@@ -562,6 +557,13 @@ export class DataService {
         position29: 1, name29: 'Hydrogen', weight29: 1.0079, symbol29: 'H',
       },
     ];
+
+    if (filterItem) {
+      // TODO 查詢條件實作
+      return this.getData1(undefined);
+    } else {
+      return data;
+    }
   }
 }
 

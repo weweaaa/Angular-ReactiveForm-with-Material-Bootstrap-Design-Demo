@@ -46,7 +46,7 @@ export class TableManagerComponent implements OnInit {
   /** 資料表結構定義，同新增時使用的 ControlItem[]  */
   @Input() tableSchema: ControlItem<ControlType>[];
   /** 資料表分頁筆數 [預設50筆] */
-  @Input() pageSize: number;
+  @Input() pageSize = 50;
 
   /** 是否顯示勾選欄位 */
   @Input() isShowCheckBox: boolean;
@@ -82,6 +82,9 @@ export class TableManagerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.pageSize) {
+      this.pageSize = 50;
+    }
   }
   /** 檢查是否需要顯示報表名稱 */
   checkShowReportName(): boolean {

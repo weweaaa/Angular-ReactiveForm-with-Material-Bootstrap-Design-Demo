@@ -12,9 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class TableManagerDemoComponent implements OnInit {
 
   /** 前 凍結欄位清單 */
-  dataTableStickyCols = ['position'];
+  dataTableStickyCols = [''];
   /** 後 凍結欄位清單 */
-  dataTableStickyEndCols = ['weight10'];
+  dataTableStickyEndCols = [''];
 
   /** 使用者在資料表上已勾選的清單 */
   selectedList = [];
