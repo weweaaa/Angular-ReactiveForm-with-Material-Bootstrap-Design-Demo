@@ -7,6 +7,24 @@ import { FormControl } from '@angular/forms';
   providedIn: 'root'
 })
 
+// this.tKeyword.valueChanges.pipe(
+//   debounceTime(500),
+//   switchMap(_ => this.getData(this.keyword))
+// ).subscribe((value: Post[]) => {
+//   this.suggestList = value;
+// });
+
+// private getData(url: string) {
+//   return this.http.get(this.api + url).pipe(
+//     finalize(() => {  // 使用方式就像是 C# 當中 try catch 最後的 finally
+//       // 每一個 request 收到成功 response 隨即結束
+//       console.log('complete');
+//     })
+//   );
+// }
+
+// =======================================================================
+
 /**
  * 負責處理資料取得相關的服務
  */
