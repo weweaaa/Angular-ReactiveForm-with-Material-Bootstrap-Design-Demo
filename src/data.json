@@ -1,5 +1,5 @@
 {
-  "tableSchema1": [
+  "table-manager-schema1": [
     {
       "id": "position",
       "displayName": "我是 ID",
@@ -82,7 +82,7 @@
       ]
     }
   ],
-  "data1": [
+  "table-manager-data1": [
     {
       "position": 1,
       "name": "Position",
@@ -584,7 +584,7 @@
       "symbol1": "H50"
     }
   ],
-  "data2": [
+  "table-manager-data2": [
     {
       "position": 1,
       "name": "Position",
