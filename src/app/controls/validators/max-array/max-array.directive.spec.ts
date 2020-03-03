@@ -1,31 +1,33 @@
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { AbstractControl, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatListModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaxlengthDirective } from './maxlength.directive';
+import { MaxArrayDirective } from './max-array.directive';
 
-@Component({ selector: 'fub-host-comp' })
+@Component({ selector: 'app-host-comp' })
 class HostComponent {
   @ViewChild('tMySelect') tMySelectNgModel: NgModel;
   form = new FormGroup({
-    maxlength: new FormControl('')
+    maxArray: new FormControl('')
   });
-  maxlengthControl = new FormControl('');
+  maxArrayControl = new FormControl('');
 }
 
-describe('MaxlengthDirective', () => {
+describe('MaxArrayDirective', () => {
   let fixture: ComponentFixture<HostComponent>;
   let host: HostComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HostComponent, MaxlengthDirective],
+      declarations: [HostComponent, MaxArrayDirective],
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        MatToolbarModule,
         MatButtonModule,
         MatCheckboxModule,
         MatListModule,
@@ -48,16 +50,12 @@ describe('MaxlengthDirective', () => {
       TestBed.overrideComponent(HostComponent, {
         set: {
           template: `
-                  <mat-selection-list #tMySelect="ngModel" ngModel name="mySelect" [maxlength]="2" >
-                      選單
-                      <mat-list-option id="A" value="A"> A!! </mat-list-option>
-                      <mat-list-option id="B" value="B"> B!! </mat-list-option>
-                      <mat-list-option id="C" value="C"> C!! </mat-list-option>
-                  </mat-selection-list>
-
-                <p style="color: red;">
-                    Options selected: {{tMySelect.selectedOptions?.selected.length}}
-                  </p>
+                <mat-selection-list #tMySelect="ngModel" ngModel name="mySelect" [maxArray]="2" >
+                    選單
+                    <mat-list-option id="A" value="A"> A!! </mat-list-option>
+                    <mat-list-option id="B" value="B"> B!! </mat-list-option>
+                    <mat-list-option id="C" value="C"> C!! </mat-list-option>
+                </mat-selection-list>
             `
         }
       });
@@ -79,28 +77,28 @@ describe('MaxlengthDirective', () => {
       }
     }
 
-    it('["A", "C"] should be 2 Maxlength', fakeAsync(() => {
+    it('["A", "C"] should be 2 MaxArray', fakeAsync(() => {
       update(['A', 'C']);
       expect(host.tMySelectNgModel.errors).toBeNull();
-      expect(host.tMySelectNgModel.hasError('maxlength')).toBeFalsy();
+      expect(host.tMySelectNgModel.hasError('maxArray')).toBeFalsy();
     }));
 
-    it('["A", "B", "C"] should not be 3 Maxlength', fakeAsync(() => {
+    it('["A", "B", "C"] should not be 3 MaxArray', fakeAsync(() => {
       update(['A', 'B', 'C']);
-      expect(host.tMySelectNgModel.errors).toEqual({ maxlength: { requiredLength: 2, actualLength: 3 } });
-      expect(host.tMySelectNgModel.hasError('maxlength')).toBeTruthy();
+      expect(host.tMySelectNgModel.errors).toEqual({ maxArray: true });
+      expect(host.tMySelectNgModel.hasError('maxArray')).toBeTruthy();
     }));
   });
 
   describe('formControlName', () => {
-    let maxlengthControl: AbstractControl;
+    let maxArrayControl: AbstractControl;
 
     beforeEach(() => {
       TestBed.overrideComponent(HostComponent, {
         set: {
           template: `
             <form [formGroup]="form">
-              <input formControlName="maxlength" maxlength maxlength=3 />
+              <input formControlName="maxArray" maxArray maxArray=3 />
             </form>
           `
         }
@@ -109,17 +107,17 @@ describe('MaxlengthDirective', () => {
     });
 
     beforeEach(() => {
-      maxlengthControl = host.form.get('maxlength');
+      maxArrayControl = host.form.get('maxArray');
     });
 
     function update(value: string[]) {
-      maxlengthControl.setValue(value);
+      maxArrayControl.setValue(value);
     }
 
-    it('["A", "B", "C"] should be Maxlength', () => {
+    it('["A", "B", "C"] should be MaxArray', () => {
       update(['A', 'B', 'C']);
-      expect(maxlengthControl.errors).toBeNull();
-      expect(maxlengthControl.hasError('maxlength')).toBeFalsy();
+      expect(maxArrayControl.errors).toBeNull();
+      expect(maxArrayControl.hasError('maxArray')).toBeFalsy();
     });
   });
 
@@ -127,20 +125,20 @@ describe('MaxlengthDirective', () => {
     beforeEach(() => {
       TestBed.overrideComponent(HostComponent, {
         set: {
-          template: `<input [formControl]="maxlengthControl" maxlength maxlength=3 />`
+          template: `<input [formControl]="maxArrayControl" maxArray maxArray=3 />`
         }
       });
       createComponent();
     });
 
     function update(value: string[]) {
-      host.maxlengthControl.setValue(value);
+      host.maxArrayControl.setValue(value);
     }
 
-    it('["A", "B", "C"] should be Maxlength', () => {
+    it('["A", "B", "C"] should be MaxArray', () => {
       update(['A', 'B', 'C']);
-      expect(host.maxlengthControl.errors).toBeNull();
-      expect(host.maxlengthControl.hasError('maxlength')).toBeFalsy();
+      expect(host.maxArrayControl.errors).toBeNull();
+      expect(host.maxArrayControl.hasError('maxArray')).toBeFalsy();
     });
   });
 });

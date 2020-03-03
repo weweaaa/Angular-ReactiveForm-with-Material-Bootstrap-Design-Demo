@@ -1,32 +1,32 @@
 import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { isPresent } from '../util';
 
-export const minlength = (length: number): ValidatorFn => {
+export const maxArray = (length: number): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors => {
     if (isPresent(Validators.required(control))) {
       return null;
     }
 
-    if (!minLengthValidatorFn(length)(control)) {
+    if (!maxArrayValidatorFn(length)(control)) {
       return null;
     }
 
     return {
-      minlength: true
+      maxArray: true
     };
-  }
+  };
 };
 
 
-export function minLengthValidatorFn(minLength: number) {
+export function maxArrayValidatorFn(length: number) {
   return (c: AbstractControl): ValidationErrors => {
 
-    if (Array.isArray(c.value) && c.value.length >= minLength) {
+    if (Array.isArray(c.value) && c.value.length <= length) {
       return null;
     }
 
     return {
-      minlength: true
+      maxArray: true
     };
   };
 }

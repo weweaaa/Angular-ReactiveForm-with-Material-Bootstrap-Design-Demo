@@ -78,11 +78,11 @@ export function getCheckBoxListValidators(validatorList: ControlValidator[Contro
 
 
   if (maxlength) {
-    validators.push(FubonValidators.maxlength(maxlength.value));
+    validators.push(FubonValidators.maxArray(maxlength.value));
   }
 
   if (minlength) {
-    validators.push(FubonValidators.minlength(minlength.value));
+    validators.push(FubonValidators.minArray(minlength.value));
   }
 
 

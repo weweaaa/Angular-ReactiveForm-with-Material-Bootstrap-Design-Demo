@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -14,11 +14,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
-
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+
+
 
 /** 自訂時間顯示格式 */
 export const MY_FORMATS = {

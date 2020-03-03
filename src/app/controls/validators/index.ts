@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { idNumber, IdNumberDirective } from './id-number';
-import { maxlength, MaxlengthDirective } from './maxlength';
-import { minlength, MinlengthDirective } from './minlength';
+import { maxArray, MaxArrayDirective } from './max-array';
+import { minArray, MinArrayDirective } from './min-array';
 import { phone, PhoneDirective } from './phone';
 import { rocDate, RocDateDirective } from './roc-date';
 import { taxIdNumber, TaxIdNumberDirective } from './tax-id-number';
 
 export const FubonValidators = {
   idNumber,
-  maxlength,
-  minlength,
+  maxArray,
+  minArray,
   phone,
   rocDate,
   taxIdNumber,
@@ -18,8 +18,8 @@ export const FubonValidators = {
 
 const DIRECTIVES = [
   IdNumberDirective,
-  MaxlengthDirective,
-  MinlengthDirective,
+  MaxArrayDirective,
+  MinArrayDirective,
   PhoneDirective,
   RocDateDirective,
   TaxIdNumberDirective];

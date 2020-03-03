@@ -1,32 +1,34 @@
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { AbstractControl, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatListModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MinlengthDirective } from './minlength.directive';
+import { MinArrayDirective } from './min-array.directive';
 
-@Component({ selector: 'fub-host-comp' })
+@Component({ selector: 'app-host-comp' })
 class HostComponent {
   @ViewChild('tMySelect') tMySelectNgModel: NgModel;
 
   form = new FormGroup({
-    minlength: new FormControl('')
+    minArray: new FormControl('')
   });
-  minlengthControl = new FormControl('');
+  minArrayControl = new FormControl('');
 }
 
-describe('MinlengthDirective', () => {
+describe('MinArrayDirective', () => {
   let fixture: ComponentFixture<HostComponent>;
   let host: HostComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HostComponent, MinlengthDirective],
+      declarations: [HostComponent, MinArrayDirective],
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        MatToolbarModule,
         MatButtonModule,
         MatCheckboxModule,
         MatListModule,
@@ -49,7 +51,7 @@ describe('MinlengthDirective', () => {
       TestBed.overrideComponent(HostComponent, {
         set: {
           template: `
-                  <mat-selection-list #tMySelect="ngModel" ngModel name="mySelect" [minlength]="3" >
+                  <mat-selection-list #tMySelect="ngModel" ngModel name="mySelect" [minArray]="3" >
                       選單
                       <mat-list-option id="A" value="A"> A!! </mat-list-option>
                       <mat-list-option id="B" value="B"> B!! </mat-list-option>
@@ -80,28 +82,28 @@ describe('MinlengthDirective', () => {
       }
     }
 
-    it('["A", "C"] should not be 2 Minlength', fakeAsync(() => {
+    it('["A", "C"] should not be 2 MinArray', fakeAsync(() => {
       update(['A', 'C']);
-      expect(host.tMySelectNgModel.errors).toEqual({ minlength: { requiredLength: 3, actualLength: 2 } });
-      expect(host.tMySelectNgModel.hasError('minlength')).toBeTruthy();
+      expect(host.tMySelectNgModel.errors).toEqual({ minArray: true });
+      expect(host.tMySelectNgModel.hasError('minArray')).toBeTruthy();
     }));
 
-    it('["A", "B", "C"] should be 3 Minlength', fakeAsync(() => {
+    it('["A", "B", "C"] should be 3 MinArray', fakeAsync(() => {
       update(['A', 'B', 'C']);
       expect(host.tMySelectNgModel.errors).toBeNull();
-      expect(host.tMySelectNgModel.hasError('minlength')).toBeFalsy();
+      expect(host.tMySelectNgModel.hasError('minArray')).toBeFalsy();
     }));
   });
 
   describe('formControlName', () => {
-    let minlengthControl: AbstractControl;
+    let minArrayControl: AbstractControl;
 
     beforeEach(() => {
       TestBed.overrideComponent(HostComponent, {
         set: {
           template: `
             <form [formGroup]="form">
-              <input formControlName="minlength" minlength minlength=3 />
+              <input formControlName="minArray" minArray minArray=3 />
             </form>
           `
         }
@@ -110,17 +112,17 @@ describe('MinlengthDirective', () => {
     });
 
     beforeEach(() => {
-      minlengthControl = host.form.get('minlength');
+      minArrayControl = host.form.get('minArray');
     });
 
     function update(value: string[]) {
-      minlengthControl.setValue(value);
+      minArrayControl.setValue(value);
     }
 
-    it('["A", "B", "C"] should be Minlength', () => {
+    it('["A", "B", "C"] should be MinArray', () => {
       update(['A', 'B', 'C']);
-      expect(minlengthControl.errors).toBeNull();
-      expect(minlengthControl.hasError('minlength')).toBeFalsy();
+      expect(minArrayControl.errors).toBeNull();
+      expect(minArrayControl.hasError('minArray')).toBeFalsy();
     });
   });
 
@@ -128,20 +130,20 @@ describe('MinlengthDirective', () => {
     beforeEach(() => {
       TestBed.overrideComponent(HostComponent, {
         set: {
-          template: `<input [formControl]="minlengthControl" minlength minlength=3 />`
+          template: `<input [formControl]="minArrayControl" minArray minArray=3 />`
         }
       });
       createComponent();
     });
 
     function update(value: string[]) {
-      host.minlengthControl.setValue(value);
+      host.minArrayControl.setValue(value);
     }
 
-    it('["A", "B", "C"] should be Minlength', () => {
+    it('["A", "B", "C"] should be MinArray', () => {
       update(['A', 'B', 'C']);
-      expect(host.minlengthControl.errors).toBeNull();
-      expect(host.minlengthControl.hasError('minlength')).toBeFalsy();
+      expect(host.minArrayControl.errors).toBeNull();
+      expect(host.minArrayControl.hasError('minArray')).toBeFalsy();
     });
   });
 });
