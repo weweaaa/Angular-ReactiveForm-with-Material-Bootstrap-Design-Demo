@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { AbstractControl, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
-import { FubonControlsModule } from '../../controls.module';
+import { MatButtonModule, MatCheckboxModule, MatListModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { BrowserModule, By } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaxlengthDirective } from './maxlength.directive';
 
 @Component({ selector: 'fub-host-comp' })
 class HostComponent {
-  @ViewChild('maxlength') maxlengthNgModel: NgModel;
+  @ViewChild('tMySelect') tMySelectNgModel: NgModel;
   form = new FormGroup({
     maxlength: new FormControl('')
   });
@@ -20,7 +22,16 @@ describe('MaxlengthDirective', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HostComponent, MaxlengthDirective],
-      imports: [FormsModule, ReactiveFormsModule, FubonControlsModule]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatSelectModule,
+        BrowserModule,
+        BrowserAnimationsModule]
     });
   }));
 
@@ -30,42 +41,56 @@ describe('MaxlengthDirective', () => {
     fixture.detectChanges();
   }
 
-  // describe('ngModel', () => {
-  //   let selectElm: any;
+  describe('ngModel', () => {
+    let optionElms: HTMLElement[];
 
-  //   beforeEach(() => {
-  //     TestBed.overrideComponent(HostComponent, {
-  //       set: {
-  //         template: `
-  //             <mat-selection-list #maxlength="ngModel" maxlength maxlength=3>
-  //               選單
-  //               <mat-list-option [id]="A" [value]="A"> A!! </mat-list-option>
-  //               <mat-list-option [id]="B" [value]="B"> B!! </mat-list-option>
-  //               <mat-list-option [id]="C" [value]="C"> C!! </mat-list-option>
-  //           </mat-selection-list>`
-  //       }
-  //     });
-  //     createComponent();
-  //   });
+    beforeEach(() => {
+      TestBed.overrideComponent(HostComponent, {
+        set: {
+          template: `
+                  <mat-selection-list #tMySelect="ngModel" ngModel name="mySelect" [maxlength]="2" >
+                      選單
+                      <mat-list-option id="A" value="A"> A!! </mat-list-option>
+                      <mat-list-option id="B" value="B"> B!! </mat-list-option>
+                      <mat-list-option id="C" value="C"> C!! </mat-list-option>
+                  </mat-selection-list>
 
-  //   beforeEach(() => {
-  //     const select = fixture.debugElement.query(By.css('mat-selection-list[maxlength]'));
-  //     selectElm = select.nativeElement;
-  //   });
+                <p style="color: red;">
+                    Options selected: {{tMySelect.selectedOptions?.selected.length}}
+                  </p>
+            `
+        }
+      });
+      createComponent();
+    });
 
-  //   function update(value: string[]) {
-  //     selectElm.value = value;
-  //     selectElm.dispatchEvent(new Event('mat-selection-list'));
-  //     tick();
-  //     fixture.detectChanges();
-  //   }
+    beforeEach(() => {
+      const options = fixture.debugElement.queryAll(By.css('mat-list-option'));
+      optionElms = options.map<HTMLElement>(x => x.nativeElement);
+    });
 
-  //   it('["A", "B", "C"] should be Maxlength', fakeAsync(() => {
-  //     update(['A', 'B', 'C']);
-  //     expect(host.maxlengthNgModel.errors).toBeNull();
-  //     expect(host.maxlengthNgModel.hasError('maxlength')).toBeFalsy();
-  //   }));
-  // });
+    function update(values: string[]) {
+      for (const optionElm of optionElms) {
+        if (values.includes(optionElm.id)) {
+          optionElm.click();
+          tick();
+          fixture.detectChanges();
+        }
+      }
+    }
+
+    it('["A", "C"] should be 2 Maxlength', fakeAsync(() => {
+      update(['A', 'C']);
+      expect(host.tMySelectNgModel.errors).toBeNull();
+      expect(host.tMySelectNgModel.hasError('maxlength')).toBeFalsy();
+    }));
+
+    it('["A", "B", "C"] should not be 3 Maxlength', fakeAsync(() => {
+      update(['A', 'B', 'C']);
+      expect(host.tMySelectNgModel.errors).toEqual({ maxlength: { requiredLength: 2, actualLength: 3 } });
+      expect(host.tMySelectNgModel.hasError('maxlength')).toBeTruthy();
+    }));
+  });
 
   describe('formControlName', () => {
     let maxlengthControl: AbstractControl;

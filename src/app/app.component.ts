@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlItem, ControlType } from './controls/form-controls/form-controls.model';
-import { DialogFormControlsComponent } from './controls/dialog-form-controls/dialog-form-controls.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogFormControlsComponent } from './controls/dialog-form-controls/dialog-form-controls.component';
+import { ControlItem, ControlType } from './controls/form-controls/form-controls.model';
 import { DataService } from './core/data.service';
 
 @Component({
@@ -10,6 +10,8 @@ import { DataService } from './core/data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  title = 'Angular Material Form Control Demo';
 
   /** 前 凍結欄位清單 */
   dataTableStickyCols = ['position'];

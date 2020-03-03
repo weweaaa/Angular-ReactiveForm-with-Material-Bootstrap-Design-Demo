@@ -1,18 +1,31 @@
-import { IdNumberValidator, idNumberValidatorFn } from './id-number.validator';
-import { MaxlengthValidator, maxLengthValidatorFn } from './maxlength.validator';
-import { MinlengthValidator, minLengthValidatorFn } from './minlength.validator';
-import { PhoneValidator, phoneValidatorFn } from './phone.validator';
-import { RocDateValidator, rocDateValidatorFn } from './roc-date.validator';
-import { TaxIdNumberValidator, taxIdNumberValidatorFn } from './tax-id-number.validator';
-
-export { IdNumberValidator, MaxlengthValidator, MinlengthValidator, PhoneValidator, RocDateValidator, TaxIdNumberValidator };
+import { NgModule } from '@angular/core';
+import { idNumber, IdNumberDirective } from './id-number';
+import { maxlength, MaxlengthDirective } from './maxlength';
+import { minlength, MinlengthDirective } from './minlength';
+import { phone, PhoneDirective } from './phone';
+import { rocDate, RocDateDirective } from './roc-date';
+import { taxIdNumber, TaxIdNumberDirective } from './tax-id-number';
 
 export const FubonValidators = {
-  idNumber: idNumberValidatorFn,
-  maxlength: maxLengthValidatorFn,
-  minlength: minLengthValidatorFn,
-  phone: phoneValidatorFn,
-  rocDate: rocDateValidatorFn,
-  taxIdNumber: taxIdNumberValidatorFn,
+  idNumber,
+  maxlength,
+  minlength,
+  phone,
+  rocDate,
+  taxIdNumber,
+
 };
 
+const DIRECTIVES = [
+  IdNumberDirective,
+  MaxlengthDirective,
+  MinlengthDirective,
+  PhoneDirective,
+  RocDateDirective,
+  TaxIdNumberDirective];
+
+@NgModule({
+  declarations: [DIRECTIVES],
+  exports: [DIRECTIVES]
+})
+export class FubonValidationModule { }
