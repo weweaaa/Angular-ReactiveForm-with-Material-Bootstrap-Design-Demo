@@ -1,12 +1,23 @@
-<app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+<div id="Div_FormManager">
+  <span class="P_Title_Style2">查詢條件</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+  </div>
+</div>
 
-<FieldSet>
+<div id="Div_TableManager">
+  <span class="P_Title_Style2">{{ reportName }}</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <app-table-manager
+      [dataSource]="dataTableSource"
+      [tableSchema]="tableSchema"
+    ></app-table-manager>
+  </div>
+</div>
+
+<!-- <FieldSet>
   <Legend>表單檢查結果</Legend>
   <pre>{{ !tform.customForm.invalid | json }}</pre>
-</FieldSet>
-
-<app-table-manager
-  [dataSource]="dataTableSource"
-  [tableSchema]="tableSchema"
-  [reportName]="reportName"
-></app-table-manager>
+</FieldSet> -->

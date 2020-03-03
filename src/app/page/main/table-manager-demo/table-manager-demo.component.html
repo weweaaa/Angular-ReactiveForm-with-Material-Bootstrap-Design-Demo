@@ -1,17 +1,22 @@
-<app-table-manager
-  [pageSize]="4"
-  [stickyColumns]="dataTableStickyCols"
-  [stickyEndColumns]="dataTableStickyEndCols"
-  [dataSource]="dataTableSource"
-  [tableSchema]="tableSchema"
-  [reportName]="reportName"
-  [isShowCheckBox]="true"
-  [isShowAddButton]="true"
-  [isShowEditButton]="true"
-  [isShowDeleteButton]="true"
-  (addRowEvent)="addData()"
-  (editRowEvent)="editData($event)"
-  (deleteRowEvent)="deleteCheckedList($event)"
-  (isSelectedEvent)="isSelectedEvent($event)"
-  (selectedAllValueChange)="selectedAllValueChange($event)"
-></app-table-manager>
+<div id="Div_TableManager">
+  <span class="P_Title_Style2">{{ reportName }}</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <app-table-manager
+      [pageSize]="4"
+      [stickyColumns]="dataTableStickyCols"
+      [stickyEndColumns]="dataTableStickyEndCols"
+      [dataSource]="dataTableSource"
+      [tableSchema]="tableSchema"
+      [isShowCheckBox]="true"
+      [isShowAddButton]="true"
+      [isShowEditButton]="true"
+      [isShowDeleteButton]="true"
+      (addRowEvent)="addData()"
+      (editRowEvent)="editData($event)"
+      (deleteRowEvent)="deleteCheckedList($event)"
+      (isSelectedEvent)="isSelectedEvent($event)"
+      (selectedAllValueChange)="selectedAllValueChange($event)"
+    ></app-table-manager>
+  </div>
+</div>

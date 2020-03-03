@@ -1,6 +1,14 @@
-<app-form-controls #tform [dataSource]="controlData"></app-form-controls>
-
-<FieldSet>
-  <Legend>表單檢查結果</Legend>
-  <pre>{{ !tform.customForm.invalid | json }}</pre>
-</FieldSet>
+<div id="Div_FormControls">
+  <span class="P_Title_Style2">表單輸入</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+  </div>
+</div>
+<div id="Div_CheckResult">
+  <span class="P_Title_Style2">表單檢查結果</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <pre>{{ !tform.customForm.invalid | json }}</pre>
+  </div>
+</div>

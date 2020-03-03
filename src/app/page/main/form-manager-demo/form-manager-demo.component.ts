@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/core/data.service';
 import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
 
@@ -9,6 +9,7 @@ import { ControlItem } from 'src/app/controls/form-controls/form-controls.model'
 })
 export class FormManagerDemoComponent implements OnInit {
 
+  @ViewChild('tform') tform: any;
   controlData: ControlItem<any>[] = this.dataService.getFilterConfing();
 
   constructor(private dataService: DataService) { }

@@ -1,1 +1,35 @@
-<p>all-manager-demo works!</p>
+<div id="Div_FormManager">
+  <span class="P_Title_Style2">查詢條件</span>
+  <hr class="hr _bolder" />
+  <div class="Div_PaddingLeft">
+    <app-form-controls #tform [dataSource]="controlData"></app-form-controls>
+  </div>
+</div>
+<div class="Div_PaddingLeft">
+  <br /><br /><br />
+  <hr />
+  <br />
+
+  <span class="P_Title_Style2">範例資料表</span>
+  <input
+    id="Btn_Delete"
+    type="button"
+    value="刪除"
+    onclick=""
+    class="btn btn-sm Btn_Right Btn_Gray"
+  />
+  <input
+    id="Btn_Add"
+    type="button"
+    value="新增"
+    onclick=""
+    class="btn btn-sm Btn_Right Btn_Gray"
+  />
+  <hr class="hr _bolder" />
+  <app-table-manager
+    [dataSource]="dataTableSource"
+    [tableSchema]="tableSchema"
+    [isShowCheckBox]="true"
+    [isShowEditButton]="true"
+  ></app-table-manager>
+</div>

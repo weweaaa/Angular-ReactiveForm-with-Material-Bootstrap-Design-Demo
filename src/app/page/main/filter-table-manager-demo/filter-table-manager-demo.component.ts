@@ -21,6 +21,10 @@ export class FilterTableManagerDemoComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+
+   // 減少查詢條件
+  // 減少資料範圍大小
+
   ngOnInit(): void {
 
     this.tableSchema = this.dataService.getTableSchema2();
