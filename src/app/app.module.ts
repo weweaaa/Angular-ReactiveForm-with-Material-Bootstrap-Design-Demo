@@ -17,6 +17,7 @@ import { FilterTableManagerDemoComponent } from './page/main/filter-table-manage
 import { AllManagerDemoComponent } from './page/main/all-manager-demo/all-manager-demo.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     /* 自訂封裝模組 */
     ControlsModule,
     TablesModule,
+
+    HttpClientModule,
 
     MatDialogModule
   ],

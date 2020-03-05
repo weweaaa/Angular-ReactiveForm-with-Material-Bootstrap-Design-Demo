@@ -1,72 +1,10 @@
-<app-header></app-header>
 <!-- Header Start-->
-<!-- <header class="display-flex flex-ver-center">
-  <div class="wrapper">
-    <div class="menu display-flex flex-align-items">
-      <ul>
-        <li
-          class="list-group-item list-group-item-action list-group-item-primary"
-          (click)="addData()"
-        >
-          新增一筆資料
-        </li>
-        <li
-          class="list-group-item list-group-item-action list-group-item-success"
-          (click)="editData()"
-        >
-          修改一筆資料
-        </li>
-        <li
-          class="list-group-item list-group-item-action list-group-item-danger"
-          (click)="deleteCheckedList()"
-        >
-          刪除勾選清單
-        </li>
-      </ul>
-    </div>
-  </div>
-</header> -->
+<app-header></app-header>
 <!-- Header End-->
 
-<app-main></app-main>
 <!-- Main Start-->
-<!-- <app-form-controls
-  #myForm
-  [dataSource]="controlData"
-  (valueChanges)="filterChange($event)"
-></app-form-controls> -->
-
-<!-- <hr />
-<FieldSet>
-  <Legend>表單檢查結果</Legend>
-  <pre>{{ !myForm.customForm.invalid | json }}</pre>
-</FieldSet>
-<FieldSet>
-  <Legend>即時查看使用者查詢條件輸入狀況</Legend>
-  <pre>{{ myForm.customForm.value | json }}</pre>
-</FieldSet> -->
+<app-main></app-main>
 <!-- Main End-->
-
-
-<!-- <app-table-manager
-  [pageSize]="3"
-  [stickyColumns]="dataTableStickyCols"
-  [stickyEndColumns]="dataTableStickyEndCols"
-  [dataSource]="dataTableSource"
-  [tableSchema]="tableSchema"
-  [reportName]="reportName"
-  [isShowCheckBox]="true"
-  [isShowAddButton]="true"
-  [isShowEditButton]="true"
-  [isShowDeleteButton]="true"
-  (addRowEvent)="addData()"
-  (editRowEvent)="editData($event)"
-  (deleteRowEvent)="deleteCheckedList($event)"
-  (isSelectedEvent)="isSelectedEvent($event)"
-  (selectedAllValueChange)="selectedAllValueChange($event)"
-></app-table-manager>
-
-<pre *ngIf="selectedList.length > 0">{{ selectedList | json }}</pre> -->
 
 <!-- Footer Start-->
 <app-footer></app-footer>

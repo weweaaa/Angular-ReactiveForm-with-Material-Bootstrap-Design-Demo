@@ -32,6 +32,9 @@ export function getValidMapTable(controlType: ControlType, validatorList: any): 
       case ControlType.CheckBoxList: {
         return getCheckBoxListValidators(validatorList);
       }
+      case ControlType.DatePicker:{
+        return getDatePickerValidators(validatorList);
+      }
       default:
         console.log('controlType not defined -> ', controlType);
         return undefined;
@@ -76,7 +79,6 @@ export function getCheckBoxListValidators(validatorList: ControlValidator[Contro
   const { maxlength, minlength } = validatorList;
   const validators = [];
 
-
   if (maxlength) {
     validators.push(FubonValidators.maxArray(maxlength.value));
   }
@@ -85,6 +87,17 @@ export function getCheckBoxListValidators(validatorList: ControlValidator[Contro
     validators.push(FubonValidators.minArray(minlength.value));
   }
 
-
   return validators;
+}
+
+
+/** 日期 相關驗證規則 */
+export function getDatePickerValidators(validatorList: ControlValidator[ControlType.DatePicker]): ValidatorFn[] {
+  const { dateRange } = validatorList;
+  const validators = [];
+
+  // TODO
+  console.error('DatePickerValidators 尚未實作 !!!');
+
+  return null;
 }

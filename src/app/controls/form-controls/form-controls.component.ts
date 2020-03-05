@@ -15,26 +15,28 @@ export class FormControlsComponent implements OnInit {
     return this._dataSource;
   }
   set dataSource(v: Array<ControlItem<ControlType>>) {
-    const controlsConfig = v.reduce((obj, { id, value, controlType, disabled, validatorList }) => {
+    if (v) {
+      const controlsConfig = v.reduce((obj, { id, value, controlType, disabled, validatorList }) => {
 
-      // 參考 Disable Input fields in reactive form 作法解
-      // https://stackoverflow.com/questions/42840136/disable-input-fields-in-reactive-form
+        // 參考 Disable Input fields in reactive form 作法解
+        // https://stackoverflow.com/questions/42840136/disable-input-fields-in-reactive-form
 
-      // Angular 運行時，可以使用的中斷點
-      // debugger;
+        // Angular 運行時，可以使用的中斷點
+        // debugger;
 
-      return { ...obj, [id]: [{ value, disabled: !!disabled }, getValidMapTable(controlType, validatorList) || []] };
+        return { ...obj, [id]: [{ value, disabled: !!disabled }, getValidMapTable(controlType, validatorList) || []] };
 
-    }, {});
+      }, {});
 
-    this.customForm = this.fb.group(controlsConfig);
-    this._dataSource = v;
+      this.customForm = this.fb.group(controlsConfig);
+      this._dataSource = v;
 
-    // setInterval(() => {
-    //   console.log('error :', this.form.valid);
-    // }, 1000);
+      // setInterval(() => {
+      //   console.log('error :', this.form.valid);
+      // }, 1000);
 
-    // TestE2E();
+      // TestE2E();
+    }
   }
   private _dataSource: Array<ControlItem<ControlType>>;
 

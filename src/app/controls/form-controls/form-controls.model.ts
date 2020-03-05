@@ -6,6 +6,7 @@ export class ControlItem<TControlType extends ControlType> {
    * @param id Control Key Word
    * @param controlType Control 類型
    * @param displayName Control 顯示名稱
+   * @param groupId Control 群組分類
    * @param value Control 值
    * @param dateSource Control 初始化資料 [DDL: array, TreeView: obj]
    * @param disabled 是否鎖定控制項
@@ -16,6 +17,7 @@ export class ControlItem<TControlType extends ControlType> {
     public readonly id: string,
     public readonly controlType: TControlType,
     public readonly displayName: string,
+    public readonly groupId?: number,
     public value?: string | boolean | string[],
     public dataSource?: string | Array<{ key: string; lable: string }>,
     public disabled?: boolean,

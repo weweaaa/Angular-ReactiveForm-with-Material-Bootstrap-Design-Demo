@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/core/data.service';
-import { ControlItem } from 'src/app/controls/form-controls/form-controls.model';
+import { ControlItem, ControlType } from 'src/app/controls/form-controls/form-controls.model';
 
 @Component({
   selector: 'app-form-manager-demo',
@@ -10,11 +10,15 @@ import { ControlItem } from 'src/app/controls/form-controls/form-controls.model'
 export class FormManagerDemoComponent implements OnInit {
 
   @ViewChild('tform') tform: any;
-  controlData: ControlItem<any>[] = this.dataService.getFilterConfing();
+
+  controlData: ControlItem<ControlType>[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-  }
 
+    this.dataService.getFormManagerSchema(1).subscribe((val) => {
+      this.controlData = val[0].schema;
+    });
+  }
 }

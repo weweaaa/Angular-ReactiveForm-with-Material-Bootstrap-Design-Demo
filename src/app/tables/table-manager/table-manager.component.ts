@@ -18,13 +18,15 @@ export class TableManagerComponent implements OnInit {
     return this._dataSource;
   }
   public set dataSource(data: Array<any>) {
-    this._dataSource = [...data];
+    if (data) {
+      this._dataSource = [...data];
 
-    const StartRow = this.pageSize * 0;
-    const EndRow = StartRow + this.pageSize;
-    this.dataSourcePaginator = this._dataSource.slice(StartRow, EndRow);
+      const StartRow = this.pageSize * 0;
+      const EndRow = StartRow + this.pageSize;
+      this.dataSourcePaginator = this._dataSource.slice(StartRow, EndRow);
 
-    this.reloadSelected();
+      this.reloadSelected();
+    }
   }
 
   dataSourcePaginator: Array<any>;

@@ -24,9 +24,10 @@ export class AllManagerDemoComponent implements OnInit {
   // 減少資料範圍大小
 
   ngOnInit(): void {
-    this.tableSchema = this.dataService.getTableSchema2();
-    this.dataTableSource = this.dataService.getData2();
-    this.controlData = this.dataService.getFilterConfing();
+    this.dataService.getAllManager().subscribe((val) => {
+      this.controlData = val['filter-schema'];
+      this.tableSchema = val['table-schema'];
+      this.dataTableSource = val.data;
+    });
   }
-
 }

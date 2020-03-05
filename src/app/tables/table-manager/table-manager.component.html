@@ -94,7 +94,7 @@
 <br />
 
 <app-paginator
-  [rowCount]="dataSource.length"
+  [rowCount]="dataSource?.length"
   [rowPageSize]="pageSize"
   (changePage)="changeTablePage($event)"
 ></app-paginator>

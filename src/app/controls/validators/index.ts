@@ -13,7 +13,6 @@ export const FubonValidators = {
   phone,
   rocDate,
   taxIdNumber,
-
 };
 
 const DIRECTIVES = [
