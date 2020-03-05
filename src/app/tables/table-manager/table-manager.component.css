@@ -21,3 +21,12 @@ th.mat-header-cell {
 .mat-column-btn {
   padding: 10px 24px !important;
 }
+
+/* 複寫 Checkbox 勾選後填滿的背景色 */
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: #b8daff !important;
+}
+
+::ng-deep .mat-checkbox-focused.mat-ink-ripple {
+  background-color: #b8daff !important;
+}
