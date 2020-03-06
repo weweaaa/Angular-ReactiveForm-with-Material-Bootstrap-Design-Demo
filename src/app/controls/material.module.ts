@@ -12,12 +12,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-
-
 
 
 /** 自訂時間顯示格式 */
@@ -65,7 +64,14 @@ export const MY_FORMATS = {
 
     /** TimePicker */
     MatIconModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+
+    /** Demo 引用
+     * 補充：從 Material 9.0.0 開始，引用模組，如果使用 '@angular/material' 的方式引用，會有異常訊息 ==> node_modules/@angular/material/index.d.ts' 不是模組。
+     * 修正方式：改為引用模組對應的目錄層級，例如：'@angular/material/stepper'
+     * 參考來源：https://github.com/angular/components/issues/17503
+     */
+    MatStepperModule,
   ],
   providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },

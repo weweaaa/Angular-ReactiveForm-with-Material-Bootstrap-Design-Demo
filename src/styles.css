@@ -27,14 +27,13 @@ html {
   height: 100%;
   margin: 0px;
   font-size: 13px;
-  font-family: '微軟正黑體';
+  font-family: "微軟正黑體";
   min-height: 450px;
   min-width: 650px;
-  color: #464B4D;
+  color: #464b4d;
 }
 
 content,
-header,
 footer {
   width: 100%;
   min-width: 900px;
@@ -50,8 +49,7 @@ footer {
   margin-right: auto;
 }
 
-footer
-{
+footer {
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -62,15 +60,14 @@ footer
 
 /*元件樣式(以字母排序)*/
 #A_ForgetPW {
-  color: #AAAAAA;
+  color: #aaaaaa;
   font-size: 13px;
   line-height: 45px;
 }
 
 #A_ForgetPW:hover {
-  color: #304F67;
+  color: #304f67;
 }
-
 
 .btn {
   cursor: pointer;
@@ -90,54 +87,45 @@ footer
   border-radius: 3px;
 }
 
-.Btn_Left
-{
+.Btn_Left {
   min-width: 80px;
   margin: 5px;
 }
 
-.Btn_Right
-{
+.Btn_Right {
   float: right;
   min-width: 80px;
   margin: 5px;
   margin-right: 0px;
 }
 
-.Btn_Gray
-{
-  background-color: #DDDDDD;
+.Btn_Gray {
+  background-color: #dddddd;
 }
 
-.Btn_Gray:hover
-{
-  background-color: #B9B9B9;
+.Btn_Gray:hover {
+  background-color: #b9b9b9;
 }
 
-.Btn_Red
-{
-  background-color: #E0CACA;
+.Btn_Red {
+  background-color: #e0caca;
 }
 
-.Btn_Red:hover
-{
-  background-color: #D9B2B2;
+.Btn_Red:hover {
+  background-color: #d9b2b2;
 }
 
-.Btn_MaxWidth
-{
+.Btn_MaxWidth {
   width: 100%;
   height: 35px;
 }
 
-.BG_White
-{
+.BG_White {
   background-color: white;
 }
 
-#Backgrond_Black
-{
-  background-color: rgba(0,0,0,0.8);
+#Backgrond_Black {
+  background-color: rgba(0, 0, 0, 0.8);
   filter: alpha(opacity=60);
   opacity: 0.6;
   position: fixed;
@@ -148,8 +136,7 @@ footer
   z-index: 1;
 }
 
-#Btn_Login
-{
+#Btn_Login {
   background-color: #203342;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 5px;
@@ -160,7 +147,6 @@ footer
   background-color: #23272b;
   box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.3);
 }
-
 
 .Div_Login {
   width: 380px;
@@ -176,26 +162,22 @@ footer
 }
 
 #Div_PageTitle {
-  background-color: #DEE6EB;
-  height:50px;
-  text-align:center;
-  line-height:50px;
+  background-color: #dee6eb;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
 }
 
-
-#Div_StatusTitle
-{
+#Div_StatusTitle {
   border: solid 1px #e9ecef;
-  border-radius:5px;
-  padding:10px;
-  padding-top:20px;
-  padding-bottom:20px;
-
+  border-radius: 5px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-#Div_ResetPW
-{
-  border: solid 1px #DDDDDD;
+#Div_ResetPW {
+  border: solid 1px #dddddd;
   border-radius: 3px;
   height: 230px;
   width: 400px;
@@ -207,7 +189,7 @@ footer
   top: 150px;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 3px 3px 10px rgba(50, 50, 50, 0.3);
-  z-index:2;
+  z-index: 2;
 }
 
 #Div_Clear {
@@ -215,12 +197,11 @@ footer
 }
 
 .div_space {
-height:50px;
+  height: 50px;
 }
 
-.Div_PaddingLeft
-{
-  padding-left:8px;
+.Div_PaddingLeft {
+  padding-left: 8px;
 }
 
 hr {
@@ -231,15 +212,12 @@ hr {
   margin-bottom: 5px;
 }
 
-.hr _bolder
-{
+.hr _bolder {
   border-bottom: solid 3px #e9ecef;
   margin-bottom: 5px;
 }
 
-
-#Nav_Select_Lan
-{
+#Nav_Select_Lan {
   width: 100px;
   margin-left: auto;
   background-color: transparent;
@@ -248,67 +226,55 @@ hr {
   cursor: pointer;
 }
 
-#Nav_Select_Lan option
-{
+#Nav_Select_Lan option {
   background-color: rgb(29, 33, 36);
 }
 
-#Nav_Select_Lan:hover
-{
+#Nav_Select_Lan:hover {
   border: none;
   background-color: rgb(29, 33, 36);
 }
 
-#Nav_Btn_Logout
-{
+#Nav_Btn_Logout {
   width: 80px;
   cursor: pointer;
 }
 
-.nav-link:hover
-{
-  color: #ED7000 !important;
+.nav-link:hover {
+  color: #ed7000 !important;
 }
 
-
-.P_LoginTitle
-{
+.P_LoginTitle {
   font-size: 28px;
   font-weight: bolder;
 }
 
-
 .P_Copyright {
-  color: #464B4D;
+  color: #464b4d;
   font-size: 12px;
 }
 
-.P_ConfirmString
-{
-  font-size:15px;
-  padding-left:10px;
+.P_ConfirmString {
+  font-size: 15px;
+  padding-left: 10px;
 }
 
-
-.Page_Title
-{
+.Page_Title {
   font-size: 16px;
   font-weight: bolder;
 }
 
-.P_StatusTitle
-{
+.P_StatusTitle {
   font-size: 15px;
   font-weight: bolder;
   display: inline-block;
-  border-bottom: solid 2px #CCCCCC;
+  border-bottom: solid 2px #cccccc;
   width: 100%;
   padding-bottom: 5px;
 }
 
-.P_StatusContent
-{
-  color: #567D2D;
+.P_StatusContent {
+  color: #567d2d;
   font-size: 14px;
   line-height: 30px;
   vertical-align: middle;
@@ -316,14 +282,13 @@ hr {
   margin-top: 5px;
 }
 
-.P_Title
-{
+.P_Title {
   font-size: 14px;
   font-weight: bolder;
 }
 
 .P_Title_Style2 {
-  color: #ED7000;
+  color: #ed7000;
   font-size: 15px;
   font-weight: bolder;
   border-radius: 3px;
@@ -332,53 +297,45 @@ hr {
   line-height: 30px;
 }
 
-.P_Title_Style3
-{
+.P_Title_Style3 {
   font-size: 14px;
   font-weight: bolder;
 }
 
 input#TB_UserID,
 input#TB_UserPW,
-select#Select_Lan
-{
+select#Select_Lan {
   background-color: transparent;
   height: 35px !important;
 }
 
-input[id=TB_UserID]:hover,
-input[id=TB_UserPW]:hover,
-select[id=Select_Lan]:hover
-{
-  border: solid 1px #304F67;
+input[id="TB_UserID"]:hover,
+input[id="TB_UserPW"]:hover,
+select[id="Select_Lan"]:hover {
+  border: solid 1px #304f67;
 }
 
-
-#Talbe_Ping.table td, #Talbe_Ping.table th
-{
+#Talbe_Ping.table td,
+#Talbe_Ping.table th {
   vertical-align: middle !important;
   height: 50px !important;
 }
 
-#Table_Setting
-{
+#Table_Setting {
   vertical-align: middle !important;
   height: 30px !important;
 }
 
-.TD_Center
-{
+.TD_Center {
   text-align: center;
 }
 
-.TB_Login
-{
+.TB_Login {
   border-collapse: collapse;
   width: 100%;
 }
 
-.TB_Login td
-{
+.TB_Login td {
   padding-left: 20px;
   padding-right: 20px;
 }

@@ -1,6 +1,9 @@
-import { AbstractControl, ValidatorFn, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { isPresent } from '../util';
 
+/**
+ * 身分證號 格式驗證
+ */
 export const idNumber: ValidatorFn = (control: AbstractControl): ValidationErrors => {
   if (isPresent(Validators.required(control))) {
     return null;

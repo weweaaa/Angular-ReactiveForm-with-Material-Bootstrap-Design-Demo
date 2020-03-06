@@ -1,9 +1,10 @@
 <div [hidden]="controlItem?.hidden">
   <section class="section">
     <label style="margin: 0 10px;">{{ controlItem?.displayName }} : </label>
-    <mat-radio-group labelPosition="before" [formControl]="control">
+    <mat-radio-group [formControl]="control">
+      <!-- labelPosition="before" 文字在右左邊設定 -->
       <mat-radio-button
-        *ngFor="let r of controlItem?.dataSource; let i = index;"
+        *ngFor="let r of controlItem?.dataSource; let i = index"
         style="margin: 0 10px;"
         [checked]="i === 0"
         [value]="r.key"

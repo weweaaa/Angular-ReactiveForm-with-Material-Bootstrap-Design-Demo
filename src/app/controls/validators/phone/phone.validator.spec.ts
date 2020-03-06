@@ -12,4 +12,9 @@ describe('Phone Validator', () => {
     const control = new FormControl('3345678');
     expect(phone(control)).toEqual({ phone: true });
   });
+
+  it('0936123456 should be Phone Number', () => {
+    const control = new FormControl('0936123456');
+    expect(phone(control)).toBeNull();
+  });
 });

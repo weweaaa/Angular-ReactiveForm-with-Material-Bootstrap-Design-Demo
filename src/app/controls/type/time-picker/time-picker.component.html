@@ -11,8 +11,11 @@
       <ngx-material-timepicker
         class="timepicker"
         #tpicker
-        [enableKeyboardInput]="true"
+        [enableKeyboardInput]="false"
       ></ngx-material-timepicker>
     </div>
   </mat-form-field>
 </div>
+
+<!-- 如果想要客製化 ngx-material-timepicker 的 css class 可使用以下屬性設定
+[timepickerClass]="'自訂 class 名稱'" -->

@@ -1,6 +1,9 @@
 import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { isPresent } from '../util';
 
+/**
+ * 統一編號 格式驗證
+ */
 export const taxIdNumber: ValidatorFn = (control: AbstractControl): ValidationErrors => {
   if (isPresent(Validators.required(control))) {
     return null;

@@ -1,6 +1,9 @@
 import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { isPresent } from '../util';
 
+/**
+ * 最小勾選數量限制
+ */
 export const minArray = (length: number): ValidatorFn => {
   return (control: AbstractControl): ValidationErrors => {
     if (isPresent(Validators.required(control))) {
