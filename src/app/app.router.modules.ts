@@ -10,7 +10,15 @@ export const appRoutes: Routes = [
   {
     path: '', children: [
       { path: '', component: FormManagerDemoComponent },
-      { path: 'form-manager-demo', component: FormManagerDemoComponent },
+      {
+        path: 'form-manager-demo',
+        component: FormManagerDemoComponent // ,
+        // children: [
+        //   { path: 'Basic', component: BasicComponent },
+        //   { path: 'Bookmark', component: BookmarkComponent },
+        //   { path: 'ElfMode', component: ElfModeComponent },
+        // ]
+      },
       { path: 'table-manager-demo', component: TableManagerDemoComponent },
       { path: 'filter-form-manager-demo', component: FilterTableManagerDemoComponent },
       { path: 'all-manager-demo', component: AllManagerDemoComponent },
