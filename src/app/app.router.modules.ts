@@ -8,7 +8,8 @@ import { TableManagerDemoComponent } from './page/main/table-manager-demo/table-
 
 export const appRoutes: Routes = [
   {
-    path: '', component: FormManagerDemoComponent, children: [
+    path: '', children: [
+      { path: '', component: FormManagerDemoComponent },
       { path: 'form-manager-demo', component: FormManagerDemoComponent },
       { path: 'table-manager-demo', component: TableManagerDemoComponent },
       { path: 'filter-form-manager-demo', component: FilterTableManagerDemoComponent },

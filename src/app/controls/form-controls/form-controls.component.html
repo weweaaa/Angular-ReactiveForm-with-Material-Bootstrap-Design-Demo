@@ -1,8 +1,8 @@
 <div class="container" *ngIf="dataSource">
-  <div class="row align-items-center">
-    <form [formGroup]="customForm">
-      <ng-container *ngFor="let item of dataSource; let i = index;">
-        <div class="w-100" *ngIf="getDivW100(i)"></div>
+  <form [formGroup]="customForm">
+    <div class="row align-items-center">
+      <ng-container *ngFor="let item of dataSource; let i = index">
+        <div class="w-80" *ngIf="getDivW100(i)"></div>
         <div class="col-sm" [ngSwitch]="item.controlType">
           <!-- Input Type  -->
           <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
@@ -64,8 +64,8 @@
           <!-- Input Type  -->
         </div>
       </ng-container>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
 <!-- <hr />

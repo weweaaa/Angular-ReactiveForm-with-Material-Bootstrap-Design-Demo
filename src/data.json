@@ -809,7 +809,7 @@
         {
           "id": "id",
           "displayName": "身分證",
-          "value": "123@gmail.com",
+          "value": "",
           "disabled": false,
           "hidden": false,
           "controlType": "KeydownInput",
@@ -842,10 +842,15 @@
           }
         },
         {
-          "id": "SlideChecked",
-          "displayName": "是否啟用",
-          "value": "true",
-          "controlType": "SlideToggle"
+          "id": "DDL",
+          "displayName": "combobox 選單",
+          "value": "",
+          "controlType": "DropDownList",
+          "dataSource": [
+            { "key": "A", "lable": "A!" },
+            { "key": "B", "lable": "B!" },
+            { "key": "C", "lable": "C!" }
+          ]
         },
         {
           "id": "Time",
@@ -854,10 +859,27 @@
           "controlType": "TimePicker"
         },
         {
+          "id": "SlideChecked",
+          "displayName": "是否啟用",
+          "value": "true",
+          "controlType": "SlideToggle"
+        },
+        {
           "id": "CKB",
           "displayName": "是否同意",
           "value": "true",
           "controlType": "CheckBox"
+        },
+        {
+          "id": "Radio",
+          "displayName": "Radio 選單",
+          "value": "",
+          "controlType": "RadioButton",
+          "dataSource": [
+            { "key": "1", "lable": "One" },
+            { "key": "2", "lable": "Two" },
+            { "key": "3", "lable": "Three" }
+          ]
         },
         {
           "id": "CKB2",
@@ -873,28 +895,6 @@
             { "key": "D", "lable": "D!" },
             { "key": "E", "lable": "E!" },
             { "key": "F", "lable": "F!" }
-          ]
-        },
-        {
-          "id": "DDL",
-          "displayName": "combobox 選單",
-          "value": "",
-          "controlType": "DropDownList",
-          "dataSource": [
-            { "key": "A", "lable": "A!" },
-            { "key": "B", "lable": "B!" },
-            { "key": "C", "lable": "C!" }
-          ]
-        },
-        {
-          "id": "Radio",
-          "displayName": "Radio 選單",
-          "value": "",
-          "controlType": "RadioButton",
-          "dataSource": [
-            { "key": "1", "lable": "One" },
-            { "key": "2", "lable": "Two" },
-            { "key": "3", "lable": "Three" }
           ]
         }
       ]
@@ -937,7 +937,7 @@
           "groupId": 2,
           "value": "",
           "controlType": "DropDownList",
-          "dataSource":[
+          "dataSource": [
             { "key": "Aquarius", "lable": "水瓶座" },
             { "key": "Pisces", "lable": "雙魚座" },
             { "key": "Aries", "lable": "牡羊座" },
