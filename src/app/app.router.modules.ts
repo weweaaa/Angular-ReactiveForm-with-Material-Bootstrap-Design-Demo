@@ -5,6 +5,9 @@ import { AllManagerDemoComponent } from './page/main/all-manager-demo/all-manage
 import { FilterTableManagerDemoComponent } from './page/main/filter-table-manager-demo/filter-table-manager-demo.component';
 import { FormManagerDemoComponent } from './page/main/form-manager-demo/form-manager-demo.component';
 import { TableManagerDemoComponent } from './page/main/table-manager-demo/table-manager-demo.component';
+import { BasicComponent } from './page/main/form-manager-demo/menu/basic/basic.component';
+import { BookmarkComponent } from './page/main/form-manager-demo/menu/bookmark/bookmark.component';
+import { ElfModeComponent } from './page/main/form-manager-demo/menu/elf-mode/elf-mode.component';
 
 export const appRoutes: Routes = [
   {
@@ -12,12 +15,12 @@ export const appRoutes: Routes = [
       { path: '', component: FormManagerDemoComponent },
       {
         path: 'form-manager-demo',
-        component: FormManagerDemoComponent // ,
-        // children: [
-        //   { path: 'Basic', component: BasicComponent },
-        //   { path: 'Bookmark', component: BookmarkComponent },
-        //   { path: 'ElfMode', component: ElfModeComponent },
-        // ]
+        component: FormManagerDemoComponent,
+        children: [
+          { path: 'Basic', component: BasicComponent },
+          { path: 'Bookmark', component: BookmarkComponent },
+          { path: 'ElfMode', component: ElfModeComponent },
+        ]
       },
       { path: 'table-manager-demo', component: TableManagerDemoComponent },
       { path: 'filter-form-manager-demo', component: FilterTableManagerDemoComponent },
