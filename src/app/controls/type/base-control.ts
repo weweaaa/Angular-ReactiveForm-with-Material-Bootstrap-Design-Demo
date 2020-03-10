@@ -1,5 +1,5 @@
-import { ControlValueAccessor, FormControl, ControlContainer } from '@angular/forms';
-import { AfterViewInit, OnDestroy, Input, Injector } from '@angular/core';
+import { AfterViewInit, Injector, Input, OnDestroy } from '@angular/core';
+import { ControlContainer, ControlValueAccessor, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ControlItem, ControlType, ControlValueType } from '../form-controls/form-controls.model';
@@ -60,9 +60,16 @@ export class BaseControl<TControlType extends ControlType> implements ControlVal
 
   // --------------- OnDestroy ---------------
 
-  /** 取消 subscribe 訂閱，釋放資源 */
+  /** [!!!禁止覆寫!!!] 取消 subscribe 訂閱，釋放資源 */
   ngOnDestroy(): void {
+    // console.log('base destroy complete.');
     this.destroy$.next();
     this.destroy$.complete();
+    this.onDestroy();
+  }
+
+  /** 提供子類別 覆寫實作 destroy 後的流程定義 */
+  onDestroy() {
+    // console.log('base onDestroy complete.');
   }
 }

@@ -7,7 +7,7 @@
           <!-- Input Type  -->
           <!-- 改為 FormControl 作法，就變成只需要傳 formControlName 即可 -->
           <app-keydown-input
-            *ngSwitchCase="cType.KeydownInput"
+            *ngSwitchCase="cType.KeywordInput"
             formControlName="{{ item.id }}"
             [controlItem]="item"
           ></app-keydown-input>

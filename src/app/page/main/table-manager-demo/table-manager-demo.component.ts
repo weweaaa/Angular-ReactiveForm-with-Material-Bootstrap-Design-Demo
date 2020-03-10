@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlItem, ControlType } from 'src/app/controls/form-controls/form-controls.model';
-import { DialogFormControlsComponent } from 'src/app/controls/dialog-form-controls/dialog-form-controls.component';
-import { DataService } from 'src/app/core/data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogFormControlsComponent } from 'src/app/controls/dialog-form-controls/dialog-form-controls.component';
+import { ControlItem, ControlType } from 'src/app/controls/form-controls/form-controls.model';
+import { DataService } from 'src/app/core/data.service';
 
 @Component({
   selector: 'app-table-manager-demo',
@@ -33,86 +33,65 @@ export class TableManagerDemoComponent implements OnInit {
       this.tableSchema = val[0].schema;
       this.dataTableSource = val[0].data;
     });
-
-
   }
 
   // ---------------------------------------------------------------------
   /** 新增一筆資料 */
   addData() {
-    // // 1.開啟 Dialog 組件視窗
-    // const dialogRef = this.dialog.open(DialogFormControlsComponent, {
-    //   width: '400px',
-    //   data: this.dataService.getTableSchema1(),
-    // });
+    // 1.開啟 Dialog 組件視窗
+    const dialogRef = this.dialog.open(DialogFormControlsComponent, {
+      width: '680px',
+      data: this.tableSchema,
+    });
 
-    // // 2.Dialog 組件視窗關閉後的操作動作
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result !== undefined) {
-    //     console.log('關閉事件後接收到的的物件資料內容', result);
-
-    //     // TODO 使用者新增一筆資料，透過 Service 重新查詢資料
-    //     this.dataTableSource = [...this.dataTableSource, result];
-    //   }
-    // });
+    // 2.Dialog 組件視窗關閉後的操作動作
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.dataTableSource = [...this.dataTableSource, result];
+        console.log('使用者新增一筆資料');
+      }
+    });
   }
 
   /** 編輯一筆資料 */
   editData(event?: any) {
-    // // 1. 開啟 Dialog 組件視窗
-    // const dataDialog = this.dataService.getTableSchema1();
-    // dataDialog.forEach(val => val.value = event[val.id]);
+    // 1. 取得該筆資料 id 傳換成表單需要的物件樣貌
+    const dataDialog = this.tableSchema;
+    dataDialog.forEach(val => val.value = event[val.id]);
 
-    // const dialogRef = this.dialog.open(DialogFormControlsComponent, {
-    //   width: '400px',
-    //   data: dataDialog,
-    // });
+    // 2. 開啟 Dialog 組件視窗
+    const dialogRef = this.dialog.open(DialogFormControlsComponent, {
+      width: '680px',
+      data: dataDialog,
+    });
 
-    // // 3. Dialog 組件視窗關閉後的操作動作
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result !== undefined) {
-    //     console.log('關閉事件後接收到的的物件資料內容', result);
-
-
-    //     // TODO 使用者編輯一筆資料，透過 Service 重新查詢資料
-    //     // ---------------------------------------------------
-    //     if (this.dataService.editData(result) === true) {
-
-    //       this.dataTableSource = this.dataTableSource.filter(val => +val.id !== +event.id);
-
-    //       console.log('start this.dataTableSource :', this.dataTableSource);
-
-    //       this.dataTableSource = [result, ...this.dataTableSource];
-
-    //       console.log('end this.dataTableSource :', this.dataTableSource);
-    //     }
-    //     // ---------------------------------------------------
-    //   }
-    // });
-    // /* } */
+    // 3. Dialog 組件視窗關閉後的操作動作
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataTableSource = this.dataTableSource.filter(val => +val.id !== +event.id);
+        // console.log('start this.dataTableSource :', this.dataTableSource);
+        this.dataTableSource = [result, ...this.dataTableSource];
+        // console.log('end this.dataTableSource :', this.dataTableSource);
+        console.log('編輯一筆資料');
+      }
+    });
   }
 
   /** 批次刪除資料 */
   deleteCheckedList(event?: any) {
-    // console.log('使用者批次刪除');
+    /* ============ 由外部元件按鈕控制 table-manager 的作法 ============ */
+    if (!event && this.selectedList.length > 0) {
+      this.dataTableSource = this.dataTableSource.concat(this.selectedList).filter((val) => {
+        return !this.dataTableSource.includes(val) || !this.selectedList.includes(val);
+      });
+      console.log('使用者批次刪除選取的資料');
+    }
 
-    // /* ============ 由外部元件控制 table-manager 的作法 ============ */
-    // if (!event && this.selectedList.length > 0) {
-    //   this.dataTableSource = this.dataTableSource.concat(this.selectedList).filter((val) => {
-    //     return !this.dataTableSource.includes(val) || !this.selectedList.includes(val);
-    //   });
-    //   // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
-    // } else {
-    //   // alert('請至少選擇一筆');
-    // }
-
-    // /** ============ 直接操作 table-manager 事件的做法 ============ */
-    // if (event) {
-    //   this.dataTableSource = this.dataTableSource.concat(event).filter(val => val !== event);
-    //   // TODO 使用者批次刪除資料，透過 Service 重新查詢資料
-    // } else {
-    //   // console.log('selected data is null');
-    // }
+    /** ============ 直接操作 table-manager 事件的做法 ============ */
+    if (event) {
+      this.dataTableSource = this.dataTableSource.concat(event).filter(val => val !== event);
+      console.log('使用者刪除一筆資料');
+    }
   }
   // ---------------------------------------------------------------------
 

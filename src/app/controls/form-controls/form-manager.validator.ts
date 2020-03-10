@@ -26,13 +26,13 @@ export function nameof<T>(propertyName: keyof T) {
 export function getValidMapTable(controlType: ControlType, validatorList: any): ValidatorFn[] {
   if (validatorList) {
     switch (controlType) {
-      case ControlType.KeydownInput: {
+      case ControlType.KeywordInput: {
         return getKeywordInputValidators(validatorList);
       }
       case ControlType.CheckBoxList: {
         return getCheckBoxListValidators(validatorList);
       }
-      case ControlType.DatePicker:{
+      case ControlType.DatePicker: {
         return getDatePickerValidators(validatorList);
       }
       default:
@@ -43,7 +43,7 @@ export function getValidMapTable(controlType: ControlType, validatorList: any): 
 }
 
 /** 字串輸入 相關驗證規則 */
-export function getKeywordInputValidators(validatorList: ControlValidator[ControlType.KeydownInput]): ValidatorFn[] {
+export function getKeywordInputValidators(validatorList: ControlValidator[ControlType.KeywordInput]): ValidatorFn[] {
 
   const validators = [];
 

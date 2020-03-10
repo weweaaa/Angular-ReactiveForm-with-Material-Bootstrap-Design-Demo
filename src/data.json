@@ -5,7 +5,7 @@
         "id": "name",
         "displayName": "名稱 查詢",
         "value": "",
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "myDate",
@@ -38,7 +38,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "name",
@@ -46,7 +46,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "weight",
@@ -54,7 +54,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "symbol",
@@ -62,7 +62,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "myDate",
@@ -115,7 +115,7 @@
         "id": "position",
         "displayName": "ID 查詢",
         "value": "",
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "myDate",
@@ -152,7 +152,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "name",
@@ -160,7 +160,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "weight",
@@ -168,7 +168,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "symbol",
@@ -176,15 +176,15 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "position1",
         "displayName": "我是 position 1",
-        "value": "",
+        "value": "A",
         "disabled": false,
         "hidden": false,
-        "controlType": "RadioButton",
+        "controlType": "RadioButtonList",
         "dataSource": [
           { "key": "A", "lable": "A!" },
           { "key": "B", "lable": "B!" }
@@ -196,7 +196,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "weight1",
@@ -204,7 +204,7 @@
         "value": "",
         "disabled": false,
         "hidden": false,
-        "controlType": "KeydownInput"
+        "controlType": "KeywordInput"
       },
       {
         "id": "symbol1",
@@ -246,7 +246,7 @@
         "name": "Position",
         "weight": 1.0079,
         "symbol": "H",
-        "position1": 1,
+        "position1": "A",
         "name1": "Position 1",
         "weight1": 1.0079,
         "symbol1": "H1",
@@ -804,7 +804,7 @@
           "value": "Disable Now...",
           "disabled": true,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "id",
@@ -812,7 +812,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput",
+          "controlType": "KeywordInput",
           "validatorList": {
             "required": { "message": "不可為空值" },
             "minlength": { "message": "最小長度 10 個字元", "value": 10 },
@@ -825,7 +825,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput",
+          "controlType": "KeywordInput",
           "validatorList": {
             "required": { "message": "不可為空值" },
             "maxlength": { "message": "最小長度 7 個字元", "value": 7 },
@@ -862,7 +862,7 @@
           "id": "SlideChecked",
           "displayName": "是否啟用",
           "value": "true",
-          "controlType": "SlideToggle"
+          "controlType": "SlideChecked"
         },
         {
           "id": "CKB",
@@ -874,7 +874,7 @@
           "id": "Radio",
           "displayName": "Radio 選單",
           "value": "",
-          "controlType": "RadioButton",
+          "controlType": "RadioButtonList",
           "dataSource": [
             { "key": "1", "lable": "One" },
             { "key": "2", "lable": "Two" },
@@ -908,21 +908,21 @@
           "displayName": "編號",
           "groupId": 1,
           "value": "",
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "Name",
           "displayName": "姓名",
           "groupId": 1,
           "value": "",
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "Phone",
           "displayName": "電話號碼",
           "groupId": 1,
           "value": "",
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "Birthday",
@@ -987,7 +987,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "name",
@@ -995,7 +995,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "weight",
@@ -1003,7 +1003,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "symbol",
@@ -1011,15 +1011,15 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "position1",
           "displayName": "position 1",
-          "value": "",
+          "value": "A",
           "disabled": false,
           "hidden": false,
-          "controlType": "RadioButton",
+          "controlType": "RadioButtonList",
           "dataSource": [
             { "key": "A", "lable": "A!" },
             { "key": "B", "lable": "B!" }
@@ -1031,7 +1031,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "weight1",
@@ -1039,7 +1039,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "symbol1",
@@ -1081,7 +1081,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 1,
+          "position1": "A",
           "name1": "Position 1",
           "weight1": 1.0079,
           "symbol1": "H1",
@@ -1092,7 +1092,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 2,
+          "position1": "A",
           "name1": "Position 2",
           "weight1": 2.0079,
           "symbol1": "H2",
@@ -1103,7 +1103,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 3,
+          "position1": "A",
           "name1": "Position 3",
           "weight1": 3.0079,
           "symbol1": "H3",
@@ -1114,7 +1114,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 4,
+          "position1": "A",
           "name1": "Position 4",
           "weight1": 4.0079,
           "symbol1": "H4",
@@ -1125,7 +1125,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 5,
+          "position1": "A",
           "name1": "Position 5",
           "weight1": 5.0079,
           "symbol1": "H5",
@@ -1136,7 +1136,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 6,
+          "position1": "A",
           "name1": "Position 6",
           "weight1": 6.0079,
           "symbol1": "H6",
@@ -1147,7 +1147,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 7,
+          "position1": "A",
           "name1": "Position 7",
           "weight1": 7.0079,
           "symbol1": "H7",
@@ -1158,7 +1158,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 8,
+          "position1": "A",
           "name1": "Position 8",
           "weight1": 8.0079,
           "symbol1": "H8",
@@ -1169,7 +1169,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 9,
+          "position1": "A",
           "name1": "Position 9",
           "weight1": 9.0079,
           "symbol1": "H9",
@@ -1180,7 +1180,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 10,
+          "position1": "A",
           "name1": "Position 10",
           "weight1": 10.0079,
           "symbol1": "H10",
@@ -1191,7 +1191,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 11,
+          "position1": "A",
           "name1": "Position 11",
           "weight1": 11.0079,
           "symbol1": "H11",
@@ -1202,7 +1202,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 12,
+          "position1": "A",
           "name1": "Position 12",
           "weight1": 12.0079,
           "symbol1": "H12",
@@ -1213,7 +1213,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 13,
+          "position1": "A",
           "name1": "Position 13",
           "weight1": 13.0079,
           "symbol1": "H13",
@@ -1224,7 +1224,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 14,
+          "position1": "A",
           "name1": "Position 14",
           "weight1": 14.0079,
           "symbol1": "H14",
@@ -1235,7 +1235,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 15,
+          "position1": "A",
           "name1": "Position 15",
           "weight1": 15.0079,
           "symbol1": "H15",
@@ -1246,7 +1246,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 16,
+          "position1": "A",
           "name1": "Position 16",
           "weight1": 16.0079,
           "symbol1": "H16",
@@ -1257,7 +1257,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 17,
+          "position1": "A",
           "name1": "Position 17",
           "weight1": 17.0079,
           "symbol1": "H17",
@@ -1268,7 +1268,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 18,
+          "position1": "A",
           "name1": "Position 18",
           "weight1": 18.0079,
           "symbol1": "H18",
@@ -1279,7 +1279,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 19,
+          "position1": "A",
           "name1": "Position 19",
           "weight1": 19.0079,
           "symbol1": "H19",
@@ -1290,7 +1290,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 20,
+          "position1": "A",
           "name1": "Position 20",
           "weight1": 20.0079,
           "symbol1": "H20",
@@ -1301,7 +1301,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 21,
+          "position1": "A",
           "name1": "Position 21",
           "weight1": 21.0079,
           "symbol1": "H21",
@@ -1312,7 +1312,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 22,
+          "position1": "A",
           "name1": "Position 22",
           "weight1": 22.0079,
           "symbol1": "H22",
@@ -1323,7 +1323,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 23,
+          "position1": "A",
           "name1": "Position 23",
           "weight1": 23.0079,
           "symbol1": "H23",
@@ -1334,7 +1334,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 24,
+          "position1": "A",
           "name1": "Position 24",
           "weight1": 24.0079,
           "symbol1": "H24",
@@ -1345,7 +1345,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 25,
+          "position1": "A",
           "name1": "Position 25",
           "weight1": 25.0079,
           "symbol1": "H25",
@@ -1356,7 +1356,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 26,
+          "position1": "A",
           "name1": "Position 26",
           "weight1": 26.0079,
           "symbol1": "H26",
@@ -1367,7 +1367,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 27,
+          "position1": "A",
           "name1": "Position 27",
           "weight1": 27.0079,
           "symbol1": "H27",
@@ -1378,7 +1378,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 28,
+          "position1": "A",
           "name1": "Position 28",
           "weight1": 28.0079,
           "symbol1": "H28",
@@ -1389,7 +1389,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 29,
+          "position1": "A",
           "name1": "Position 29",
           "weight1": 29.0079,
           "symbol1": "H29",
@@ -1400,7 +1400,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 30,
+          "position1": "A",
           "name1": "Position 30",
           "weight1": 30.0079,
           "symbol1": "H30",
@@ -1411,7 +1411,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 31,
+          "position1": "A",
           "name1": "Position 31",
           "weight1": 31.0079,
           "symbol1": "H31",
@@ -1422,7 +1422,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 32,
+          "position1": "A",
           "name1": "Position 32",
           "weight1": 32.0079,
           "symbol1": "H32",
@@ -1433,7 +1433,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 33,
+          "position1": "A",
           "name1": "Position 33",
           "weight1": 33.0079,
           "symbol1": "H33",
@@ -1444,7 +1444,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 34,
+          "position1": "A",
           "name1": "Position 34",
           "weight1": 34.0079,
           "symbol1": "H34",
@@ -1455,7 +1455,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 35,
+          "position1": "A",
           "name1": "Position 35",
           "weight1": 35.0079,
           "symbol1": "H35",
@@ -1466,7 +1466,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 36,
+          "position1": "A",
           "name1": "Position 36",
           "weight1": 36.0079,
           "symbol1": "H36",
@@ -1477,7 +1477,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 37,
+          "position1": "A",
           "name1": "Position 37",
           "weight1": 37.0079,
           "symbol1": "H37",
@@ -1488,7 +1488,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 38,
+          "position1": "A",
           "name1": "Position 38",
           "weight1": 38.0079,
           "symbol1": "H38",
@@ -1499,7 +1499,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 39,
+          "position1": "A",
           "name1": "Position 39",
           "weight1": 39.0079,
           "symbol1": "H39",
@@ -1510,7 +1510,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 40,
+          "position1": "A",
           "name1": "Position 40",
           "weight1": 40.0079,
           "symbol1": "H40",
@@ -1521,7 +1521,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 41,
+          "position1": "A",
           "name1": "Position 41",
           "weight1": 41.0079,
           "symbol1": "H41",
@@ -1532,7 +1532,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 42,
+          "position1": "A",
           "name1": "Position 42",
           "weight1": 42.0079,
           "symbol1": "H42",
@@ -1543,7 +1543,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 43,
+          "position1": "A",
           "name1": "Position 43",
           "weight1": 43.0079,
           "symbol1": "H43",
@@ -1554,7 +1554,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 44,
+          "position1": "A",
           "name1": "Position 44",
           "weight1": 44.0079,
           "symbol1": "H44",
@@ -1565,7 +1565,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 45,
+          "position1": "A",
           "name1": "Position 45",
           "weight1": 45.0079,
           "symbol1": "H45",
@@ -1576,7 +1576,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 46,
+          "position1": "A",
           "name1": "Position 46",
           "weight1": 46.0079,
           "symbol1": "H46",
@@ -1587,7 +1587,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 47,
+          "position1": "A",
           "name1": "Position 47",
           "weight1": 47.0079,
           "symbol1": "H47",
@@ -1598,7 +1598,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 48,
+          "position1": "A",
           "name1": "Position 48",
           "weight1": 48.0079,
           "symbol1": "H48",
@@ -1609,7 +1609,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 49,
+          "position1": "A",
           "name1": "Position 49",
           "weight1": 49.0079,
           "symbol1": "H49",
@@ -1620,7 +1620,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 50,
+          "position1": "A",
           "name1": "Position 50",
           "weight1": 50.0079,
           "symbol1": "H50",
@@ -1637,7 +1637,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "name",
@@ -1645,7 +1645,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "weight",
@@ -1653,7 +1653,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "symbol",
@@ -1661,7 +1661,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "position1",
@@ -1669,7 +1669,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "RadioButton",
+          "controlType": "RadioButtonList",
           "dataSource": [
             { "key": "A", "lable": "A!" },
             { "key": "B", "lable": "B!" }
@@ -1681,7 +1681,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "weight1",
@@ -1689,7 +1689,7 @@
           "value": "",
           "disabled": false,
           "hidden": false,
-          "controlType": "KeydownInput"
+          "controlType": "KeywordInput"
         },
         {
           "id": "symbol1",
@@ -1731,7 +1731,7 @@
           "name": "Position",
           "weight": 1.0079,
           "symbol": "H",
-          "position1": 1,
+          "position1": "A",
           "name1": "Position 1",
           "weight1": 1.0079,
           "symbol1": "H",
@@ -1853,7 +1853,7 @@
           "name": "Helium",
           "weight": 4.0026,
           "symbol": "He",
-          "position1": 2,
+          "position1": "A",
           "name1": "Position",
           "weight1": 1.0079,
           "symbol1": "H",

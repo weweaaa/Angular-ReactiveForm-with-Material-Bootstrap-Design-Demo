@@ -34,7 +34,7 @@ export class ControlItem<TControlType extends ControlType> {
  */
 export enum ControlType {
   /** 關鍵字 輸入框 */
-  KeydownInput = 'KeydownInput',
+  KeywordInput = 'KeywordInput',
 
   /** 勾選 選擇器 */
   CheckBox = 'CheckBox',
@@ -58,7 +58,7 @@ export enum ControlType {
  * 目前支援的 Form Control 輸入資料型態對應表
  */
 export interface ControlValueType {
-  [ControlType.KeydownInput]: string;
+  [ControlType.KeywordInput]: string;
 
   [ControlType.CheckBox]: boolean;
 
@@ -81,7 +81,7 @@ export interface ControlValueType {
 /** 目前支援的 Form Control 的驗證物件模型 */
 export interface ControlValidator {
 
-  [ControlType.KeydownInput]: {
+  [ControlType.KeywordInput]: {
     /** 不可為空值 */
     required?: BaseValidator;
     /** 限制 最小長度 */
