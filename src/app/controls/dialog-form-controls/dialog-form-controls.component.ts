@@ -64,7 +64,11 @@ export class DialogFormControlsComponent implements OnInit {
     // 錯誤作法，因為 FormControl 樹狀結構已經定義
     // this.controlItem = [...this.controls];
 
-    // 正確做法，直接修改 value 給予預設值
-    this.tform.customForm.patchValue(this.defaultFormData, { emitEvent: false });
+    // 可能做法，直接修改 value 給予預設值，但是不建議使用 patchValue
+    // this.tform.customForm.patchValue(this.defaultFormData, { emitEvent: false });
+
+    // 建議使用 reset，並給予原本的欄位值，
+    // 因為 patchValue 不會還原某些狀態(例如：是否編輯過、是否點擊過、是否送交 submit)
+    this.tform.customForm.reset(this.defaultFormData);
   }
 }
